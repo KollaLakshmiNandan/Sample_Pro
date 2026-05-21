@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ansible Complete Guide</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #0f172a;
+        color: white;
+        line-height: 1.8;
+      }
+
+      header {
+        background: #1e293b;
+        padding: 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        color: #38bdf8;
+      }
+
+      nav {
+        background: #334155;
+        padding: 15px;
+        position: sticky;
+        top: 0;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        margin: 15px;
+        font-weight: bold;
+      }
+
+      .container {
+        width: 90%;
+        margin: auto;
+        padding: 20px;
+      }
+
+      section {
+        margin-top: 40px;
+        padding: 25px;
+        background: #1e293b;
+        border-radius: 10px;
+      }
+
+      h2 {
+        color: #38bdf8;
+        margin-bottom: 15px;
+      }
+
+      h3 {
+        color: #22c55e;
+        margin-top: 20px;
+      }
+
+      pre {
+        background: black;
+        padding: 15px;
+        overflow: auto;
+        border-radius: 8px;
+        margin-top: 10px;
+        color: #22c55e;
+      }
+
+      ul {
+        padding-left: 30px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid white;
+        padding: 10px;
+      }
+
+      th {
+        background: #0284c7;
+      }
+
+      footer {
+        background: #1e293b;
+        padding: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>ANSIBLE COMPLETE GUIDE</h1>
+
+      <p>Scratch to Advanced</p>
+    </header>
+
+    <nav>
+      <a href="#intro">Intro</a>
+
+      <a href="#architecture">Architecture</a>
+
+      <a href="#workflow">Workflow</a>
+
+      <a href="#ssh">SSH</a>
+
+      <a href="#inventory">Inventory</a>
+
+      <a href="#yaml">YAML</a>
+
+      <a href="#playbook">Playbooks</a>
+
+      <a href="#modules">Modules</a>
+
+      <a href="#realtime">Real Time</a>
+    </nav>
+
+    <div class="container">
+      <section id="intro">
+        <h2>1. What is Ansible?</h2>
+
+        <p>Ansible is an open-source automation tool used for:</p>
+
+        <ul>
+          <li>Configuration Management</li>
+
+          <li>Application Deployment</li>
+
+          <li>Infrastructure Automation</li>
+
+          <li>Server Provisioning</li>
+
+          <li>CI/CD Automation</li>
+        </ul>
+
+        <br />
+
+        <h3>Problem Before Ansible</h3>
+
+        <p>
+          Imagine company has 100 servers. Manually: Login server 1 Install
+          nginx Configure Repeat 100 times Time consuming + Human Errors
+        </p>
+
+        <br />
+
+        <h3>Solution</h3>
+
+        <p>Ansible automates everything from one machine.</p>
+      </section>
+
+      <section id="architecture">
+        <h2>2. Ansible Architecture</h2>
+
+        <pre>
+
+          Control Node
+        (Ansible Server)
+
+                |
+
+    -----------------------
+
+    |                     |
+
+Node1                 Node2
+
+Managed               Managed
+
+Node                  Node
+
+
+</pre
+        >
+
+        <h3>Control Node</h3>
+
+        <p>Machine where Ansible is installed.</p>
+
+        <h3>Managed Node</h3>
+
+        <p>Target machine controlled by Ansible.</p>
+      </section>
+
+      <section id="workflow">
+        <h2>3. Ansible Workflow</h2>
+
+        <pre>
+
+Developer
+
+↓
+
+Git
+
+↓
+
+Jenkins
+
+↓
+
+Ansible
+
+↓
+
+Servers
+
+↓
+
+Deployment
+
+↓
+
+Monitoring
+
+</pre
+        >
+      </section>
+
+      <section id="ssh">
+        <h2>4. SSH</h2>
+
+        <p>SSH = Secure Shell Used to communicate securely between systems.</p>
+
+        <h3>Why SSH?</h3>
+
+        <ul>
+          <li>Encrypted communication</li>
+
+          <li>Authentication</li>
+
+          <li>Secure remote access</li>
+        </ul>
+
+        <pre>
+
+ssh root@192.168.1.10
+
+</pre
+        >
+      </section>
+
+      <section id="inventory">
+        <h2>5. Inventory File</h2>
+
+        <p>Inventory file contains target servers.</p>
+
+        <pre>
+
+[node]
+
+172.17.0.3
+
+172.17.0.4
+
+</pre
+        >
+      </section>
+
+      <section id="yaml">
+        <h2>6. YAML</h2>
+
+        <p>YAML means: YAML Ain't Markup Language Used for playbooks.</p>
+
+        <pre>
+
+name: nginx
+
+state: present
+
+</pre
+        >
+
+        <h3>Rules</h3>
+
+        <ul>
+          <li>Indentation important</li>
+
+          <li>No tabs</li>
+
+          <li>Use spaces</li>
+        </ul>
+      </section>
+
+      <section id="playbook">
+        <h2>7. Playbooks</h2>
+
+        <p>Playbook = Automation Script</p>
+
+        <pre>
+
+---
+
+- name: Install Nginx
+
+  hosts: node
+
+  become: yes
+
+  tasks:
+
+   - name: install nginx
+
+     apt:
+
+      name: nginx
+
+      state: present
+
+</pre
+        >
+
+        <h3>Explanation</h3>
+
+        <ul>
+          <li>hosts → target machine</li>
+
+          <li>become → sudo/root access</li>
+
+          <li>tasks → work to perform</li>
+
+          <li>apt → package module</li>
+        </ul>
+      </section>
+
+      <section id="modules">
+        <h2>8. Modules</h2>
+
+        <table>
+          <tr>
+            <th>Module</th>
+
+            <th>Purpose</th>
+          </tr>
+
+          <tr>
+            <td>apt</td>
+
+            <td>Install packages</td>
+          </tr>
+
+          <tr>
+            <td>copy</td>
+
+            <td>Copy files</td>
+          </tr>
+
+          <tr>
+            <td>service</td>
+
+            <td>Manage services</td>
+          </tr>
+
+          <tr>
+            <td>ping</td>
+
+            <td>Check connection</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="realtime">
+        <h2>9. Real Time Use Case</h2>
+
+        <h3>Employee Task Example</h3>
+
+        <p>Manager: Deploy new application version to 50 servers.</p>
+
+        <p>
+          Employee: 1. Update playbook 2. Run ansible-playbook 3. Application
+          deployed automatically
+        </p>
+
+        <pre>
+
+ansible-playbook deploy.yml
+
+</pre
+        >
+      </section>
+
+      <section>
+        <h2>10. Commands Used</h2>
+
+        <pre>
+
+docker run -dit --name node1 ubuntu
+
+docker exec -it node1 bash
+
+apt update
+
+apt install ansible -y
+
+nano hosts
+
+ansible all -i hosts -m ping
+
+ansible-playbook first.yml
+
+</pre
+        >
+      </section>
+
+      <section>
+        <h2>11. Advantages</h2>
+
+        <ul>
+          <li>Agentless</li>
+
+          <li>Easy to Learn</li>
+
+          <li>Uses SSH</li>
+
+          <li>Simple YAML</li>
+
+          <li>Fast Deployment</li>
+
+          <li>Scalable</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>12. Interview Questions</h2>
+
+        <h3>What is idempotency?</h3>
+
+        <p>Running same playbook multiple times gives same result.</p>
+
+        <h3>What protocol Ansible uses?</h3>
+
+        <p>SSH</p>
+
+        <h3>What is inventory?</h3>
+
+        <p>List of servers.</p>
+      </section>
+    </div>
+
+    <footer>Ansible Complete Guide | Nandy Learning Portal</footer>
+  </body>
+</html>
