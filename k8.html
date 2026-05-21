@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kubernetes Complete Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      background: #f4f6f9;
+      color: #222;
+    }
+    header {
+      background: #326ce5;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    nav {
+      background: #222;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: white;
+      margin: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: white;
+      margin: 20px 0;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #326ce5;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #00ff99;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 8px;
+    }
+    code {
+      color: #ffcc00;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background: #326ce5;
+      color: white;
+    }
+    footer {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kubernetes Complete Guide</h1>
+  <p>Learn Kubernetes from Scratch to Advanced Level</p>
+</header>
+
+<nav>
+  <a href="#intro">Introduction</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#installation">Installation</a>
+  <a href="#pods">Pods</a>
+  <a href="#deployments">Deployments</a>
+  <a href="#services">Services</a>
+  <a href="#storage">Storage</a>
+  <a href="#security">Security</a>
+  <a href="#helm">Helm</a>
+  <a href="#monitoring">Monitoring</a>
+</nav>
+
+<div class="container">
+
+<section id="intro">
+  <h2>1. Introduction to Kubernetes</h2>
+  <p>
+    Kubernetes (K8s) is an open-source container orchestration platform used to automate deployment,
+    scaling, and management of containerized applications.
+  </p>
+
+  <h3>Why Kubernetes?</h3>
+  <ul>
+    <li>Automatic scaling</li>
+    <li>Self-healing applications</li>
+    <li>Load balancing</li>
+    <li>Rolling updates</li>
+    <li>Container orchestration</li>
+  </ul>
+
+  <h3>Container vs Virtual Machine</h3>
+  <table>
+    <tr>
+      <th>Containers</th>
+      <th>Virtual Machines</th>
+    </tr>
+    <tr>
+      <td>Lightweight</td>
+      <td>Heavyweight</td>
+    </tr>
+    <tr>
+      <td>Fast startup</td>
+      <td>Slow startup</td>
+    </tr>
+    <tr>
+      <td>Share OS kernel</td>
+      <td>Separate OS</td>
+    </tr>
+  </table>
+</section>
+
+<section id="architecture">
+  <h2>2. Kubernetes Architecture</h2>
+
+  <h3>Master Node Components</h3>
+  <ul>
+    <li><strong>API Server</strong> - Entry point for all operations</li>
+    <li><strong>etcd</strong> - Key-value store database</li>
+    <li><strong>Scheduler</strong> - Assigns pods to nodes</li>
+    <li><strong>Controller Manager</strong> - Maintains cluster state</li>
+  </ul>
+
+  <h3>Worker Node Components</h3>
+  <ul>
+    <li><strong>Kubelet</strong> - Agent running on nodes</li>
+    <li><strong>Container Runtime</strong> - Docker/containerd</li>
+    <li><strong>Kube Proxy</strong> - Networking component</li>
+  </ul>
+</section>
+
+<section id="installation">
+  <h2>3. Kubernetes Installation</h2>
+
+  <h3>Install Minikube</h3>
+  <pre>
+# macOS
+brew install minikube
+
+# Ubuntu
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+  </pre>
+
+  <h3>Start Cluster</h3>
+  <pre>
+minikube start
+kubectl get nodes
+  </pre>
+
+  <h3>Install kubectl</h3>
+  <pre>
+# macOS
+brew install kubectl
+
+# Verify
+kubectl version --client
+  </pre>
+</section>
+
+<section>
+  <h2>4. Basic kubectl Commands</h2>
+
+  <table>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>kubectl get pods</td>
+      <td>List pods</td>
+    </tr>
+    <tr>
+      <td>kubectl get svc</td>
+      <td>List services</td>
+    </tr>
+    <tr>
+      <td>kubectl describe pod pod-name</td>
+      <td>Detailed pod info</td>
+    </tr>
+    <tr>
+      <td>kubectl logs pod-name</td>
+      <td>View pod logs</td>
+    </tr>
+    <tr>
+      <td>kubectl exec -it pod-name -- bash</td>
+      <td>Access container shell</td>
+    </tr>
+  </table>
+</section>
+
+<section id="pods">
+  <h2>5. Pods</h2>
+
+  <p>Pod is the smallest deployable unit in Kubernetes.</p>
+
+  <h3>Create Pod YAML</h3>
+  <pre>
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+  </pre>
+
+  <h3>Apply Pod</h3>
+  <pre>
+kubectl apply -f pod.yaml
+kubectl get pods
+  </pre>
+</section>
+
+<section id="deployments">
+  <h2>6. Deployments</h2>
+
+  <p>Deployment manages replicas and rolling updates.</p>
+
+  <pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+  </pre>
+
+  <h3>Commands</h3>
+  <pre>
+kubectl apply -f deployment.yaml
+kubectl scale deployment nginx-deployment --replicas=5
+kubectl rollout restart deployment nginx-deployment
+  </pre>
+</section>
+
+<section id="services">
+  <h2>7. Services</h2>
+
+  <h3>Types of Services</h3>
+  <ul>
+    <li>ClusterIP</li>
+    <li>NodePort</li>
+    <li>LoadBalancer</li>
+    <li>ExternalName</li>
+  </ul>
+
+  <h3>NodePort Example</h3>
+  <pre>
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30007
+  </pre>
+</section>
+
+<section>
+  <h2>8. Namespaces</h2>
+
+  <pre>
+# Create namespace
+kubectl create namespace dev
+
+# Deploy in namespace
+kubectl apply -f app.yaml -n dev
+
+# View namespaces
+kubectl get ns
+  </pre>
+</section>
+
+<section>
+  <h2>9. ConfigMaps and Secrets</h2>
+
+  <h3>ConfigMap</h3>
+  <pre>
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_ENV: production
+  </pre>
+
+  <h3>Secret</h3>
+  <pre>
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  password: cGFzc3dvcmQ=
+  </pre>
+</section>
+
+<section id="storage">
+  <h2>10. Storage in Kubernetes</h2>
+
+  <h3>Persistent Volume (PV)</h3>
+  <pre>
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data"
+  </pre>
+
+  <h3>Persistent Volume Claim (PVC)</h3>
+  <pre>
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+  </pre>
+</section>
+
+<section>
+  <h2>11. StatefulSets</h2>
+
+  <p>
+    StatefulSets are used for stateful applications like MySQL, MongoDB, and Kafka.
+  </p>
+
+  <pre>
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  serviceName: mysql
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  </pre>
+</section>
+
+<section>
+  <h2>12. DaemonSets</h2>
+
+  <p>
+    DaemonSets ensure one pod runs on every node.
+  </p>
+
+  <pre>
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: fluentd
+spec:
+  selector:
+    matchLabels:
+      app: fluentd
+  </pre>
+</section>
+
+<section>
+  <h2>13. Jobs and CronJobs</h2>
+
+  <h3>Job Example</h3>
+  <pre>
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl
+        command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  </pre>
+
+  <h3>CronJob Example</h3>
+  <pre>
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  </pre>
+</section>
+
+<section id="security">
+  <h2>14. Kubernetes Security</h2>
+
+  <h3>RBAC</h3>
+  <p>Role-Based Access Control controls permissions.</p>
+
+  <pre>
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+  </pre>
+
+  <h3>Best Practices</h3>
+  <ul>
+    <li>Use namespaces</li>
+    <li>Enable RBAC</li>
+    <li>Use network policies</li>
+    <li>Store secrets securely</li>
+  </ul>
+</section>
+
+<section>
+  <h2>15. Ingress</h2>
+
+  <p>Ingress manages external HTTP/HTTPS access.</p>
+
+  <pre>
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-service
+            port:
+              number: 80
+  </pre>
+</section>
+
+<section id="helm">
+  <h2>16. Helm</h2>
+
+  <p>Helm is the package manager for Kubernetes.</p>
+
+  <pre>
+# Install Helm
+brew install helm
+
+# Add repo
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+# Install nginx
+helm install my-nginx bitnami/nginx
+  </pre>
+</section>
+
+<section id="monitoring">
+  <h2>17. Monitoring and Logging</h2>
+
+  <h3>Popular Tools</h3>
+  <ul>
+    <li>Prometheus</li>
+    <li>Grafana</li>
+    <li>ELK Stack</li>
+    <li>Loki</li>
+  </ul>
+
+  <h3>Install Prometheus</h3>
+  <pre>
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/prometheus
+  </pre>
+</section>
+
+<section>
+  <h2>18. Kubernetes Networking</h2>
+
+  <h3>Concepts</h3>
+  <ul>
+    <li>Pod Networking</li>
+    <li>CNI Plugins</li>
+    <li>Service Discovery</li>
+    <li>DNS</li>
+  </ul>
+
+  <h3>Popular CNI Plugins</h3>
+  <ul>
+    <li>Calico</li>
+    <li>Flannel</li>
+    <li>Cilium</li>
+    <li>Weave</li>
+  </ul>
+</section>
+
+<section>
+  <h2>19. CI/CD with Kubernetes</h2>
+
+  <h3>Tools</h3>
+  <ul>
+    <li>Jenkins</li>
+    <li>GitHub Actions</li>
+    <li>GitLab CI/CD</li>
+    <li>ArgoCD</li>
+  </ul>
+
+  <h3>Workflow</h3>
+  <ol>
+    <li>Developer pushes code</li>
+    <li>CI pipeline builds Docker image</li>
+    <li>Image pushed to registry</li>
+    <li>Kubernetes deployment updated</li>
+  </ol>
+</section>
+
+<section>
+  <h2>20. Troubleshooting Kubernetes</h2>
+
+  <pre>
+# Check pod logs
+kubectl logs pod-name
+
+# Describe pod
+kubectl describe pod pod-name
+
+# Check events
+kubectl get events
+
+# Debug node
+kubectl describe node node-name
+  </pre>
+</section>
+
+<section>
+  <h2>21. Real-Time Interview Questions</h2>
+
+  <ol>
+    <li>What is Kubernetes?</li>
+    <li>Difference between Deployment and StatefulSet?</li>
+    <li>What is a Pod?</li>
+    <li>How does Service work?</li>
+    <li>What is Ingress?</li>
+    <li>What is RBAC?</li>
+    <li>Difference between ConfigMap and Secret?</li>
+    <li>What is Helm?</li>
+  </ol>
+</section>
+
+<section>
+  <h2>22. Kubernetes Best Practices</h2>
+
+  <ul>
+    <li>Always use resource limits</li>
+    <li>Use namespaces for environments</li>
+    <li>Enable monitoring and logging</li>
+    <li>Use readiness and liveness probes</li>
+    <li>Automate deployments</li>
+    <li>Use GitOps approach</li>
+  </ul>
+</section>
+
+<section>
+  <h2>23. End-to-End Kubernetes Project</h2>
+
+  <h3>Project Flow</h3>
+  <ol>
+    <li>Create Dockerized application</li>
+    <li>Push image to Docker Hub</li>
+    <li>Create Kubernetes manifests</li>
+    <li>Deploy application</li>
+    <li>Expose using Service</li>
+    <li>Configure Ingress</li>
+    <li>Monitor using Prometheus</li>
+  </ol>
+
+  <h3>Useful Commands</h3>
+  <pre>
+# Build Docker image
+docker build -t myapp .
+
+# Push image
+docker push username/myapp
+
+# Deploy to Kubernetes
+kubectl apply -f .
+  </pre>
+</section>
+
+<section>
+  <h2>24. Conclusion</h2>
+
+  <p>
+    Kubernetes is one of the most powerful tools for container orchestration.
+    Learning Kubernetes helps you build scalable, resilient, and production-ready applications.
+  </p>
+
+  <p>
+    Continue practicing with Minikube, Kind, EKS, AKS, or GKE to become an expert Kubernetes Engineer.
+  </p>
+</section>
+
+</div>
+
+<footer>
+  <p>Created for Kubernetes Learning | Beginner to Advanced</p>
+</footer>
+
+</body>
+</html>
