@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Notes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+            line-height: 1.7;
+        }
+
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #0db7ed;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+
+        pre {
+            background: #222;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .architecture {
+            text-align: center;
+            font-weight: bold;
+            background: #eee;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Docker Overview</h1>
+
+    <h2>Industry Problem Before Docker</h2>
+    <p>
+        Before Docker, applications worked differently across environments.
+        Developers often faced:
+        <b>"Works on my machine but not in production"</b> problems.
+    </p>
+
+    <h2>How Docker Solves This</h2>
+    <p>Docker packages:</p>
+
+    <ul>
+        <li>Application</li>
+        <li>Dependencies</li>
+        <li>Runtime</li>
+        <li>Libraries</li>
+    </ul>
+
+    <p>inside lightweight containers.</p>
+
+    <h2>What is a Container?</h2>
+
+    <p>
+        A container is an isolated lightweight environment that runs
+        applications consistently across systems.
+    </p>
+
+    <h2>Difference Between VM and Container</h2>
+
+    <h3>Virtual Machine (VM)</h3>
+
+    <ul>
+        <li>Includes full operating system</li>
+        <li>Uses hypervisor</li>
+        <li>Larger resource usage</li>
+    </ul>
+
+    <h3>Container</h3>
+
+    <p>
+        Containers share the host OS kernel and remain lightweight.
+    </p>
+
+    <h2>Docker Architecture</h2>
+
+    <div class="architecture">
+        Docker Client <br><br>
+        ↓ <br><br>
+        Docker Engine <br><br>
+        ↓ <br><br>
+        Containers
+    </div>
+
+    <h2>Topics Covered</h2>
+
+    <ul>
+        <li>Docker architecture</li>
+        <li>Dockerfiles</li>
+        <li>Images</li>
+        <li>Containers</li>
+        <li>Networking</li>
+        <li>Volumes</li>
+        <li>Docker Compose</li>
+        <li>Multi-stage builds</li>
+    </ul>
+
+    <h2>Docker Images</h2>
+
+    <p>
+        Docker images are read-only templates used to create containers.
+    </p>
+
+    <h2>Docker Containers</h2>
+
+    <p>
+        Containers are running instances of Docker images.
+    </p>
+
+    <h2>Dockerfile</h2>
+
+    <p>
+        Dockerfile defines instructions for building Docker images.
+    </p>
+
+    <h2>Example Dockerfile</h2>
+
+    <pre>
+FROM python:3.9
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python","app.py"]
+    </pre>
+
+    <h2>Explanation</h2>
+
+    <ul>
+        <li>Uses Python base image</li>
+        <li>Copies application files</li>
+        <li>Installs dependencies</li>
+        <li>Starts application</li>
+    </ul>
+
+    <h2>Important Commands</h2>
+
+    <pre>
+docker build
+docker run
+docker ps
+docker images
+docker logs
+docker stop
+docker rm
+    </pre>
+
+    <h2>Command Explanation</h2>
+
+    <ul>
+        <li><b>docker build</b> - Builds Docker image</li>
+        <li><b>docker run</b> - Starts container from image</li>
+        <li><b>docker ps</b> - Displays running containers</li>
+        <li><b>docker logs</b> - Displays logs for troubleshooting</li>
+        <li><b>docker images</b> - Displays local Docker images</li>
+    </ul>
+
+    <h2>Docker Networking</h2>
+
+    <p>
+        Docker networking enables communication between containers.
+    </p>
+
+    <h2>Volumes</h2>
+
+    <p>
+        Volumes persist data outside containers.
+    </p>
+
+    <h2>Docker Compose</h2>
+
+    <p>
+        Docker Compose manages multi-container applications.
+    </p>
+
+    <h2>Docker Compose Example</h2>
+
+    <pre>
+services:
+  web:
+    image: nginx
+    </pre>
+
+    <h2>Real Projects</h2>
+
+    <ul>
+        <li>React application containerization</li>
+        <li>EpicBook container deployment</li>
+        <li>Multi-stage Docker builds</li>
+        <li>Book Review App containerization</li>
+    </ul>
+
+    <h2>Important Terms</h2>
+
+    <ul>
+        <li><b>Image</b> - Template for containers</li>
+        <li><b>Container</b> - Running application instance</li>
+        <li><b>Dockerfile</b> - Instructions to build image</li>
+        <li><b>Volume</b> - Persistent storage</li>
+        <li><b>Registry</b> - Stores Docker images</li>
+        <li><b>Docker Compose</b> - Multi-container management tool</li>
+    </ul>
+
+    <h2>Real DevOps Connection</h2>
+
+    <p>
+        In production environments:
+    </p>
+
+    <ul>
+        <li>CI/CD pipelines build Docker images</li>
+        <li>Kubernetes deploys containers</li>
+        <li>Monitoring systems track container health</li>
+    </ul>
+
+    <h2>Common Beginner Mistakes</h2>
+
+    <ul>
+        <li>Huge Docker images</li>
+        <li>Exposing secrets</li>
+        <li>Poor Dockerfile optimization</li>
+        <li>Missing .dockerignore</li>
+        <li>Improper networking</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+
+    <ul>
+        <li>Reading container logs</li>
+        <li>Checking ports</li>
+        <li>Validating image builds</li>
+        <li>Container health troubleshooting</li>
+    </ul>
+
+    <h2>Important Understanding</h2>
+
+    <p>
+        Containers standardize deployment environments across
+        development, testing, and production.
+    </p>
+
+    <h2>Final Closing</h2>
+
+    <p>
+        Overall, the Docker section focused heavily on:
+    </p>
+
+    <ul>
+        <li>Containerization</li>
+        <li>Deployment consistency</li>
+        <li>Application portability</li>
+        <li>Cloud-native workflows</li>
+        <li>Scalable DevOps deployment practices</li>
+    </ul>
+
+</div>
+
+</body>
+</html>
