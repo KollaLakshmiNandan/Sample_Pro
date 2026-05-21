@@ -41,6 +41,7 @@
 
         h3 {
             color: #0f172a;
+            margin-top: 25px;
         }
 
         table {
@@ -95,6 +96,11 @@
             border-left: 5px solid #2563eb;
             border-radius: 8px;
         }
+
+        .highlight {
+            color: #2563eb;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -104,12 +110,37 @@
 
     <h1>Linux Commands and Their Functions</h1>
 
+    <!-- INTRODUCTION -->
+
     <div class="section">
+
         <h2>Introduction to Linux</h2>
 
         <p>
-            Linux is an open-source operating system widely used in:
+            Linux is an open-source operating system widely used in modern IT infrastructure.
+            It is famous for its security, stability, speed, and flexibility.
+            Linux powers servers, cloud platforms, mobile devices, supercomputers,
+            networking systems, and enterprise applications across the world.
         </p>
+
+        <p>
+            Linux was created by <span class="highlight">Linus Torvalds</span> in 1991.
+            Because Linux is open-source, developers can modify and distribute it freely.
+        </p>
+
+        <h3>Why Linux is Popular?</h3>
+
+        <ul>
+            <li>Free and Open Source</li>
+            <li>Highly Secure Operating System</li>
+            <li>Excellent Performance and Stability</li>
+            <li>Supports Automation and Shell Scripting</li>
+            <li>Widely Used in Cloud and DevOps</li>
+            <li>Strong Community Support</li>
+            <li>Efficient Resource Management</li>
+        </ul>
+
+        <h3>Linux is Widely Used In:</h3>
 
         <ul>
             <li>DevOps</li>
@@ -118,21 +149,69 @@
             <li>Cybersecurity</li>
             <li>Servers</li>
             <li>Software Development</li>
+            <li>Artificial Intelligence</li>
+            <li>Machine Learning</li>
+            <li>Embedded Systems</li>
+            <li>Data Centers</li>
         </ul>
 
         <h3>Popular Linux Distributions</h3>
 
+        <table>
+            <tr>
+                <th>Distribution</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td>Ubuntu</td>
+                <td>User-friendly Linux distribution widely used by beginners and professionals</td>
+            </tr>
+
+            <tr>
+                <td>CentOS</td>
+                <td>Enterprise-class Linux distribution used in servers</td>
+            </tr>
+
+            <tr>
+                <td>Red Hat Enterprise Linux (RHEL)</td>
+                <td>Commercial Linux distribution used in enterprise environments</td>
+            </tr>
+
+            <tr>
+                <td>Debian</td>
+                <td>Stable and secure Linux operating system</td>
+            </tr>
+
+            <tr>
+                <td>Fedora</td>
+                <td>Modern Linux distribution with latest technologies</td>
+            </tr>
+
+            <tr>
+                <td>Kali Linux</td>
+                <td>Specialized Linux distribution for cybersecurity and penetration testing</td>
+            </tr>
+        </table>
+
+        <h3>Basic Features of Linux</h3>
+
         <ul>
-            <li>Ubuntu</li>
-            <li>CentOS</li>
-            <li>Red Hat Enterprise Linux (RHEL)</li>
-            <li>Debian</li>
-            <li>Fedora</li>
-            <li>Kali Linux</li>
+            <li>Multi-user Operating System</li>
+            <li>Multitasking Support</li>
+            <li>Command Line Interface (CLI)</li>
+            <li>Strong File Permission System</li>
+            <li>Supports Networking</li>
+            <li>Portable Across Different Hardware</li>
+            <li>Supports Shell Scripting</li>
         </ul>
+
     </div>
 
+    <!-- COMMAND SYNTAX -->
+
     <div class="section">
+
         <h2>Linux Command Syntax</h2>
 
 <pre>
@@ -150,9 +229,13 @@ ls -l /home
             <li><code>-l</code> → Option</li>
             <li><code>/home</code> → Argument</li>
         </ul>
+
     </div>
 
+    <!-- NAVIGATION COMMANDS -->
+
     <div class="section">
+
         <h2>1. Navigation Commands</h2>
 
         <table>
@@ -173,7 +256,7 @@ ls -l /home
 
             <tr>
                 <td><code>ls -l</code></td>
-                <td>Show detailed file information</td>
+                <td>Detailed file information</td>
             </tr>
 
             <tr>
@@ -210,7 +293,10 @@ cd /var/log
 
     </div>
 
+    <!-- FILE COMMANDS -->
+
     <div class="section">
+
         <h2>2. File and Directory Commands</h2>
 
         <table>
@@ -269,7 +355,10 @@ mv backup.txt old.txt
 
     </div>
 
+    <!-- NETWORK COMMANDS -->
+
     <div class="section">
+
         <h2>3. Networking Commands</h2>
 
         <table>
@@ -317,7 +406,10 @@ ssh user@server
 
     </div>
 
+    <!-- PROCESS COMMANDS -->
+
     <div class="section">
+
         <h2>4. Process Management Commands</h2>
 
         <table>
@@ -355,7 +447,10 @@ top
 
     </div>
 
+    <!-- PIPE & REDIRECTION -->
+
     <div class="section">
+
         <h2>5. Pipe and Redirection Operators</h2>
 
         <table>
@@ -392,7 +487,10 @@ cat log.txt | grep error
 
     </div>
 
+    <!-- SUMMARY -->
+
     <div class="summary">
+
         <h2>Summary</h2>
 
         <p>
@@ -410,9 +508,10 @@ cat log.txt | grep error
         </ul>
 
         <p>
-            Mastering Linux commands improves troubleshooting, automation,
-            and server management skills.
+            Mastering Linux commands improves troubleshooting,
+            automation, scripting, and server management skills.
         </p>
+
     </div>
 
 </div>
