@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenkins Basics</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #1f2937;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #d1d5db;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      margin-bottom: 25px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: #1f2937;
+      margin-bottom: 15px;
+      border-left: 5px solid #2563eb;
+      padding-left: 10px;
+    }
+
+    h3 {
+      color: #2563eb;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    ul, ol {
+      margin-left: 25px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background: #e0f2fe;
+      padding: 15px;
+      border-left: 5px solid #0284c7;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin-top: 15px;
+      font-size: 15px;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #2563eb;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    .workflow {
+      background: #ecfdf5;
+      border-left: 5px solid #16a34a;
+      padding: 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #1f2937;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Jenkins Basics</h1>
+    <p>A beginner-friendly guide to Jenkins, CI/CD, pipelines, builds, plugins, and Maven</p>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>What is Jenkins?</h2>
+      <p><strong>Jenkins</strong> is an automation tool mainly used for <strong>CI/CD</strong>.</p>
+
+      <h3>CI — Continuous Integration</h3>
+      <p>Developers push code regularly, and Jenkins automatically builds and tests it.</p>
+
+      <h3>CD — Continuous Delivery / Deployment</h3>
+      <p>Jenkins automatically prepares or deploys the application to servers.</p>
+    </section>
+
+    <section class="card">
+      <h2>Why Jenkins is Used</h2>
+      <p>Jenkins helps teams automate tasks like:</p>
+      <ol>
+        <li>Pulling code from GitHub or GitLab</li>
+        <li>Building the application</li>
+        <li>Running tests</li>
+        <li>Creating build files</li>
+        <li>Deploying the application</li>
+        <li>Sending success or failure notifications</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>Simple Real-Time Scenario</h2>
+      <p>Imagine a Java developer writes code and pushes it to GitHub.</p>
+
+      <div class="highlight">
+        <p><strong>Without Jenkins:</strong></p>
+        <p>Developer pushes code → manually download code → manually run Maven → manually test → manually deploy</p>
+      </div>
+
+      <div class="highlight">
+        <p><strong>With Jenkins:</strong></p>
+        <p>Developer pushes code → Jenkins automatically starts → pulls code → builds using Maven → runs tests → deploys</p>
+      </div>
+
+      <p>So Jenkins reduces manual work and saves time.</p>
+    </section>
+
+    <section class="card">
+      <h2>Important Jenkins Terms</h2>
+
+      <h3>1. Job / Project</h3>
+      <p>A <strong>Jenkins job</strong> is a task created in Jenkins.</p>
+      <pre><code>Build Java Application</code></pre>
+
+      <h3>2. Build</h3>
+      <p>A <strong>build</strong> is one execution or run of a Jenkins job.</p>
+      <pre><code>Build #1
+Build #2
+Build #3</code></pre>
+
+      <h3>3. Pipeline</h3>
+      <p>A <strong>pipeline</strong> is a series of steps used to automate the software delivery process.</p>
+      <pre><code>Code → Build → Test → Deploy</code></pre>
+
+      <h3>4. Jenkinsfile</h3>
+      <p>A <strong>Jenkinsfile</strong> contains pipeline instructions.</p>
+
+      <h3>5. Stage</h3>
+      <p>A <strong>stage</strong> is one major section in a pipeline.</p>
+      <pre><code>Build stage
+Test stage
+Deploy stage</code></pre>
+
+      <h3>6. Step</h3>
+      <p>A <strong>step</strong> is a command inside a stage.</p>
+      <pre><code>echo 'Building the application'
+sh 'mvn clean package'</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Simple Jenkinsfile Example</h2>
+      <pre><code>pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+            }
+        }
+    }
+}</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>Jenkins Pipeline Example for Java Maven Project</h2>
+      <pre><code>pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git 'https://github.com/example/my-java-app.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application to server'
+            }
+        }
+    }
+}</code></pre>
+    </section>
+
+    <section class="card">
+      <h2>What is Maven in Jenkins?</h2>
+      <p><strong>Maven</strong> is a build tool for Java projects.</p>
+      <p>It helps to:</p>
+      <ul>
+        <li>Compile code</li>
+        <li>Download dependencies</li>
+        <li>Run tests</li>
+        <li>Create JAR or WAR files</li>
+      </ul>
+
+      <p>Common Maven command:</p>
+      <pre><code>mvn clean package</code></pre>
+
+      <div class="highlight">
+        <p><strong>clean</strong> → removes old build files</p>
+        <p><strong>package</strong> → creates a new JAR or WAR file</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What are Jenkins Plugins?</h2>
+      <p>Plugins are add-ons that give Jenkins extra features.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Plugin</th>
+            <th>Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Git Plugin</td>
+            <td>Connect Jenkins with GitHub or GitLab</td>
+          </tr>
+          <tr>
+            <td>Maven Plugin</td>
+            <td>Build Java Maven projects</td>
+          </tr>
+          <tr>
+            <td>Docker Plugin</td>
+            <td>Work with Docker</td>
+          </tr>
+          <tr>
+            <td>Kubernetes Plugin</td>
+            <td>Deploy using Kubernetes</td>
+          </tr>
+          <tr>
+            <td>Slack Plugin</td>
+            <td>Send build notifications</td>
+          </tr>
+          <tr>
+            <td>SonarQube Plugin</td>
+            <td>Code quality scanning</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Jenkins Basic Workflow</h2>
+      <div class="workflow">
+        Developer writes code → Pushes code to GitHub → Jenkins detects change → Pulls latest code → Builds application → Runs tests → Deploys application → Team gets result
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Common Jenkins Commands in Pipeline</h2>
+      <pre><code>echo 'message'</code></pre>
+      <p>Prints a message.</p>
+
+      <pre><code>sh 'ls'</code></pre>
+      <p>Runs a Linux command.</p>
+
+      <pre><code>sh 'mvn clean package'</code></pre>
+      <p>Builds a Java Maven project.</p>
+
+      <pre><code>git 'repo-url'</code></pre>
+      <p>Pulls code from a Git repository.</p>
+    </section>
+
+    <section class="card">
+      <h2>In Simple Words</h2>
+      <p>Jenkins is like an <strong>automatic worker</strong>.</p>
+      <div class="highlight">
+        <p>When a developer updates code, Jenkins automatically takes the latest code, builds it, tests it, and deploys it.</p>
+      </div>
+      <p>So Jenkins saves time, reduces mistakes, and makes software delivery faster.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Jenkins Basics HTML Page</p>
+  </footer>
+</body>
+</html>
