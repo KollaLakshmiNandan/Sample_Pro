@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Linux Commands and Their Functions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #222;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f172a;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #1d4ed8;
+            margin-top: 40px;
+            border-left: 5px solid #2563eb;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #0f172a;
+            margin-top: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        table th {
+            background-color: #2563eb;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 10px;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        code {
+            background-color: #e5e7eb;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #111827;
+        }
+
+        pre {
+            background-color: #111827;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .summary {
+            background-color: #eff6ff;
+            padding: 20px;
+            border-left: 5px solid #2563eb;
+            border-radius: 8px;
+        }
+
+        .highlight {
+            color: #2563eb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Linux Commands and Their Functions</h1>
+
+    <!-- INTRODUCTION -->
+
+    <div class="section">
+
+        <h2>Introduction to Linux</h2>
+
+        <p>
+            Linux is an open-source operating system widely used in modern IT infrastructure.
+            It is famous for its security, stability, speed, and flexibility.
+            Linux powers servers, cloud platforms, mobile devices, supercomputers,
+            networking systems, and enterprise applications across the world.
+        </p>
+
+        <p>
+            Linux was created by <span class="highlight">Linus Torvalds</span> in 1991.
+            Because Linux is open-source, developers can modify and distribute it freely.
+        </p>
+
+        <h3>Why Linux is Popular?</h3>
+
+        <ul>
+            <li>Free and Open Source</li>
+            <li>Highly Secure Operating System</li>
+            <li>Excellent Performance and Stability</li>
+            <li>Supports Automation and Shell Scripting</li>
+            <li>Widely Used in Cloud and DevOps</li>
+            <li>Strong Community Support</li>
+            <li>Efficient Resource Management</li>
+        </ul>
+
+        <h3>Linux is Widely Used In:</h3>
+
+        <ul>
+            <li>DevOps</li>
+            <li>Cloud Computing</li>
+            <li>Networking</li>
+            <li>Cybersecurity</li>
+            <li>Servers</li>
+            <li>Software Development</li>
+            <li>Artificial Intelligence</li>
+            <li>Machine Learning</li>
+            <li>Embedded Systems</li>
+            <li>Data Centers</li>
+        </ul>
+
+        <h3>Popular Linux Distributions</h3>
+
+        <table>
+            <tr>
+                <th>Distribution</th>
+                <th>Description</th>
+            </tr>
+
+            <tr>
+                <td>Ubuntu</td>
+                <td>User-friendly Linux distribution widely used by beginners and professionals</td>
+            </tr>
+
+            <tr>
+                <td>CentOS</td>
+                <td>Enterprise-class Linux distribution used in servers</td>
+            </tr>
+
+            <tr>
+                <td>Red Hat Enterprise Linux (RHEL)</td>
+                <td>Commercial Linux distribution used in enterprise environments</td>
+            </tr>
+
+            <tr>
+                <td>Debian</td>
+                <td>Stable and secure Linux operating system</td>
+            </tr>
+
+            <tr>
+                <td>Fedora</td>
+                <td>Modern Linux distribution with latest technologies</td>
+            </tr>
+
+            <tr>
+                <td>Kali Linux</td>
+                <td>Specialized Linux distribution for cybersecurity and penetration testing</td>
+            </tr>
+        </table>
+
+        <h3>Basic Features of Linux</h3>
+
+        <ul>
+            <li>Multi-user Operating System</li>
+            <li>Multitasking Support</li>
+            <li>Command Line Interface (CLI)</li>
+            <li>Strong File Permission System</li>
+            <li>Supports Networking</li>
+            <li>Portable Across Different Hardware</li>
+            <li>Supports Shell Scripting</li>
+        </ul>
+
+    </div>
+
+    <!-- COMMAND SYNTAX -->
+
+    <div class="section">
+
+        <h2>Linux Command Syntax</h2>
+
+<pre>
+command [options] [arguments]
+</pre>
+
+        <p>Example:</p>
+
+<pre>
+ls -l /home
+</pre>
+
+        <ul>
+            <li><code>ls</code> → Command</li>
+            <li><code>-l</code> → Option</li>
+            <li><code>/home</code> → Argument</li>
+        </ul>
+
+    </div>
+
+    <!-- NAVIGATION COMMANDS -->
+
+    <div class="section">
+
+        <h2>1. Navigation Commands</h2>
+
+        <table>
+            <tr>
+                <th>Command</th>
+                <th>Function</th>
+            </tr>
+
+            <tr>
+                <td><code>pwd</code></td>
+                <td>Show present working directory</td>
+            </tr>
+
+            <tr>
+                <td><code>ls</code></td>
+                <td>List files and directories</td>
+            </tr>
+
+            <tr>
+                <td><code>ls -l</code></td>
+                <td>Detailed file information</td>
+            </tr>
+
+            <tr>
+                <td><code>ls -a</code></td>
+                <td>Show hidden files</td>
+            </tr>
+
+            <tr>
+                <td><code>cd directory</code></td>
+                <td>Change directory</td>
+            </tr>
+
+            <tr>
+                <td><code>cd ..</code></td>
+                <td>Move to previous directory</td>
+            </tr>
+
+            <tr>
+                <td><code>cd ~</code></td>
+                <td>Go to home directory</td>
+            </tr>
+
+            <tr>
+                <td><code>tree</code></td>
+                <td>Display folder structure</td>
+            </tr>
+        </table>
+
+<pre>
+pwd
+ls -la
+cd /var/log
+</pre>
+
+    </div>
+
+    <!-- FILE COMMANDS -->
+
+    <div class="section">
+
+        <h2>2. File and Directory Commands</h2>
+
+        <table>
+            <tr>
+                <th>Command</th>
+                <th>Function</th>
+            </tr>
+
+            <tr>
+                <td><code>touch file.txt</code></td>
+                <td>Create empty file</td>
+            </tr>
+
+            <tr>
+                <td><code>mkdir folder</code></td>
+                <td>Create new directory</td>
+            </tr>
+
+            <tr>
+                <td><code>mkdir -p a/b/c</code></td>
+                <td>Create nested directories</td>
+            </tr>
+
+            <tr>
+                <td><code>cp source destination</code></td>
+                <td>Copy files</td>
+            </tr>
+
+            <tr>
+                <td><code>mv old new</code></td>
+                <td>Move or rename files</td>
+            </tr>
+
+            <tr>
+                <td><code>rm file</code></td>
+                <td>Remove file</td>
+            </tr>
+
+            <tr>
+                <td><code>rm -r folder</code></td>
+                <td>Remove directory recursively</td>
+            </tr>
+
+            <tr>
+                <td><code>find</code></td>
+                <td>Search files and directories</td>
+            </tr>
+        </table>
+
+<pre>
+touch notes.txt
+mkdir projects
+cp notes.txt backup.txt
+mv backup.txt old.txt
+</pre>
+
+    </div>
+
+    <!-- NETWORK COMMANDS -->
+
+    <div class="section">
+
+        <h2>3. Networking Commands</h2>
+
+        <table>
+            <tr>
+                <th>Command</th>
+                <th>Function</th>
+            </tr>
+
+            <tr>
+                <td><code>ping</code></td>
+                <td>Test network connectivity</td>
+            </tr>
+
+            <tr>
+                <td><code>ip a</code></td>
+                <td>Show IP addresses</td>
+            </tr>
+
+            <tr>
+                <td><code>curl</code></td>
+                <td>Transfer data from URLs</td>
+            </tr>
+
+            <tr>
+                <td><code>wget</code></td>
+                <td>Download files from internet</td>
+            </tr>
+
+            <tr>
+                <td><code>ssh</code></td>
+                <td>Remote server login</td>
+            </tr>
+
+            <tr>
+                <td><code>scp</code></td>
+                <td>Securely copy files</td>
+            </tr>
+        </table>
+
+<pre>
+ping google.com
+ip a
+ssh user@server
+</pre>
+
+    </div>
+
+    <!-- PROCESS COMMANDS -->
+
+    <div class="section">
+
+        <h2>4. Process Management Commands</h2>
+
+        <table>
+            <tr>
+                <th>Command</th>
+                <th>Function</th>
+            </tr>
+
+            <tr>
+                <td><code>ps</code></td>
+                <td>Show running processes</td>
+            </tr>
+
+            <tr>
+                <td><code>top</code></td>
+                <td>Real-time system monitoring</td>
+            </tr>
+
+            <tr>
+                <td><code>kill PID</code></td>
+                <td>Stop process</td>
+            </tr>
+
+            <tr>
+                <td><code>jobs</code></td>
+                <td>Show background jobs</td>
+            </tr>
+        </table>
+
+<pre>
+ps aux
+kill 1234
+top
+</pre>
+
+    </div>
+
+    <!-- PIPE & REDIRECTION -->
+
+    <div class="section">
+
+        <h2>5. Pipe and Redirection Operators</h2>
+
+        <table>
+            <tr>
+                <th>Symbol</th>
+                <th>Function</th>
+            </tr>
+
+            <tr>
+                <td><code>></code></td>
+                <td>Redirect output</td>
+            </tr>
+
+            <tr>
+                <td><code>>></code></td>
+                <td>Append output</td>
+            </tr>
+
+            <tr>
+                <td><code>|</code></td>
+                <td>Pipe output</td>
+            </tr>
+
+            <tr>
+                <td><code><</code></td>
+                <td>Redirect input</td>
+            </tr>
+        </table>
+
+<pre>
+ls > files.txt
+cat log.txt | grep error
+</pre>
+
+    </div>
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <h2>Summary</h2>
+
+        <p>
+            Linux is one of the most important operating systems in modern IT infrastructure.
+            Learning Linux commands helps in:
+        </p>
+
+        <ul>
+            <li>System Administration</li>
+            <li>DevOps Engineering</li>
+            <li>Cloud Engineering</li>
+            <li>Cybersecurity</li>
+            <li>Networking</li>
+            <li>Software Development</li>
+        </ul>
+
+        <p>
+            Mastering Linux commands improves troubleshooting,
+            automation, scripting, and server management skills.
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
