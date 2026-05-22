@@ -1,1 +1,741 @@
-this is mine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terraform Complete Masterclass</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(90deg, #5b21b6, #7c3aed);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      background: #111827;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #a78bfa;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: auto;
+      padding: 30px 0;
+    }
+
+    section {
+      background: white;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #5b21b6;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #7c3aed;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #4c1d95;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p, li {
+      font-size: 17px;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-top: 10px;
+    }
+
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .architecture {
+      background: #ede9fe;
+      padding: 15px;
+      border-left: 5px solid #7c3aed;
+      margin: 15px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background: #7c3aed;
+      color: white;
+      padding: 10px;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    .highlight {
+      color: #7c3aed;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Terraform Complete Masterclass</h1>
+  <p>From Beginner to Advanced | Theory + Architecture + Practical + Real-Time Concepts</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#intro">Introduction</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#commands">Commands</a></li>
+    <li><a href="#practical">Practical</a></li>
+    <li><a href="#aws">AWS Examples</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#state">State File</a></li>
+    <li><a href="#cicd">CI/CD</a></li>
+    <li><a href="#interview">Interview</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<section id="intro">
+  <h2>1. What is Terraform?</h2>
+
+  <p>
+    Terraform is an <span class="highlight">Infrastructure as Code (IaC)</span> tool developed by 
+    HashiCorp. It is used to automate infrastructure provisioning and management.
+  </p>
+
+  <h3>Why Terraform?</h3>
+  <ul>
+    <li>Automates cloud infrastructure</li>
+    <li>Supports AWS, Azure, GCP, Kubernetes</li>
+    <li>Version control infrastructure</li>
+    <li>Reusable infrastructure</li>
+    <li>Reduces manual work</li>
+  </ul>
+
+  <h3>Infrastructure as Code (IaC)</h3>
+  <p>
+    IaC means managing infrastructure using code instead of manual UI operations.
+  </p>
+
+  <div class="architecture">
+    <strong>Example:</strong><br>
+    Instead of manually creating EC2 instances from AWS Console,
+    Terraform creates them automatically using code.
+  </div>
+</section>
+
+<section id="architecture">
+  <h2>2. Terraform Architecture</h2>
+
+  <h3>Main Components</h3>
+
+  <table>
+    <tr>
+      <th>Component</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>Terraform Core</td>
+      <td>Main engine that reads configuration</td>
+    </tr>
+    <tr>
+      <td>Provider</td>
+      <td>Connects Terraform to AWS/Azure/GCP</td>
+    </tr>
+    <tr>
+      <td>State File</td>
+      <td>Tracks infrastructure changes</td>
+    </tr>
+    <tr>
+      <td>Resource</td>
+      <td>Infrastructure objects like EC2, VPC</td>
+    </tr>
+    <tr>
+      <td>Module</td>
+      <td>Reusable Terraform code blocks</td>
+    </tr>
+  </table>
+
+  <h3>Terraform Workflow</h3>
+
+  <pre>
+Write Code --> terraform init --> terraform plan --> terraform apply --> Infrastructure Created
+  </pre>
+
+  <h3>Detailed Architecture Flow</h3>
+
+  <div class="architecture">
+    User Writes Terraform Code (.tf files)
+    ↓
+    Terraform Core Reads Code
+    ↓
+    Provider Plugin Communicates with Cloud APIs
+    ↓
+    Infrastructure Created in AWS/Azure/GCP
+    ↓
+    Terraform State File Updated
+  </div>
+</section>
+
+<section id="installation">
+  <h2>3. Terraform Installation</h2>
+
+  <h3>Windows Installation</h3>
+  <ul>
+    <li>Download Terraform from HashiCorp website</li>
+    <li>Extract ZIP file</li>
+    <li>Add Terraform path to Environment Variables</li>
+    <li>Verify using command:</li>
+  </ul>
+
+  <pre>
+terraform -version
+  </pre>
+
+  <h3>AWS CLI Configuration</h3>
+
+  <pre>
+aws configure
+  </pre>
+
+  <p>Provide:</p>
+
+  <ul>
+    <li>AWS Access Key</li>
+    <li>AWS Secret Key</li>
+    <li>Region</li>
+  </ul>
+</section>
+
+<section id="commands">
+  <h2>4. Important Terraform Commands</h2>
+
+  <table>
+    <tr>
+      <th>Command</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>terraform init</td>
+      <td>Initialize project</td>
+    </tr>
+    <tr>
+      <td>terraform validate</td>
+      <td>Validate syntax</td>
+    </tr>
+    <tr>
+      <td>terraform fmt</td>
+      <td>Format code</td>
+    </tr>
+    <tr>
+      <td>terraform plan</td>
+      <td>Preview changes</td>
+    </tr>
+    <tr>
+      <td>terraform apply</td>
+      <td>Create infrastructure</td>
+    </tr>
+    <tr>
+      <td>terraform destroy</td>
+      <td>Delete infrastructure</td>
+    </tr>
+  </table>
+</section>
+
+<section id="practical">
+  <h2>5. Terraform Practical Example</h2>
+
+  <h3>Create EC2 Instance</h3>
+
+  <pre>
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "myserver" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "TerraformServer"
+  }
+}
+  </pre>
+
+  <h3>Execution Steps</h3>
+
+  <pre>
+terraform init
+terraform plan
+terraform apply
+  </pre>
+
+  <h3>Destroy Infrastructure</h3>
+
+  <pre>
+terraform destroy
+  </pre>
+</section>
+
+<section id="aws">
+  <h2>6. AWS Real-Time Infrastructure Example</h2>
+
+  <h3>Create VPC + Subnet + EC2</h3>
+
+  <pre>
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
+resource "aws_subnet" "subnet1" {
+  vpc_id     = aws_vpc.main.id
+  cidr_block = "10.0.1.0/24"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.subnet1.id
+}
+  </pre>
+
+  <h3>Dependency Management</h3>
+
+  <p>
+    Terraform automatically understands dependencies between resources.
+  </p>
+
+  <div class="architecture">
+    VPC → Subnet → EC2 Instance
+  </div>
+</section>
+
+<section id="modules">
+  <h2>7. Terraform Modules</h2>
+
+  <p>
+    Modules are reusable Terraform code blocks.
+  </p>
+
+  <h3>Advantages</h3>
+
+  <ul>
+    <li>Code reusability</li>
+    <li>Standardization</li>
+    <li>Easy maintenance</li>
+  </ul>
+
+  <h3>Example</h3>
+
+  <pre>
+module "ec2" {
+  source = "./modules/ec2"
+
+  ami           = "ami-12345"
+  instance_type = "t2.micro"
+}
+  </pre>
+</section>
+
+<section id="state">
+  <h2>8. Terraform State File</h2>
+
+  <h3>What is terraform.tfstate?</h3>
+
+  <p>
+    Terraform stores infrastructure details in a state file.
+  </p>
+
+  <h3>Why State File Important?</h3>
+
+  <ul>
+    <li>Tracks infrastructure</li>
+    <li>Maps resources</li>
+    <li>Detects changes</li>
+  </ul>
+
+  <h3>Remote Backend</h3>
+
+  <pre>
+terraform {
+  backend "s3" {
+    bucket = "terraform-state-bucket"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+  </pre>
+
+  <h3>State Locking</h3>
+
+  <p>
+    DynamoDB is used for state locking to avoid concurrent modifications.
+  </p>
+</section>
+
+<section>
+  <h2>9. Variables and Outputs</h2>
+
+  <h3>Variables</h3>
+
+  <pre>
+variable "instance_type" {
+  default = "t2.micro"
+}
+  </pre>
+
+  <h3>Outputs</h3>
+
+  <pre>
+output "instance_ip" {
+  value = aws_instance.web.public_ip
+}
+  </pre>
+</section>
+
+<section>
+  <h2>10. Terraform Provisioners</h2>
+
+  <h3>Remote Exec Example</h3>
+
+  <pre>
+provisioner "remote-exec" {
+  inline = [
+    "sudo yum install nginx -y",
+    "sudo systemctl start nginx"
+  ]
+}
+  </pre>
+</section>
+
+<section>
+  <h2>11. Terraform Workspaces</h2>
+
+  <h3>Purpose</h3>
+
+  <p>
+    Workspaces are used to manage multiple environments.
+  </p>
+
+  <pre>
+terraform workspace new dev
+terraform workspace new prod
+terraform workspace list
+  </pre>
+</section>
+
+<section id="cicd">
+  <h2>12. Terraform with CI/CD</h2>
+
+  <h3>CI/CD Flow</h3>
+
+  <div class="architecture">
+    Developer Pushes Code → GitHub → Jenkins/GitHub Actions → Terraform Apply → AWS Infrastructure
+  </div>
+
+  <h3>GitHub Actions Example</h3>
+
+  <pre>
+name: Terraform
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+  </pre>
+</section>
+
+<section>
+  <h2>13. Terraform Best Practices</h2>
+
+  <ul>
+    <li>Use modules</li>
+    <li>Store state remotely</li>
+    <li>Enable state locking</li>
+    <li>Use variables</li>
+    <li>Do not hardcode secrets</li>
+    <li>Use separate environments</li>
+  </ul>
+</section>
+
+<section>
+  <h2>14. Terraform Advanced Concepts</h2>
+
+  <h3>Count</h3>
+
+  <pre>
+resource "aws_instance" "server" {
+  count = 3
+}
+  </pre>
+
+  <h3>for_each</h3>
+
+  <pre>
+resource "aws_s3_bucket" "bucket" {
+  for_each = toset(["dev", "test", "prod"])
+
+  bucket = each.key
+}
+  </pre>
+
+  <h3>Dynamic Blocks</h3>
+
+  <pre>
+dynamic "ingress" {
+  for_each = var.ports
+
+  content {
+    from_port = ingress.value
+    to_port   = ingress.value
+  }
+}
+  </pre>
+</section>
+
+<section>
+  <h2>15. Terraform Real-Time Production Architecture</h2>
+
+  <div class="architecture">
+    GitHub Repository
+    ↓
+    Jenkins Pipeline
+    ↓
+    Terraform Modules
+    ↓
+    AWS Infrastructure
+    ↓
+    EC2 + ALB + Auto Scaling + RDS + S3
+    ↓
+    Monitoring using CloudWatch
+  </div>
+
+  <h3>Production-Level Features</h3>
+
+  <ul>
+    <li>Reusable modules</li>
+    <li>Remote backend</li>
+    <li>CI/CD integration</li>
+    <li>Secrets management</li>
+    <li>Environment separation</li>
+  </ul>
+</section>
+
+<section id="interview">
+  <h2>16. Terraform Interview Questions</h2>
+
+  <h3>1. What is Terraform?</h3>
+  <p>
+    Terraform is an Infrastructure as Code tool used to automate infrastructure provisioning.
+  </p>
+
+  <h3>2. Difference between Ansible and Terraform?</h3>
+
+  <table>
+    <tr>
+      <th>Terraform</th>
+      <th>Ansible</th>
+    </tr>
+    <tr>
+      <td>Provisioning Tool</td>
+      <td>Configuration Management</td>
+    </tr>
+    <tr>
+      <td>Declarative</td>
+      <td>Procedural</td>
+    </tr>
+  </table>
+
+  <h3>3. What is Terraform State?</h3>
+  <p>
+    State file tracks infrastructure resources managed by Terraform.
+  </p>
+
+  <h3>4. What are Providers?</h3>
+  <p>
+    Providers are plugins that allow Terraform to communicate with cloud platforms.
+  </p>
+</section>
+
+<section>
+  <h2>17. Troubleshooting Scenarios</h2>
+
+  <h3>Issue: State Lock Error</h3>
+
+  <pre>
+Error acquiring the state lock
+  </pre>
+
+  <h3>Solution</h3>
+
+  <pre>
+terraform force-unlock LOCK_ID
+  </pre>
+
+  <h3>Issue: Resource Already Exists</h3>
+
+  <p>
+    Import existing resource into Terraform state.
+  </p>
+
+  <pre>
+terraform import aws_instance.web i-123456
+  </pre>
+</section>
+
+<section>
+  <h2>18. Complete Terraform Learning Roadmap</h2>
+
+  <ol style="margin-left:25px; margin-top:15px;">
+    <li>Learn Cloud Basics</li>
+    <li>Understand Infrastructure as Code</li>
+    <li>Install Terraform</li>
+    <li>Learn Providers and Resources</li>
+    <li>Create AWS Infrastructure</li>
+    <li>Learn State Management</li>
+    <li>Learn Modules</li>
+    <li>Integrate CI/CD</li>
+    <li>Implement Production Architectures</li>
+    <li>Practice Real-Time Projects</li>
+  </ol>
+</section>
+
+<section>
+  <h2>19. Real-Time Terraform Project Ideas</h2>
+
+  <ul>
+    <li>3-Tier Application Deployment</li>
+    <li>Kubernetes Cluster Creation</li>
+    <li>Serverless Infrastructure</li>
+    <li>Auto Scaling Infrastructure</li>
+    <li>VPC Network Architecture</li>
+    <li>CI/CD Infrastructure Automation</li>
+  </ul>
+</section>
+
+<section>
+  <h2>20. Conclusion</h2>
+
+  <p>
+    Terraform is one of the most powerful Infrastructure as Code tools used in modern DevOps and Cloud Engineering.
+    Learning Terraform deeply helps in automating infrastructure, reducing manual effort, improving scalability,
+    and implementing enterprise-grade cloud environments.
+  </p>
+
+  <h3>You Have Learned:</h3>
+
+  <ul>
+    <li>Theory</li>
+    <li>Architecture</li>
+    <li>Commands</li>
+    <li>Practical Examples</li>
+    <li>Modules</li>
+    <li>State Management</li>
+    <li>CI/CD Integration</li>
+    <li>Real-Time Scenarios</li>
+    <li>Interview Questions</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  <p>Terraform Complete Masterclass | Designed using HTML & CSS</p>
+</footer>
+
+</body>
+</html>
