@@ -259,7 +259,7 @@ Sample_Pro/
 
 # 👨‍💻 Author
 
-## K. Lakshmi Nandan
+## K. Lakshmi Nandan and Team 
 
 DevOps & Cloud Enthusiast  
 Learning Modern DevOps, AWS, Docker & Kubernetes
