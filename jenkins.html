@@ -4,9 +4,11 @@
 <head>
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Kubernetes Mastery Hub</title>
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
+
+  <title>Jenkins Mastery Hub</title>
 
   <!-- FONT AWESOME -->
 
@@ -15,8 +17,12 @@
 
   <!-- GOOGLE FONT -->
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
   rel="stylesheet">
@@ -31,21 +37,24 @@
     }
 
     body{
+
       font-family:'Poppins',sans-serif;
-      background:#f4f7fb;
+
+      background:
+      linear-gradient(
+      135deg,
+      #eef2ff,
+      #f8fafc,
+      #ecfeff,
+      #f0fdf4);
+
+      background-size:400% 400%;
+
+      animation:bgMove 12s ease infinite;
+
       color:#222;
+
       line-height:1.8;
-    }
-
-    /* SCROLLBAR */
-
-    ::-webkit-scrollbar{
-      width:10px;
-    }
-
-    ::-webkit-scrollbar-thumb{
-      background:#326ce5;
-      border-radius:10px;
     }
 
     /* HERO */
@@ -55,9 +64,11 @@
       height:100vh;
 
       background:
-      linear-gradient(rgba(0,0,0,0.75),
+      linear-gradient(
+      rgba(0,0,0,0.75),
       rgba(0,0,0,0.75)),
-      url('https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1400&auto=format&fit=crop');
+
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
 
       background-size:cover;
       background-position:center;
@@ -65,185 +76,273 @@
       display:flex;
       justify-content:center;
       align-items:center;
+
       text-align:center;
 
       color:white;
+
+      position:relative;
+
       overflow:hidden;
     }
 
+    .hero::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+      rgba(37,99,235,0.18);
+
+      border-radius:50%;
+
+      top:-250px;
+      left:-200px;
+
+      filter:blur(60px);
+
+      animation:float1 8s ease-in-out infinite;
+    }
+
+    .hero::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      background:
+      rgba(16,185,129,0.18);
+
+      border-radius:50%;
+
+      bottom:-150px;
+      right:-100px;
+
+      filter:blur(60px);
+
+      animation:float2 10s ease-in-out infinite;
+    }
+
     .hero-content{
-      animation:fadeIn 2s ease;
+
+      position:relative;
+      z-index:2;
     }
 
     .hero-content h1{
-      font-size:80px;
+
+      font-size:78px;
+
       margin-bottom:20px;
+
+      text-shadow:
+      0 0 25px rgba(37,99,235,0.9);
+
       animation:slideDown 2s ease;
     }
 
     .hero-content p{
+
       font-size:24px;
+
+      color:#dbeafe;
+
       margin-bottom:35px;
     }
 
     .hero-content button{
 
-      padding:15px 40px;
+      padding:16px 42px;
+
       border:none;
+
       border-radius:50px;
-      background:#326ce5;
+
+      background:
+      linear-gradient(
+      90deg,
+      #2563eb,
+      #3b82f6);
+
       color:white;
+
       font-size:18px;
+
       cursor:pointer;
 
       transition:0.4s;
+
+      box-shadow:
+      0 0 25px rgba(37,99,235,0.6);
     }
 
     .hero-content button:hover{
-      background:#1e40af;
-      transform:scale(1.08);
+
+      transform:
+      scale(1.08);
+
+      box-shadow:
+      0 0 40px rgba(37,99,235,1);
     }
 
     /* NAVBAR */
 
     nav{
 
-      background:#0f172a;
+      background:
+      rgba(15,23,42,0.92);
+
+      backdrop-filter:blur(18px);
+
       position:sticky;
+
       top:0;
+
       z-index:1000;
 
-      padding:15px 0;
-
-      box-shadow:0 2px 10px rgba(0,0,0,0.2);
+      padding:16px;
     }
 
     nav ul{
+
       display:flex;
+
       justify-content:center;
+
       list-style:none;
+
+      gap:30px;
+
       flex-wrap:wrap;
     }
 
-    nav ul li{
-      margin:10px 20px;
-    }
-
-    nav ul li a{
+    nav a{
 
       text-decoration:none;
+
       color:white;
+
       font-weight:600;
+
+      position:relative;
+
       transition:0.3s;
     }
 
-    nav ul li a:hover{
+    nav a::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:0;
+      height:3px;
+
+      background:#3b82f6;
+
+      left:0;
+      bottom:-6px;
+
+      transition:0.4s;
+    }
+
+    nav a:hover::after{
+
+      width:100%;
+    }
+
+    nav a:hover{
+
       color:#60a5fa;
     }
 
     /* CONTAINER */
 
     .container{
+
       width:90%;
-      max-width:1250px;
-      margin:50px auto;
+
+      max-width:1300px;
+
+      margin:60px auto;
     }
 
     /* CARD */
 
     .card{
 
-      background:white;
-      padding:40px;
-      margin-bottom:35px;
+      background:
+      rgba(255,255,255,0.82);
 
-      border-radius:18px;
+      backdrop-filter:
+      blur(15px);
 
-      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      border:
+      1px solid rgba(255,255,255,0.2);
 
-      transition:0.4s;
+      box-shadow:
+      0 15px 40px rgba(0,0,0,0.08);
 
-      animation:fadeUp 1s ease;
+      padding:45px;
+
+      margin-bottom:40px;
+
+      border-radius:24px;
+
+      transition:0.5s;
+
+      overflow:hidden;
+
+      position:relative;
     }
 
     .card:hover{
-      transform:translateY(-8px);
+
+      transform:
+      translateY(-12px)
+      scale(1.01);
+
+      box-shadow:
+      0 20px 50px rgba(0,0,0,0.15);
     }
+
+    /* HEADINGS */
 
     h2{
 
-      color:#326ce5;
-      margin-bottom:20px;
+      color:#2563eb;
 
-      border-left:6px solid #326ce5;
-      padding-left:15px;
-    }
+      font-size:34px;
 
-    h3{
-      margin-top:25px;
-      margin-bottom:15px;
-      color:#0f172a;
-    }
-
-    p{
-      margin-bottom:18px;
-    }
-
-    ul,ol{
-      margin-left:25px;
-      margin-bottom:20px;
-    }
-
-    li{
-      margin-bottom:10px;
-    }
-
-    /* TABLE */
-
-    table{
-
-      width:100%;
-      border-collapse:collapse;
-      margin-top:20px;
-      margin-bottom:20px;
-    }
-
-    table th{
-
-      background:#326ce5;
-      color:white;
-      padding:14px;
-      text-align:left;
-    }
-
-    table td{
-      border:1px solid #ddd;
-      padding:14px;
-    }
-
-    table tr:nth-child(even){
-      background:#f9fafb;
-    }
-
-    /* CODE */
-
-    pre{
-
-      background:#111827;
-      color:#00ff99;
-
-      padding:22px;
-
-      border-radius:14px;
-
-      overflow-x:auto;
-
-      margin-top:20px;
       margin-bottom:25px;
+
+      position:relative;
+
+      padding-left:18px;
     }
 
-    code{
-      color:#ffcc00;
+    h2::before{
+
+      content:"";
+
+      position:absolute;
+
+      left:0;
+      top:5px;
+
+      width:6px;
+      height:42px;
+
+      background:#2563eb;
+
+      border-radius:20px;
     }
 
     /* GRID */
@@ -253,131 +352,232 @@
       display:grid;
 
       grid-template-columns:
-      repeat(auto-fit,minmax(250px,1fr));
+      repeat(auto-fit,minmax(260px,1fr));
 
-      gap:25px;
-      margin-top:25px;
+      gap:28px;
+
+      margin-top:35px;
     }
 
     .grid-card{
 
-      background:#1e293b;
+      background:
+      linear-gradient(
+      145deg,
+      #1e293b,
+      #0f172a);
+
       color:white;
 
-      padding:30px;
-      border-radius:18px;
+      padding:35px;
+
+      border-radius:22px;
 
       text-align:center;
 
-      transition:0.4s;
+      transition:0.5s;
     }
 
     .grid-card:hover{
 
-      transform:translateY(-8px) scale(1.03);
+      background:
+      linear-gradient(
+      145deg,
+      #2563eb,
+      #3b82f6);
 
-      background:#326ce5;
+      transform:
+      translateY(-10px)
+      scale(1.03);
     }
 
     .grid-card i{
 
-      font-size:55px;
+      font-size:60px;
+
       margin-bottom:18px;
+
+      color:#60a5fa;
     }
 
-    /* IMAGE */
+    /* TABLE */
 
-    .hero-image{
+    table{
 
       width:100%;
-      border-radius:15px;
+
+      border-collapse:collapse;
+
+      overflow:hidden;
+
+      border-radius:18px;
+
       margin-top:25px;
 
-      transition:0.4s;
+      box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
     }
 
-    .hero-image:hover{
-      transform:scale(1.02);
+    table th{
+
+      background:
+      linear-gradient(
+      90deg,
+      #2563eb,
+      #3b82f6);
+
+      color:white;
+
+      padding:18px;
+
+      font-size:18px;
+    }
+
+    table td{
+
+      padding:16px;
+
+      border-bottom:1px solid #eee;
+
+      background:white;
+    }
+
+    table tr:hover td{
+
+      background:#eff6ff;
+    }
+
+    /* CODE BLOCK */
+
+    pre{
+
+      background:
+      linear-gradient(
+      135deg,
+      #111827,
+      #1f2937);
+
+      color:#00ff99;
+
+      padding:24px;
+
+      border-radius:18px;
+
+      overflow-x:auto;
+
+      margin-top:25px;
+
+      border-left:
+      5px solid #2563eb;
     }
 
     /* INFO BOX */
 
     .info-box{
 
-      background:#eff6ff;
-      border-left:6px solid #326ce5;
+      background:
+      linear-gradient(
+      135deg,
+      #eff6ff,
+      #dbeafe);
 
-      padding:20px;
+      border-left:
+      6px solid #2563eb;
 
-      border-radius:12px;
-
-      margin-top:20px;
-    }
-
-    /* STATS */
-
-    .stats{
-
-      display:grid;
-
-      grid-template-columns:
-      repeat(auto-fit,minmax(220px,1fr));
-
-      gap:25px;
-
-      margin-top:35px;
-    }
-
-    .stat-box{
-
-      background:white;
-      text-align:center;
-
-      padding:35px;
+      padding:22px;
 
       border-radius:18px;
 
-      box-shadow:0 5px 15px rgba(0,0,0,0.08);
-
-      transition:0.4s;
+      margin-top:25px;
     }
 
-    .stat-box:hover{
-      transform:translateY(-8px);
-    }
+    /* WORKFLOW */
 
-    .stat-box h1{
-      color:#326ce5;
-      font-size:50px;
+    .workflow{
+
+      background:
+      linear-gradient(
+      135deg,
+      #dcfce7,
+      #bbf7d0);
+
+      border-left:
+      6px solid #16a34a;
+
+      padding:24px;
+
+      border-radius:18px;
+
+      margin-top:25px;
+
+      font-weight:600;
+
+      text-align:center;
     }
 
     /* FOOTER */
 
     footer{
 
-      background:#0f172a;
+      background:
+      linear-gradient(
+      135deg,
+      #0f172a,
+      #111827);
+
       color:white;
 
       text-align:center;
 
-      padding:40px;
+      padding:45px;
+
       margin-top:50px;
     }
 
-    footer p{
-      margin-top:10px;
-    }
+    /* ANIMATIONS */
 
-    /* ANIMATION */
+    @keyframes bgMove{
 
-    @keyframes fadeIn{
-
-      from{
-        opacity:0;
+      0%{
+        background-position:0% 50%;
       }
 
-      to{
-        opacity:1;
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+    }
+
+    @keyframes float1{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes float2{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-25px);
+      }
+
+      100%{
+        transform:translateY(0px);
       }
     }
 
@@ -385,19 +585,6 @@
 
       from{
         transform:translateY(-80px);
-        opacity:0;
-      }
-
-      to{
-        transform:translateY(0);
-        opacity:1;
-      }
-    }
-
-    @keyframes fadeUp{
-
-      from{
-        transform:translateY(40px);
         opacity:0;
       }
 
@@ -417,6 +604,10 @@
 
       .hero-content p{
         font-size:18px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
       }
 
       nav ul{
@@ -439,15 +630,15 @@
     <div class="hero-content">
 
       <h1>
-        <i class="fas fa-dharmachakra"></i>
-        Kubernetes Mastery Hub
+        <i class="fas fa-tools"></i>
+        Jenkins Mastery Hub
       </h1>
 
       <p>
-        Learn Kubernetes from Beginner to Advanced with Real DevOps Concepts
+        Learn Jenkins, CI/CD Pipelines, Maven, Plugins & Automation
       </p>
 
-      <button onclick="window.location.href='#intro'">
+      <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
         Start Learning
       </button>
 
@@ -462,18 +653,10 @@
     <ul>
 
       <li><a href="#intro">Introduction</a></li>
-
-      <li><a href="#architecture">Architecture</a></li>
-
-      <li><a href="#pods">Pods</a></li>
-
-      <li><a href="#services">Services</a></li>
-
-      <li><a href="#security">Security</a></li>
-
-      <li><a href="#monitoring">Monitoring</a></li>
-
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#pipeline">Pipelines</a></li>
+      <li><a href="#maven">Maven</a></li>
+      <li><a href="#plugins">Plugins</a></li>
+      <li><a href="#workflow">Workflow</a></li>
 
     </ul>
 
@@ -485,103 +668,64 @@
 
     <div class="card" id="intro">
 
-      <h2>Introduction to Kubernetes</h2>
+      <h2>What is Jenkins?</h2>
 
       <p>
-
-        Kubernetes is an open-source container orchestration platform
-        designed to automate deployment, scaling, and management
-        of containerized applications.
-
+        Jenkins is an open-source automation server
+        used to build, test, and deploy applications automatically.
       </p>
-
-      <img class="hero-image"
-      src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1200&auto=format&fit=crop">
 
       <div class="info-box">
 
-        <strong>Did You Know?</strong><br>
+        <strong>CI/CD:</strong><br>
 
-        Kubernetes was originally developed by Google
-        and is now maintained by the Cloud Native Computing Foundation (CNCF).
+        Continuous Integration & Continuous Deployment
+        help automate software delivery.
 
       </div>
 
     </div>
 
-    <!-- STATS -->
+    <!-- WHY JENKINS -->
 
-    <div class="stats">
+    <div class="card">
 
-      <div class="stat-box">
-        <h1>95%</h1>
-        <p>Cloud Native Companies Use Kubernetes</p>
-      </div>
-
-      <div class="stat-box">
-        <h1>5K+</h1>
-        <p>Open Source Contributors</p>
-      </div>
-
-      <div class="stat-box">
-        <h1>100%</h1>
-        <p>Automation & Scalability</p>
-      </div>
-
-    </div>
-
-    <!-- ARCHITECTURE -->
-
-    <div class="card" id="architecture">
-
-      <h2>Kubernetes Architecture</h2>
+      <h2>Why Jenkins is Used</h2>
 
       <div class="grid">
 
         <div class="grid-card">
 
-          <i class="fas fa-server"></i>
+          <i class="fab fa-github"></i>
 
-          <h3>API Server</h3>
+          <h3>Git Integration</h3>
 
           <p>
-            Main entry point for all Kubernetes cluster operations.
+            Automatically pulls code from GitHub.
           </p>
 
         </div>
 
         <div class="grid-card">
 
-          <i class="fas fa-database"></i>
+          <i class="fas fa-vial"></i>
 
-          <h3>etcd</h3>
+          <h3>Testing</h3>
 
           <p>
-            Distributed key-value database storing cluster data.
+            Runs automated tests for applications.
           </p>
 
         </div>
 
         <div class="grid-card">
 
-          <i class="fas fa-network-wired"></i>
+          <i class="fas fa-rocket"></i>
 
-          <h3>Scheduler</h3>
-
-          <p>
-            Assigns Pods to worker nodes automatically.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-cogs"></i>
-
-          <h3>Controller Manager</h3>
+          <h3>Deployment</h3>
 
           <p>
-            Maintains desired cluster state continuously.
+            Deploys applications automatically.
           </p>
 
         </div>
@@ -590,171 +734,170 @@
 
     </div>
 
-    <!-- PODS -->
+    <!-- PIPELINE -->
 
-    <div class="card" id="pods">
+    <div class="card" id="pipeline">
 
-      <h2>Kubernetes Pods</h2>
-
-      <p>
-
-        Pods are the smallest deployable units in Kubernetes.
-        Each Pod can contain one or more containers.
-
-      </p>
+      <h2>Jenkins Pipeline</h2>
 
 <pre>
-apiVersion: v1
+pipeline {
 
-kind: Pod
+    agent any
 
-metadata:
-  name: nginx-pod
+    stages {
 
-spec:
-  containers:
-  - name: nginx
-    image: nginx
+        stage('Build') {
+            steps {
+                echo 'Building application'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+
+    }
+
+}
 </pre>
 
     </div>
 
-    <!-- SERVICES -->
+    <!-- MAVEN -->
 
-    <div class="card" id="services">
+    <div class="card" id="maven">
 
-      <h2>Kubernetes Services</h2>
+      <h2>Maven in Jenkins</h2>
+
+      <p>
+        Maven is a Java build tool used to compile,
+        package, and test Java applications.
+      </p>
+
+<pre>
+mvn clean package
+</pre>
+
+      <div class="info-box">
+
+        <strong>clean</strong> → Removes old build files<br>
+        <strong>package</strong> → Creates JAR/WAR file
+
+      </div>
+
+    </div>
+
+    <!-- PLUGINS -->
+
+    <div class="card" id="plugins">
+
+      <h2>Popular Jenkins Plugins</h2>
 
       <table>
 
         <tr>
-          <th>Service Type</th>
-          <th>Description</th>
+          <th>Plugin</th>
+          <th>Purpose</th>
         </tr>
 
         <tr>
-          <td>ClusterIP</td>
-          <td>Internal communication inside cluster</td>
+          <td>Git Plugin</td>
+          <td>Connect Jenkins with GitHub</td>
         </tr>
 
         <tr>
-          <td>NodePort</td>
-          <td>Expose service externally</td>
+          <td>Maven Plugin</td>
+          <td>Build Java applications</td>
         </tr>
 
         <tr>
-          <td>LoadBalancer</td>
-          <td>Cloud provider load balancer</td>
+          <td>Docker Plugin</td>
+          <td>Docker integration</td>
+        </tr>
+
+        <tr>
+          <td>Kubernetes Plugin</td>
+          <td>K8s deployment support</td>
+        </tr>
+
+        <tr>
+          <td>Slack Plugin</td>
+          <td>Notifications & alerts</td>
         </tr>
 
       </table>
 
     </div>
 
-    <!-- SECURITY -->
+    <!-- WORKFLOW -->
 
-    <div class="card" id="security">
+    <div class="card" id="workflow">
 
-      <h2>Kubernetes Security</h2>
+      <h2>Jenkins Workflow</h2>
 
-      <ul>
+      <div class="workflow">
 
-        <li>Enable RBAC</li>
+        Developer Pushes Code →
+        Jenkins Detects Change →
+        Build Starts →
+        Tests Run →
+        Application Deploys →
+        Notifications Sent
 
-        <li>Use Namespaces</li>
+      </div>
 
-        <li>Store secrets securely</li>
+    </div>
 
-        <li>Use Network Policies</li>
+    <!-- COMMANDS -->
 
-        <li>Enable Pod Security Policies</li>
+    <div class="card">
 
-      </ul>
+      <h2>Common Jenkins Commands</h2>
 
 <pre>
-kubectl create namespace dev
+echo 'Build Started'
 
-kubectl get ns
+sh 'mvn clean package'
+
+git 'repo-url'
+
+docker build -t app .
 </pre>
 
     </div>
 
-    <!-- MONITORING -->
+    <!-- INTERVIEW QUESTIONS -->
 
-    <div class="card" id="monitoring">
+    <div class="card">
 
-      <h2>Monitoring & Logging</h2>
-
-      <div class="grid">
-
-        <div class="grid-card">
-
-          <i class="fas fa-chart-line"></i>
-
-          <h3>Prometheus</h3>
-
-          <p>
-            Metrics collection & alerting tool.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-chart-bar"></i>
-
-          <h3>Grafana</h3>
-
-          <p>
-            Visualization dashboards & analytics.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-file-alt"></i>
-
-          <h3>ELK Stack</h3>
-
-          <p>
-            Centralized logging solution.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- PROJECTS -->
-
-    <div class="card" id="projects">
-
-      <h2>Real-Time Kubernetes Projects</h2>
+      <h2>Jenkins Interview Questions</h2>
 
       <ol>
 
-        <li>Deploy NGINX on Kubernetes</li>
+        <li>What is Jenkins?</li>
 
-        <li>CI/CD Pipeline using Jenkins & Kubernetes</li>
+        <li>What is CI/CD?</li>
 
-        <li>Monitoring Setup using Prometheus & Grafana</li>
+        <li>Difference between freestyle job and pipeline?</li>
 
-        <li>Deploy Microservices Application</li>
+        <li>What is Jenkinsfile?</li>
 
-        <li>Kubernetes Cluster on AWS EKS</li>
+        <li>How Jenkins integrates with GitHub?</li>
+
+        <li>What are Jenkins plugins?</li>
+
+        <li>Explain Maven integration.</li>
 
       </ol>
-
-      <div class="info-box">
-
-        <strong>Pro Tip:</strong><br>
-
-        Build real projects and deploy applications
-        on Minikube, EKS, AKS, or GKE to gain practical experience.
-
-      </div>
 
     </div>
 
@@ -764,14 +907,14 @@ kubectl get ns
 
   <footer>
 
-    <h2>Kubernetes Learning Portal</h2>
+    <h2>Jenkins Learning Portal</h2>
 
     <p>
-      Beginner to Advanced Kubernetes & DevOps Learning Platform
+      Beginner to Advanced Jenkins & DevOps Learning Platform
     </p>
 
     <p>
-      © 2026 Kubernetes Mastery Hub
+      © 2026 Jenkins Mastery Hub
     </p>
 
   </footer>
