@@ -1,402 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Linux Commands and Their Functions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Linux Learning Guide</title>
+
+    <!-- FONT AWESOME ICONS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f9;
-            color: #222;
-            line-height: 1.7;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.8;
+        }
+
+        /* HEADER */
+
+        .hero {
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+            animation: slideDown 2s ease;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content button {
+            padding: 15px 35px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            font-size: 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero-content button:hover {
+            background: #1e40af;
+            transform: scale(1.05);
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* CONTAINER */
 
         .container {
             width: 90%;
             max-width: 1200px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            margin: 40px auto;
         }
 
-        h1 {
-            text-align: center;
-            color: #0f172a;
-            border-bottom: 3px solid #2563eb;
-            padding-bottom: 10px;
+        .card {
+            background: white;
+            margin-bottom: 35px;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: 0.4s;
+            animation: fadeUp 1s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
         }
 
         h2 {
-            color: #1d4ed8;
-            margin-top: 40px;
-            border-left: 5px solid #2563eb;
-            padding-left: 10px;
+            color: #2563eb;
+            margin-bottom: 20px;
+            border-left: 6px solid #2563eb;
+            padding-left: 15px;
         }
 
         h3 {
-            color: #0f172a;
             margin-top: 25px;
+            margin-bottom: 15px;
+            color: #111827;
         }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* TABLE */
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 15px;
-            margin-bottom: 25px;
+            margin-top: 20px;
         }
 
         table th {
-            background-color: #2563eb;
+            background: #2563eb;
             color: white;
-            padding: 12px;
-            text-align: left;
+            padding: 14px;
         }
 
         table td {
             border: 1px solid #d1d5db;
-            padding: 10px;
+            padding: 12px;
         }
 
         table tr:nth-child(even) {
-            background-color: #f9fafb;
+            background: #f9fafb;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin-top: 15px;
         }
 
         code {
-            background-color: #e5e7eb;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #111827;
+            color: #60a5fa;
         }
 
-        pre {
-            background-color: #111827;
-            color: #f9fafb;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-        }
+        /* INFO BOX */
 
-        ul {
-            margin-left: 20px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .summary {
-            background-color: #eff6ff;
+        .info-box {
+            background: #eff6ff;
+            border-left: 6px solid #2563eb;
             padding: 20px;
-            border-left: 5px solid #2563eb;
-            border-radius: 8px;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
-        .highlight {
-            color: #2563eb;
-            font-weight: bold;
+        /* GRID */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 25px;
+            margin-top: 25px;
         }
+
+        .grid-card {
+            background: #1e293b;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .grid-card:hover {
+            transform: scale(1.05);
+            background: #2563eb;
+        }
+
+        .grid-card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        /* IMAGE */
+
+        .linux-image {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: 0.4s;
+        }
+
+        .linux-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            margin-top: 50px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-80px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
     </style>
+
 </head>
 
 <body>
 
-<div class="container">
+    <!-- HERO SECTION -->
 
-    <h1>Linux Commands and Their Functions</h1>
+    <section class="hero">
 
-    <!-- INTRODUCTION -->
+        <div class="hero-content">
 
-    <div class="section">
+            <h1><i class="fab fa-linux"></i> Linux Mastery Guide</h1>
 
-        <h2>Introduction to Linux</h2>
+            <p>
+                Complete Linux Learning Website for DevOps, Cloud & Cybersecurity
+            </p>
 
-        <p>
-            Linux is an open-source operating system widely used in modern IT infrastructure.
-            It is famous for its security, stability, speed, and flexibility.
-            Linux powers servers, cloud platforms, mobile devices, supercomputers,
-            networking systems, and enterprise applications across the world.
-        </p>
+            <button onclick="window.location.href='#intro'">
+                Start Learning
+            </button>
 
-        <p>
-            Linux was created by <span class="highlight">Linus Torvalds</span> in 1991.
-            Because Linux is open-source, developers can modify and distribute it freely.
-        </p>
+        </div>
 
-        <h3>Why Linux is Popular?</h3>
+    </section>
 
-        <ul>
-            <li>Free and Open Source</li>
-            <li>Highly Secure Operating System</li>
-            <li>Excellent Performance and Stability</li>
-            <li>Supports Automation and Shell Scripting</li>
-            <li>Widely Used in Cloud and DevOps</li>
-            <li>Strong Community Support</li>
-            <li>Efficient Resource Management</li>
-        </ul>
+    <!-- NAVBAR -->
 
-        <h3>Linux is Widely Used In:</h3>
+    <nav>
 
         <ul>
-            <li>DevOps</li>
-            <li>Cloud Computing</li>
-            <li>Networking</li>
-            <li>Cybersecurity</li>
-            <li>Servers</li>
-            <li>Software Development</li>
-            <li>Artificial Intelligence</li>
-            <li>Machine Learning</li>
-            <li>Embedded Systems</li>
-            <li>Data Centers</li>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#commands">Commands</a></li>
+            <li><a href="#network">Networking</a></li>
+            <li><a href="#permissions">Permissions</a></li>
+            <li><a href="#devops">DevOps</a></li>
         </ul>
 
-        <h3>Popular Linux Distributions</h3>
+    </nav>
 
-        <table>
-            <tr>
-                <th>Distribution</th>
-                <th>Description</th>
-            </tr>
+    <div class="container">
 
-            <tr>
-                <td>Ubuntu</td>
-                <td>User-friendly Linux distribution widely used by beginners and professionals</td>
-            </tr>
+        <!-- INTRO -->
 
-            <tr>
-                <td>CentOS</td>
-                <td>Enterprise-class Linux distribution used in servers</td>
-            </tr>
+        <div class="card" id="intro">
 
-            <tr>
-                <td>Red Hat Enterprise Linux (RHEL)</td>
-                <td>Commercial Linux distribution used in enterprise environments</td>
-            </tr>
+            <h2>Introduction to Linux</h2>
 
-            <tr>
-                <td>Debian</td>
-                <td>Stable and secure Linux operating system</td>
-            </tr>
+            <p>
+                Linux is one of the most powerful and secure operating systems
+                used in modern IT infrastructure. It powers:
+            </p>
 
-            <tr>
-                <td>Fedora</td>
-                <td>Modern Linux distribution with latest technologies</td>
-            </tr>
+            <ul>
+                <li>Cloud Platforms</li>
+                <li>Servers</li>
+                <li>Android Devices</li>
+                <li>Supercomputers</li>
+                <li>DevOps Infrastructure</li>
+                <li>Cybersecurity Tools</li>
+            </ul>
 
-            <tr>
-                <td>Kali Linux</td>
-                <td>Specialized Linux distribution for cybersecurity and penetration testing</td>
-            </tr>
-        </table>
+            <img class="linux-image"
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+                alt="Linux">
 
-        <h3>Basic Features of Linux</h3>
+            <div class="info-box">
 
-        <ul>
-            <li>Multi-user Operating System</li>
-            <li>Multitasking Support</li>
-            <li>Command Line Interface (CLI)</li>
-            <li>Strong File Permission System</li>
-            <li>Supports Networking</li>
-            <li>Portable Across Different Hardware</li>
-            <li>Supports Shell Scripting</li>
-        </ul>
+                <strong>Fact:</strong>
+                Around 90% of cloud infrastructure runs on Linux.
 
-    </div>
+            </div>
 
-    <!-- COMMAND SYNTAX -->
+        </div>
 
-    <div class="section">
+        <!-- DISTRIBUTIONS -->
 
-        <h2>Linux Command Syntax</h2>
+        <div class="card">
 
-<pre>
-command [options] [arguments]
-</pre>
+            <h2>Popular Linux Distributions</h2>
 
-        <p>Example:</p>
+            <div class="grid">
 
-<pre>
-ls -l /home
-</pre>
+                <div class="grid-card">
+                    <i class="fab fa-ubuntu"></i>
+                    <h3>Ubuntu</h3>
+                    <p>Best for beginners & servers</p>
+                </div>
 
-        <ul>
-            <li><code>ls</code> → Command</li>
-            <li><code>-l</code> → Option</li>
-            <li><code>/home</code> → Argument</li>
-        </ul>
+                <div class="grid-card">
+                    <i class="fas fa-server"></i>
+                    <h3>CentOS</h3>
+                    <p>Enterprise Linux distribution</p>
+                </div>
 
-    </div>
+                <div class="grid-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Kali Linux</h3>
+                    <p>Cybersecurity & Ethical Hacking</p>
+                </div>
 
-    <!-- NAVIGATION COMMANDS -->
+                <div class="grid-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Debian</h3>
+                    <p>Stable and secure distribution</p>
+                </div>
 
-    <div class="section">
+            </div>
 
-        <h2>1. Navigation Commands</h2>
+        </div>
 
-        <table>
-            <tr>
-                <th>Command</th>
-                <th>Function</th>
-            </tr>
+        <!-- COMMANDS -->
 
-            <tr>
-                <td><code>pwd</code></td>
-                <td>Show present working directory</td>
-            </tr>
+        <div class="card" id="commands">
 
-            <tr>
-                <td><code>ls</code></td>
-                <td>List files and directories</td>
-            </tr>
+            <h2>Linux Navigation Commands</h2>
 
-            <tr>
-                <td><code>ls -l</code></td>
-                <td>Detailed file information</td>
-            </tr>
+            <table>
 
-            <tr>
-                <td><code>ls -a</code></td>
-                <td>Show hidden files</td>
-            </tr>
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
 
-            <tr>
-                <td><code>cd directory</code></td>
-                <td>Change directory</td>
-            </tr>
+                <tr>
+                    <td><code>pwd</code></td>
+                    <td>Print current working directory</td>
+                </tr>
 
-            <tr>
-                <td><code>cd ..</code></td>
-                <td>Move to previous directory</td>
-            </tr>
+                <tr>
+                    <td><code>ls -la</code></td>
+                    <td>Show hidden files with details</td>
+                </tr>
 
-            <tr>
-                <td><code>cd ~</code></td>
-                <td>Go to home directory</td>
-            </tr>
+                <tr>
+                    <td><code>cd folder</code></td>
+                    <td>Move into a directory</td>
+                </tr>
 
-            <tr>
-                <td><code>tree</code></td>
-                <td>Display folder structure</td>
-            </tr>
-        </table>
+                <tr>
+                    <td><code>tree</code></td>
+                    <td>Display folder structure</td>
+                </tr>
+
+            </table>
 
 <pre>
 pwd
 ls -la
-cd /var/log
+cd /etc
+tree
 </pre>
 
-    </div>
+        </div>
 
-    <!-- FILE COMMANDS -->
+        <!-- NETWORK -->
 
-    <div class="section">
+        <div class="card" id="network">
 
-        <h2>2. File and Directory Commands</h2>
+            <h2>Networking Commands</h2>
 
-        <table>
-            <tr>
-                <th>Command</th>
-                <th>Function</th>
-            </tr>
+            <table>
 
-            <tr>
-                <td><code>touch file.txt</code></td>
-                <td>Create empty file</td>
-            </tr>
+                <tr>
+                    <th>Command</th>
+                    <th>Function</th>
+                </tr>
 
-            <tr>
-                <td><code>mkdir folder</code></td>
-                <td>Create new directory</td>
-            </tr>
+                <tr>
+                    <td><code>ping</code></td>
+                    <td>Check network connectivity</td>
+                </tr>
 
-            <tr>
-                <td><code>mkdir -p a/b/c</code></td>
-                <td>Create nested directories</td>
-            </tr>
+                <tr>
+                    <td><code>ip a</code></td>
+                    <td>Show IP address</td>
+                </tr>
 
-            <tr>
-                <td><code>cp source destination</code></td>
-                <td>Copy files</td>
-            </tr>
+                <tr>
+                    <td><code>ssh</code></td>
+                    <td>Remote server login</td>
+                </tr>
 
-            <tr>
-                <td><code>mv old new</code></td>
-                <td>Move or rename files</td>
-            </tr>
+                <tr>
+                    <td><code>wget</code></td>
+                    <td>Download files</td>
+                </tr>
 
-            <tr>
-                <td><code>rm file</code></td>
-                <td>Remove file</td>
-            </tr>
-
-            <tr>
-                <td><code>rm -r folder</code></td>
-                <td>Remove directory recursively</td>
-            </tr>
-
-            <tr>
-                <td><code>find</code></td>
-                <td>Search files and directories</td>
-            </tr>
-        </table>
-
-<pre>
-touch notes.txt
-mkdir projects
-cp notes.txt backup.txt
-mv backup.txt old.txt
-</pre>
-
-    </div>
-
-    <!-- NETWORK COMMANDS -->
-
-    <div class="section">
-
-        <h2>3. Networking Commands</h2>
-
-        <table>
-            <tr>
-                <th>Command</th>
-                <th>Function</th>
-            </tr>
-
-            <tr>
-                <td><code>ping</code></td>
-                <td>Test network connectivity</td>
-            </tr>
-
-            <tr>
-                <td><code>ip a</code></td>
-                <td>Show IP addresses</td>
-            </tr>
-
-            <tr>
-                <td><code>curl</code></td>
-                <td>Transfer data from URLs</td>
-            </tr>
-
-            <tr>
-                <td><code>wget</code></td>
-                <td>Download files from internet</td>
-            </tr>
-
-            <tr>
-                <td><code>ssh</code></td>
-                <td>Remote server login</td>
-            </tr>
-
-            <tr>
-                <td><code>scp</code></td>
-                <td>Securely copy files</td>
-            </tr>
-        </table>
+            </table>
 
 <pre>
 ping google.com
@@ -404,117 +481,151 @@ ip a
 ssh user@server
 </pre>
 
-    </div>
+        </div>
 
-    <!-- PROCESS COMMANDS -->
+        <!-- PERMISSIONS -->
 
-    <div class="section">
+        <div class="card" id="permissions">
 
-        <h2>4. Process Management Commands</h2>
+            <h2>Linux File Permissions</h2>
 
-        <table>
-            <tr>
-                <th>Command</th>
-                <th>Function</th>
-            </tr>
+            <p>
+                Linux permissions control who can read, write, and execute files.
+            </p>
 
-            <tr>
-                <td><code>ps</code></td>
-                <td>Show running processes</td>
-            </tr>
+            <table>
 
-            <tr>
-                <td><code>top</code></td>
-                <td>Real-time system monitoring</td>
-            </tr>
+                <tr>
+                    <th>Permission</th>
+                    <th>Meaning</th>
+                </tr>
 
-            <tr>
-                <td><code>kill PID</code></td>
-                <td>Stop process</td>
-            </tr>
+                <tr>
+                    <td>r</td>
+                    <td>Read</td>
+                </tr>
 
-            <tr>
-                <td><code>jobs</code></td>
-                <td>Show background jobs</td>
-            </tr>
-        </table>
+                <tr>
+                    <td>w</td>
+                    <td>Write</td>
+                </tr>
 
-<pre>
-ps aux
-kill 1234
-top
-</pre>
+                <tr>
+                    <td>x</td>
+                    <td>Execute</td>
+                </tr>
 
-    </div>
-
-    <!-- PIPE & REDIRECTION -->
-
-    <div class="section">
-
-        <h2>5. Pipe and Redirection Operators</h2>
-
-        <table>
-            <tr>
-                <th>Symbol</th>
-                <th>Function</th>
-            </tr>
-
-            <tr>
-                <td><code>></code></td>
-                <td>Redirect output</td>
-            </tr>
-
-            <tr>
-                <td><code>>></code></td>
-                <td>Append output</td>
-            </tr>
-
-            <tr>
-                <td><code>|</code></td>
-                <td>Pipe output</td>
-            </tr>
-
-            <tr>
-                <td><code><</code></td>
-                <td>Redirect input</td>
-            </tr>
-        </table>
+            </table>
 
 <pre>
-ls > files.txt
-cat log.txt | grep error
+chmod 777 file.txt
+chmod +x script.sh
 </pre>
 
+        </div>
+
+        <!-- DEVOPS -->
+
+        <div class="card" id="devops">
+
+            <h2>Linux in DevOps</h2>
+
+            <p>
+                Linux is the backbone of modern DevOps infrastructure.
+                Most CI/CD pipelines, Docker containers, Kubernetes clusters,
+                and cloud servers run on Linux.
+            </p>
+
+            <div class="grid">
+
+                <div class="grid-card">
+                    <i class="fab fa-docker"></i>
+                    <h3>Docker</h3>
+                    <p>Containerization platform</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Kubernetes</h3>
+                    <p>Container orchestration</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fab fa-git-alt"></i>
+                    <h3>Git</h3>
+                    <p>Version control system</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>AWS</h3>
+                    <p>Cloud computing platform</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ADVANCED COMMANDS -->
+
+        <div class="card">
+
+            <h2>Advanced Linux Commands</h2>
+
+            <table>
+
+                <tr>
+                    <th>Command</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><code>grep</code></td>
+                    <td>Search text patterns</td>
+                </tr>
+
+                <tr>
+                    <td><code>awk</code></td>
+                    <td>Text processing</td>
+                </tr>
+
+                <tr>
+                    <td><code>sed</code></td>
+                    <td>Edit text streams</td>
+                </tr>
+
+                <tr>
+                    <td><code>tar</code></td>
+                    <td>Compress files</td>
+                </tr>
+
+            </table>
+
+<pre>
+grep "error" logfile.txt
+tar -cvf backup.tar folder/
+</pre>
+
+        </div>
+
     </div>
 
-    <!-- SUMMARY -->
+    <!-- FOOTER -->
 
-    <div class="summary">
+    <footer>
 
-        <h2>Summary</h2>
-
-        <p>
-            Linux is one of the most important operating systems in modern IT infrastructure.
-            Learning Linux commands helps in:
-        </p>
-
-        <ul>
-            <li>System Administration</li>
-            <li>DevOps Engineering</li>
-            <li>Cloud Engineering</li>
-            <li>Cybersecurity</li>
-            <li>Networking</li>
-            <li>Software Development</li>
-        </ul>
+        <h2>Linux Learning Portal</h2>
 
         <p>
-            Mastering Linux commands improves troubleshooting,
-            automation, scripting, and server management skills.
+            Designed for Beginners, DevOps Engineers & Cloud Engineers
         </p>
 
-    </div>
+        <p>
+            © 2026 Linux Learning Website
+        </p>
 
-</div>
+    </footer>
 
 </body>
+
 </html>
