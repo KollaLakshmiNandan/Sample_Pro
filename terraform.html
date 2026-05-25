@@ -1,452 +1,1013 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terraform Basics</title>
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
+
+  <title>Terraform Mastery Hub</title>
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f4f7fb;
-      color: #222;
+    body{
+
+      font-family:'Poppins',sans-serif;
+
+      background:
+      linear-gradient(
+      -45deg,
+      #0f172a,
+      #1e1b4b,
+      #312e81,
+      #581c87,
+      #7c3aed,
+      #0f172a);
+
+      background-size:400% 400%;
+
+      animation:gradientBG 15s ease infinite;
+
+      color:#ffffff;
+
+      line-height:1.8;
     }
 
-    header {
-      background: #623ce4;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+    /* HERO */
+
+    .hero{
+
+      height:100vh;
+
+      background:
+      linear-gradient(
+      rgba(0,0,0,0.80),
+      rgba(0,0,0,0.80)),
+
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+
+      color:white;
+
+      position:relative;
+
+      overflow:hidden;
     }
 
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+    .hero::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+      rgba(168,85,247,0.20);
+
+      border-radius:50%;
+
+      top:-250px;
+      left:-200px;
+
+      filter:blur(60px);
+
+      animation:float1 8s ease-in-out infinite;
     }
 
-    header p {
-      font-size: 18px;
+    .hero::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      background:
+      rgba(124,58,237,0.18);
+
+      border-radius:50%;
+
+      bottom:-150px;
+      right:-100px;
+
+      filter:blur(60px);
+
+      animation:float2 10s ease-in-out infinite;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .hero-content{
+
+      position:relative;
+      z-index:2;
     }
 
-    section {
-      background: white;
-      margin-bottom: 25px;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    .hero-content h1{
+
+      font-size:85px;
+
+      margin-bottom:20px;
+
+      text-shadow:
+      0 0 25px rgba(168,85,247,0.9);
+
+      animation:slideDown 2s ease;
     }
 
-    h2 {
-      color: #623ce4;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 8px;
+    .hero-content p{
+
+      font-size:25px;
+
+      color:#ddd6fe;
+
+      margin-bottom:35px;
     }
 
-    h3 {
-      color: #333;
-      margin: 20px 0 10px;
+    .hero-content button{
+
+      padding:16px 42px;
+
+      border:none;
+
+      border-radius:50px;
+
+      background:
+      linear-gradient(
+      90deg,
+      #7c3aed,
+      #a855f7);
+
+      color:white;
+
+      font-size:18px;
+
+      cursor:pointer;
+
+      transition:0.4s;
+
+      box-shadow:
+      0 0 25px rgba(168,85,247,0.5);
     }
 
-    p {
-      margin-bottom: 12px;
+    .hero-content button:hover{
+
+      transform:scale(1.08);
+
+      box-shadow:
+      0 0 40px rgba(168,85,247,1);
     }
 
-    ul, ol {
-      margin-left: 25px;
-      margin-bottom: 15px;
+    /* NAVBAR */
+
+    nav{
+
+      background:
+      rgba(15,23,42,0.78);
+
+      backdrop-filter:blur(18px);
+
+      position:sticky;
+
+      top:0;
+
+      z-index:1000;
+
+      padding:18px;
     }
 
-    li {
-      margin-bottom: 8px;
+    nav ul{
+
+      display:flex;
+
+      justify-content:center;
+
+      list-style:none;
+
+      gap:30px;
+
+      flex-wrap:wrap;
     }
 
-    code {
-      background: #eef0f6;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-family: Consolas, monospace;
+    nav a{
+
+      text-decoration:none;
+
+      color:white;
+
+      font-weight:600;
+
+      position:relative;
+
+      transition:0.3s;
     }
 
-    pre {
-      background: #1e1e2f;
-      color: #f8f8f2;
-      padding: 18px;
-      border-radius: 10px;
-      overflow-x: auto;
-      margin: 15px 0;
+    nav a::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:0;
+      height:3px;
+
+      background:#c084fc;
+
+      left:0;
+      bottom:-6px;
+
+      transition:0.4s;
     }
 
-    pre code {
-      background: none;
-      color: inherit;
-      padding: 0;
+    nav a:hover::after{
+
+      width:100%;
     }
 
-    .note {
-      background: #f0ecff;
-      border-left: 5px solid #623ce4;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 15px;
+    nav a:hover{
+
+      color:#c084fc;
     }
 
-    .command-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
+    /* CONTAINER */
+
+    .container{
+
+      width:90%;
+
+      max-width:1300px;
+
+      margin:60px auto;
     }
 
-    .command-card {
-      background: #f8f9fc;
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+    /* CARD */
+
+    .card{
+
+      background:
+      rgba(255,255,255,0.08);
+
+      backdrop-filter:blur(18px);
+
+      border:
+      1px solid rgba(255,255,255,0.12);
+
+      box-shadow:
+      0 8px 32px rgba(0,0,0,0.35);
+
+      padding:45px;
+
+      margin-bottom:40px;
+
+      border-radius:24px;
+
+      transition:0.5s;
+
+      color:white;
     }
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #222;
-      color: white;
-      margin-top: 40px;
+    .card:hover{
+
+      transform:
+      translateY(-10px);
+
+      box-shadow:
+      0 0 30px rgba(168,85,247,0.4);
     }
+
+    /* HEADINGS */
+
+    h2{
+
+      color:#c084fc;
+
+      font-size:34px;
+
+      margin-bottom:25px;
+
+      padding-left:18px;
+
+      border-left:
+      6px solid #a855f7;
+    }
+
+    h3{
+
+      margin-bottom:15px;
+
+      color:#ffffff;
+    }
+
+    /* GRID */
+
+    .grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(260px,1fr));
+
+      gap:28px;
+
+      margin-top:35px;
+    }
+
+    .grid-card{
+
+      background:
+      linear-gradient(
+      145deg,
+      #1e293b,
+      #0f172a);
+
+      color:white;
+
+      padding:35px;
+
+      border-radius:22px;
+
+      text-align:center;
+
+      transition:0.5s;
+    }
+
+    .grid-card:hover{
+
+      background:
+      linear-gradient(
+      145deg,
+      #7c3aed,
+      #a855f7);
+
+      transform:
+      translateY(-10px)
+      scale(1.03);
+
+      box-shadow:
+      0 0 30px rgba(168,85,247,0.8);
+    }
+
+    .grid-card i{
+
+      font-size:60px;
+
+      margin-bottom:18px;
+
+      color:#c084fc;
+    }
+
+    /* TABLE */
+
+    table{
+
+      width:100%;
+
+      border-collapse:collapse;
+
+      border-radius:18px;
+
+      overflow:hidden;
+
+      margin-top:25px;
+    }
+
+    table th{
+
+      background:
+      linear-gradient(
+      90deg,
+      #7c3aed,
+      #a855f7);
+
+      color:white;
+
+      padding:18px;
+    }
+
+    table td{
+
+      padding:16px;
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+
+      background:
+      rgba(255,255,255,0.05);
+    }
+
+    table tr:hover td{
+
+      background:
+      rgba(255,255,255,0.08);
+    }
+
+    /* CODE */
+
+    pre{
+
+      background:
+      linear-gradient(
+      135deg,
+      #111827,
+      #1f2937);
+
+      color:#00ff99;
+
+      padding:24px;
+
+      border-radius:18px;
+
+      overflow-x:auto;
+
+      margin-top:25px;
+
+      border-left:
+      5px solid #7c3aed;
+
+      box-shadow:
+      0 0 25px rgba(168,85,247,0.25);
+    }
+
+    /* INFO BOX */
+
+    .note{
+
+      background:
+      rgba(255,255,255,0.06);
+
+      border-left:
+      6px solid #a855f7;
+
+      padding:22px;
+
+      border-radius:18px;
+
+      margin-top:25px;
+    }
+
+    /* COMMAND GRID */
+
+    .command-grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(250px,1fr));
+
+      gap:20px;
+
+      margin-top:25px;
+    }
+
+    .command-card{
+
+      background:
+      rgba(255,255,255,0.06);
+
+      padding:22px;
+
+      border-radius:18px;
+
+      transition:0.4s;
+    }
+
+    .command-card:hover{
+
+      transform:translateY(-8px);
+
+      background:
+      rgba(255,255,255,0.1);
+    }
+
+    /* FOOTER */
+
+    footer{
+
+      background:
+      rgba(15,23,42,0.85);
+
+      backdrop-filter:blur(12px);
+
+      color:white;
+
+      text-align:center;
+
+      padding:45px;
+
+      margin-top:50px;
+    }
+
+    /* ANIMATION */
+
+    @keyframes gradientBG{
+
+      0%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+
+    }
+
+    @keyframes float1{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes float2{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes slideDown{
+
+      from{
+        transform:translateY(-80px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      nav ul{
+        flex-direction:column;
+        align-items:center;
+      }
+
+    }
+
   </style>
+
 </head>
+
 <body>
-  <header>
-    <h1>Terraform Basics</h1>
-    <p>A beginner-friendly guide to Infrastructure as Code using Terraform</p>
-  </header>
 
-  <main class="container">
-    <section>
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        <i class="fas fa-code"></i>
+        Terraform Basics
+      </h1>
+
+      <p>
+        A beginner-friendly guide to Infrastructure as Code using Terraform
+      </p>
+
+      <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+        Start Learning
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <ul>
+
+      <li><a href="#intro">Introduction</a></li>
+
+      <li><a href="#workflow">Workflow</a></li>
+
+      <li><a href="#commands">Commands</a></li>
+
+      <li><a href="#variables">Variables</a></li>
+
+      <li><a href="#projects">Projects</a></li>
+
+    </ul>
+
+  </nav>
+
+  <div class="container">
+
+    <!-- INTRO -->
+
+    <div class="card" id="intro">
+
       <h2>What is Terraform?</h2>
+
       <p>
-        <strong>Terraform</strong> is an Infrastructure as Code tool used to create and manage infrastructure using configuration files.
-      </p>
-      <p>
-        Instead of manually creating resources in AWS, Azure, or GCP, you write code and Terraform creates them for you.
+        Terraform is an Infrastructure as Code (IaC)
+        tool used to create and manage cloud infrastructure
+        using configuration files.
       </p>
 
-      <pre><code>resource "aws_instance" "web_server" {
+<pre><code>resource "aws_instance" "web_server" {
+
   ami           = "ami-123456"
+
   instance_type = "t2.micro"
-}</code></pre>
 
-      <p>This tells Terraform to create an AWS EC2 instance.</p>
-    </section>
-
-    <section>
-      <h2>Why Terraform is Used</h2>
-      <ol>
-        <li>Create cloud infrastructure automatically</li>
-        <li>Manage servers, networks, databases, storage, and more</li>
-        <li>Avoid manual work in cloud consoles</li>
-        <li>Reuse infrastructure code</li>
-        <li>Track infrastructure changes</li>
-        <li>Create the same setup in dev, test, and production environments</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Important Terraform Terms</h2>
-
-      <h3>1. Provider</h3>
-      <p>A <strong>provider</strong> tells Terraform which platform to work with.</p>
-
-      <pre><code>provider "aws" {
-  region = "us-east-1"
-}</code></pre>
-
-      <p>Common providers include:</p>
-      <ul>
-        <li>AWS</li>
-        <li>Azure</li>
-        <li>GCP</li>
-        <li>Kubernetes</li>
-        <li>GitHub</li>
-        <li>Datadog</li>
-      </ul>
-
-      <div class="note">
-        Provider is like a connection between Terraform and the cloud platform.
-      </div>
-
-      <h3>2. Resource</h3>
-      <p>A <strong>resource</strong> is something Terraform creates or manages.</p>
-
-      <ul>
-        <li>EC2 instance</li>
-        <li>S3 bucket</li>
-        <li>VPC</li>
-        <li>Subnet</li>
-        <li>Security group</li>
-        <li>Database</li>
-        <li>Kubernetes cluster</li>
-      </ul>
-
-      <pre><code>resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-demo-bucket"
-}</code></pre>
-
-      <p>Here:</p>
-      <ul>
-        <li><code>aws_s3_bucket</code> = type of resource</li>
-        <li><code>my_bucket</code> = local name in Terraform</li>
-        <li><code>bucket</code> = actual bucket name</li>
-      </ul>
-
-      <h3>3. Terraform File</h3>
-      <p>Terraform files usually end with <code>.tf</code>.</p>
-
-      <p>Common files:</p>
-      <ul>
-        <li><code>main.tf</code></li>
-        <li><code>variables.tf</code></li>
-        <li><code>outputs.tf</code></li>
-        <li><code>provider.tf</code></li>
-        <li><code>terraform.tfvars</code></li>
-      </ul>
-
-      <h3>4. State File</h3>
-      <p>Terraform keeps a record of created infrastructure in a <strong>state file</strong>.</p>
-
-      <pre><code>terraform.tfstate</code></pre>
-
-      <p>Terraform uses this file to know:</p>
-      <ul>
-        <li>What resources exist</li>
-        <li>What changed</li>
-        <li>What should be created</li>
-        <li>What should be deleted</li>
-      </ul>
-
-      <div class="note">
-        The state file is very important. In real projects, it is usually stored remotely, such as in an S3 bucket or Terraform Cloud.
-      </div>
-    </section>
-
-    <section>
-      <h2>Basic Terraform Workflow</h2>
-
-      <h3>Step 1: Write Terraform Code</h3>
-      <p>Example file: <code>main.tf</code></p>
-
-      <pre><code>provider "aws" {
-  region = "us-east-1"
 }
+</code></pre>
 
-resource "aws_s3_bucket" "demo" {
-  bucket = "my-demo-terraform-bucket-123"
-}</code></pre>
+      <p>
+        Terraform creates cloud resources automatically
+        instead of manually creating them in AWS or Azure.
+      </p>
 
-      <h3>Step 2: Initialize Terraform</h3>
-      <pre><code>terraform init</code></pre>
-      <p>This downloads required provider plugins.</p>
+      <div class="note">
 
-      <h3>Step 3: Check the Plan</h3>
-      <pre><code>terraform plan</code></pre>
-      <p>This shows what Terraform will create, update, or delete.</p>
+        Terraform supports AWS,
+        Azure,
+        Google Cloud,
+        Kubernetes,
+        Docker,
+        and many more platforms.
 
-      <h3>Step 4: Apply Changes</h3>
-      <pre><code>terraform apply</code></pre>
-      <p>This creates the infrastructure. Terraform will ask for confirmation. Type <code>yes</code>.</p>
+      </div>
 
-      <h3>Step 5: Destroy Infrastructure</h3>
-      <pre><code>terraform destroy</code></pre>
-      <p>This deletes the resources created by Terraform.</p>
-    </section>
+    </div>
 
-    <section>
+    <!-- WHY TERRAFORM -->
+
+    <div class="card">
+
+      <h2>Why Terraform is Used</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-cloud"></i>
+
+          <h3>Cloud Automation</h3>
+
+          <p>
+            Automate infrastructure creation.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-sync"></i>
+
+          <h3>Consistency</h3>
+
+          <p>
+            Same infrastructure across environments.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-code-branch"></i>
+
+          <h3>Version Control</h3>
+
+          <p>
+            Track infrastructure changes easily.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- WORKFLOW -->
+
+    <div class="card" id="workflow">
+
+      <h2>Terraform Workflow</h2>
+
+<pre><code>Write Terraform Code
+        ↓
+terraform init
+        ↓
+terraform plan
+        ↓
+terraform apply
+        ↓
+Infrastructure Created
+</code></pre>
+
+    </div>
+
+    <!-- PROVIDERS -->
+
+    <div class="card">
+
+      <h2>Terraform Providers</h2>
+
+      <table>
+
+        <tr>
+
+          <th>Provider</th>
+
+          <th>Purpose</th>
+
+        </tr>
+
+        <tr>
+
+          <td>AWS</td>
+
+          <td>Manage AWS Infrastructure</td>
+
+        </tr>
+
+        <tr>
+
+          <td>Azure</td>
+
+          <td>Manage Azure Resources</td>
+
+        </tr>
+
+        <tr>
+
+          <td>Google Cloud</td>
+
+          <td>Manage GCP Infrastructure</td>
+
+        </tr>
+
+        <tr>
+
+          <td>Kubernetes</td>
+
+          <td>Manage Kubernetes Clusters</td>
+
+        </tr>
+
+      </table>
+
+    </div>
+
+    <!-- COMMANDS -->
+
+    <div class="card" id="commands">
+
       <h2>Main Terraform Commands</h2>
 
       <div class="command-grid">
+
         <div class="command-card">
+
           <h3>terraform init</h3>
-          <p>Initializes project and downloads providers.</p>
+
+          <p>
+            Initializes Terraform project.
+          </p>
+
         </div>
 
         <div class="command-card">
+
           <h3>terraform validate</h3>
-          <p>Checks whether the Terraform code is correct.</p>
+
+          <p>
+            Validates Terraform configuration.
+          </p>
+
         </div>
 
         <div class="command-card">
-          <h3>terraform fmt</h3>
-          <p>Formats Terraform code properly.</p>
-        </div>
 
-        <div class="command-card">
           <h3>terraform plan</h3>
-          <p>Shows what Terraform will do.</p>
+
+          <p>
+            Shows planned changes.
+          </p>
+
         </div>
 
         <div class="command-card">
+
           <h3>terraform apply</h3>
-          <p>Creates or updates infrastructure.</p>
+
+          <p>
+            Creates infrastructure resources.
+          </p>
+
         </div>
 
         <div class="command-card">
+
           <h3>terraform destroy</h3>
-          <p>Deletes infrastructure.</p>
+
+          <p>
+            Deletes infrastructure resources.
+          </p>
+
         </div>
 
         <div class="command-card">
-          <h3>terraform show</h3>
-          <p>Shows current state details.</p>
+
+          <h3>terraform fmt</h3>
+
+          <p>
+            Formats Terraform code.
+          </p>
+
         </div>
 
-        <div class="command-card">
-          <h3>terraform state list</h3>
-          <p>Lists resources tracked by Terraform.</p>
-        </div>
       </div>
-    </section>
 
-    <section>
+    </div>
+
+    <!-- VARIABLES -->
+
+    <div class="card" id="variables">
+
       <h2>Variables in Terraform</h2>
-      <p>Variables are used to avoid hardcoding values.</p>
 
-      <h3>Example: variables.tf</h3>
-      <pre><code>variable "region" {
+<pre><code>variable "region" {
+
   default = "us-east-1"
+
 }
 
 variable "instance_type" {
+
   default = "t2.micro"
-}</code></pre>
 
-      <h3>Use Variables in main.tf</h3>
-      <pre><code>provider "aws" {
-  region = var.region
 }
-
-resource "aws_instance" "web" {
-  ami           = "ami-123456"
-  instance_type = var.instance_type
-}</code></pre>
-    </section>
-
-    <section>
-      <h2>Output in Terraform</h2>
-      <p>Outputs display useful information after Terraform creates resources.</p>
-
-      <pre><code>output "instance_id" {
-  value = aws_instance.web.id
-}</code></pre>
-
-      <p>After <code>terraform apply</code>, it may show:</p>
-
-      <pre><code>instance_id = i-1234567890abcdef</code></pre>
-    </section>
-
-    <section>
-      <h2>Terraform Block Structure</h2>
-      <p>Basic Terraform syntax looks like this:</p>
-
-      <pre><code>block_type "label1" "label2" {
-  argument = value
-}</code></pre>
-
-      <p>Example:</p>
-
-      <pre><code>resource "aws_instance" "web" {
-  ami           = "ami-123456"
-  instance_type = "t2.micro"
-}</code></pre>
-
-      <ul>
-        <li><code>resource</code> = block type</li>
-        <li><code>aws_instance</code> = resource type</li>
-        <li><code>web</code> = local name</li>
-        <li><code>ami</code> = argument</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Terraform vs Manual Cloud Setup</h2>
-
-      <h3>Manual Setup</h3>
-      <ul>
-        <li>Login to AWS</li>
-        <li>Go to EC2</li>
-        <li>Click launch instance</li>
-        <li>Choose AMI</li>
-        <li>Choose instance type</li>
-        <li>Configure network</li>
-        <li>Create instance</li>
-      </ul>
-
-      <h3>Terraform Setup</h3>
-      <pre><code>resource "aws_instance" "web" {
-  ami           = "ami-123456"
-  instance_type = "t2.micro"
-}</code></pre>
-
-      <p>Then run:</p>
-      <pre><code>terraform apply</code></pre>
-
-      <p>Terraform creates it automatically.</p>
-    </section>
-
-    <section>
-      <h2>Simple Example: Create S3 Bucket</h2>
-
-      <pre><code>provider "aws" {
-  region = "us-east-1"
-}
-
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "navya-demo-bucket-12345"
-}</code></pre>
-
-      <p>Commands:</p>
-      <pre><code>terraform init
-terraform plan
-terraform apply</code></pre>
-
-      <p>To delete:</p>
-      <pre><code>terraform destroy</code></pre>
-    </section>
-
-    <section>
-      <h2>Simple Explanation</h2>
-      <p>Terraform is like a blueprint for infrastructure.</p>
-      <p>You write what infrastructure you want:</p>
-
-      <ul>
-        <li>I want one server</li>
-        <li>I want one database</li>
-        <li>I want one network</li>
-        <li>I want one storage bucket</li>
-      </ul>
+</code></pre>
 
       <p>
-        Terraform reads that code and creates everything automatically in the cloud.
+        Variables help avoid hardcoding values.
+      </p>
+
+    </div>
+
+    <!-- OUTPUT -->
+
+    <div class="card">
+
+      <h2>Terraform Output Example</h2>
+
+<pre><code>output "instance_id" {
+
+  value = aws_instance.web.id
+
+}
+</code></pre>
+
+      <p>
+        Outputs display useful information
+        after infrastructure is created.
+      </p>
+
+    </div>
+
+    <!-- STATE FILE -->
+
+    <div class="card">
+
+      <h2>Terraform State File</h2>
+
+<pre><code>terraform.tfstate
+</code></pre>
+
+      <p>
+        Terraform uses the state file to track
+        infrastructure resources.
       </p>
 
       <div class="note">
-        Terraform helps DevOps engineers manage infrastructure easily, repeatedly, and safely.
+
+        In real DevOps projects,
+        state files are stored remotely
+        using S3 or Terraform Cloud.
+
       </div>
-    </section>
-  </main>
+
+    </div>
+
+    <!-- PROJECTS -->
+
+    <div class="card" id="projects">
+
+      <h2>Real-Time Terraform Projects</h2>
+
+      <ol>
+
+        <li>Create AWS EC2 Infrastructure</li>
+
+        <li>Deploy S3 Buckets</li>
+
+        <li>Create VPC Architecture</li>
+
+        <li>Provision Kubernetes Cluster</li>
+
+        <li>Automate Azure Infrastructure</li>
+
+        <li>Deploy Multi-Tier Cloud Applications</li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
 
   <footer>
-    <p>Terraform Basics HTML Page</p>
+
+    <h2>Terraform Learning Portal</h2>
+
+    <p>
+      Beginner to Advanced Terraform & IaC Learning Platform
+    </p>
+
+    <p>
+      © 2026 Terraform Mastery Hub
+    </p>
+
   </footer>
+
 </body>
+
 </html>
