@@ -1,372 +1,781 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jenkins Basics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Kubernetes Mastery Hub</title>
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background: #f4f6f8;
-      color: #222;
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#f4f7fb;
+      color:#222;
+      line-height:1.8;
     }
 
-    header {
-      background: #1f2937;
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
     }
 
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
+    ::-webkit-scrollbar-thumb{
+      background:#326ce5;
+      border-radius:10px;
     }
 
-    header p {
-      font-size: 18px;
-      color: #d1d5db;
+    /* HERO */
+
+    .hero{
+
+      height:100vh;
+
+      background:
+      linear-gradient(rgba(0,0,0,0.75),
+      rgba(0,0,0,0.75)),
+      url('https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1400&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+
+      color:white;
+      overflow:hidden;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .hero-content{
+      animation:fadeIn 2s ease;
     }
 
-    .card {
-      background: white;
-      margin-bottom: 25px;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    .hero-content h1{
+      font-size:80px;
+      margin-bottom:20px;
+      animation:slideDown 2s ease;
     }
 
-    h2 {
-      color: #1f2937;
-      margin-bottom: 15px;
-      border-left: 5px solid #2563eb;
-      padding-left: 10px;
+    .hero-content p{
+      font-size:24px;
+      margin-bottom:35px;
     }
 
-    h3 {
-      color: #2563eb;
-      margin-top: 18px;
-      margin-bottom: 8px;
+    .hero-content button{
+
+      padding:15px 40px;
+      border:none;
+      border-radius:50px;
+      background:#326ce5;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+
+      transition:0.4s;
     }
 
-    ul, ol {
-      margin-left: 25px;
-      margin-top: 10px;
+    .hero-content button:hover{
+      background:#1e40af;
+      transform:scale(1.08);
     }
 
-    li {
-      margin-bottom: 8px;
+    /* NAVBAR */
+
+    nav{
+
+      background:#0f172a;
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      padding:15px 0;
+
+      box-shadow:0 2px 10px rgba(0,0,0,0.2);
     }
 
-    .highlight {
-      background: #e0f2fe;
-      padding: 15px;
-      border-left: 5px solid #0284c7;
-      border-radius: 8px;
-      margin-top: 15px;
+    nav ul{
+      display:flex;
+      justify-content:center;
+      list-style:none;
+      flex-wrap:wrap;
     }
 
-    pre {
-      background: #111827;
-      color: #e5e7eb;
-      padding: 18px;
-      border-radius: 10px;
-      overflow-x: auto;
-      margin-top: 15px;
-      font-size: 15px;
+    nav ul li{
+      margin:10px 20px;
     }
 
-    code {
-      font-family: Consolas, monospace;
+    nav ul li a{
+
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:0.3s;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
+    nav ul li a:hover{
+      color:#60a5fa;
     }
 
-    th, td {
-      border: 1px solid #d1d5db;
-      padding: 12px;
-      text-align: left;
+    /* CONTAINER */
+
+    .container{
+      width:90%;
+      max-width:1250px;
+      margin:50px auto;
     }
 
-    th {
-      background: #2563eb;
-      color: white;
+    /* CARD */
+
+    .card{
+
+      background:white;
+      padding:40px;
+      margin-bottom:35px;
+
+      border-radius:18px;
+
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+
+      transition:0.4s;
+
+      animation:fadeUp 1s ease;
     }
 
-    tr:nth-child(even) {
-      background: #f9fafb;
+    .card:hover{
+      transform:translateY(-8px);
     }
 
-    .workflow {
-      background: #ecfdf5;
-      border-left: 5px solid #16a34a;
-      padding: 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-align: center;
-      margin-top: 15px;
+    h2{
+
+      color:#326ce5;
+      margin-bottom:20px;
+
+      border-left:6px solid #326ce5;
+      padding-left:15px;
     }
 
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #1f2937;
-      color: white;
-      margin-top: 40px;
+    h3{
+      margin-top:25px;
+      margin-bottom:15px;
+      color:#0f172a;
     }
+
+    p{
+      margin-bottom:18px;
+    }
+
+    ul,ol{
+      margin-left:25px;
+      margin-bottom:20px;
+    }
+
+    li{
+      margin-bottom:10px;
+    }
+
+    /* TABLE */
+
+    table{
+
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+      margin-bottom:20px;
+    }
+
+    table th{
+
+      background:#326ce5;
+      color:white;
+      padding:14px;
+      text-align:left;
+    }
+
+    table td{
+      border:1px solid #ddd;
+      padding:14px;
+    }
+
+    table tr:nth-child(even){
+      background:#f9fafb;
+    }
+
+    /* CODE */
+
+    pre{
+
+      background:#111827;
+      color:#00ff99;
+
+      padding:22px;
+
+      border-radius:14px;
+
+      overflow-x:auto;
+
+      margin-top:20px;
+      margin-bottom:25px;
+    }
+
+    code{
+      color:#ffcc00;
+    }
+
+    /* GRID */
+
+    .grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(250px,1fr));
+
+      gap:25px;
+      margin-top:25px;
+    }
+
+    .grid-card{
+
+      background:#1e293b;
+      color:white;
+
+      padding:30px;
+      border-radius:18px;
+
+      text-align:center;
+
+      transition:0.4s;
+    }
+
+    .grid-card:hover{
+
+      transform:translateY(-8px) scale(1.03);
+
+      background:#326ce5;
+    }
+
+    .grid-card i{
+
+      font-size:55px;
+      margin-bottom:18px;
+    }
+
+    /* IMAGE */
+
+    .hero-image{
+
+      width:100%;
+      border-radius:15px;
+      margin-top:25px;
+
+      transition:0.4s;
+    }
+
+    .hero-image:hover{
+      transform:scale(1.02);
+    }
+
+    /* INFO BOX */
+
+    .info-box{
+
+      background:#eff6ff;
+      border-left:6px solid #326ce5;
+
+      padding:20px;
+
+      border-radius:12px;
+
+      margin-top:20px;
+    }
+
+    /* STATS */
+
+    .stats{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(220px,1fr));
+
+      gap:25px;
+
+      margin-top:35px;
+    }
+
+    .stat-box{
+
+      background:white;
+      text-align:center;
+
+      padding:35px;
+
+      border-radius:18px;
+
+      box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+      transition:0.4s;
+    }
+
+    .stat-box:hover{
+      transform:translateY(-8px);
+    }
+
+    .stat-box h1{
+      color:#326ce5;
+      font-size:50px;
+    }
+
+    /* FOOTER */
+
+    footer{
+
+      background:#0f172a;
+      color:white;
+
+      text-align:center;
+
+      padding:40px;
+      margin-top:50px;
+    }
+
+    footer p{
+      margin-top:10px;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeIn{
+
+      from{
+        opacity:0;
+      }
+
+      to{
+        opacity:1;
+      }
+    }
+
+    @keyframes slideDown{
+
+      from{
+        transform:translateY(-80px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    @keyframes fadeUp{
+
+      from{
+        transform:translateY(40px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      nav ul{
+        flex-direction:column;
+        align-items:center;
+      }
+
+    }
+
   </style>
+
 </head>
+
 <body>
-  <header>
-    <h1>Jenkins Basics</h1>
-    <p>A beginner-friendly guide to Jenkins, CI/CD, pipelines, builds, plugins, and Maven</p>
-  </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>What is Jenkins?</h2>
-      <p><strong>Jenkins</strong> is an automation tool mainly used for <strong>CI/CD</strong>.</p>
+  <!-- HERO -->
 
-      <h3>CI — Continuous Integration</h3>
-      <p>Developers push code regularly, and Jenkins automatically builds and tests it.</p>
+  <section class="hero">
 
-      <h3>CD — Continuous Delivery / Deployment</h3>
-      <p>Jenkins automatically prepares or deploys the application to servers.</p>
-    </section>
+    <div class="hero-content">
 
-    <section class="card">
-      <h2>Why Jenkins is Used</h2>
-      <p>Jenkins helps teams automate tasks like:</p>
-      <ol>
-        <li>Pulling code from GitHub or GitLab</li>
-        <li>Building the application</li>
-        <li>Running tests</li>
-        <li>Creating build files</li>
-        <li>Deploying the application</li>
-        <li>Sending success or failure notifications</li>
-      </ol>
-    </section>
+      <h1>
+        <i class="fas fa-dharmachakra"></i>
+        Kubernetes Mastery Hub
+      </h1>
 
-    <section class="card">
-      <h2>Simple Real-Time Scenario</h2>
-      <p>Imagine a Java developer writes code and pushes it to GitHub.</p>
+      <p>
+        Learn Kubernetes from Beginner to Advanced with Real DevOps Concepts
+      </p>
 
-      <div class="highlight">
-        <p><strong>Without Jenkins:</strong></p>
-        <p>Developer pushes code → manually download code → manually run Maven → manually test → manually deploy</p>
+      <button onclick="window.location.href='#intro'">
+        Start Learning
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <ul>
+
+      <li><a href="#intro">Introduction</a></li>
+
+      <li><a href="#architecture">Architecture</a></li>
+
+      <li><a href="#pods">Pods</a></li>
+
+      <li><a href="#services">Services</a></li>
+
+      <li><a href="#security">Security</a></li>
+
+      <li><a href="#monitoring">Monitoring</a></li>
+
+      <li><a href="#projects">Projects</a></li>
+
+    </ul>
+
+  </nav>
+
+  <div class="container">
+
+    <!-- INTRO -->
+
+    <div class="card" id="intro">
+
+      <h2>Introduction to Kubernetes</h2>
+
+      <p>
+
+        Kubernetes is an open-source container orchestration platform
+        designed to automate deployment, scaling, and management
+        of containerized applications.
+
+      </p>
+
+      <img class="hero-image"
+      src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="info-box">
+
+        <strong>Did You Know?</strong><br>
+
+        Kubernetes was originally developed by Google
+        and is now maintained by the Cloud Native Computing Foundation (CNCF).
+
       </div>
 
-      <div class="highlight">
-        <p><strong>With Jenkins:</strong></p>
-        <p>Developer pushes code → Jenkins automatically starts → pulls code → builds using Maven → runs tests → deploys</p>
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <h1>95%</h1>
+        <p>Cloud Native Companies Use Kubernetes</p>
       </div>
 
-      <p>So Jenkins reduces manual work and saves time.</p>
-    </section>
-
-    <section class="card">
-      <h2>Important Jenkins Terms</h2>
-
-      <h3>1. Job / Project</h3>
-      <p>A <strong>Jenkins job</strong> is a task created in Jenkins.</p>
-      <pre><code>Build Java Application</code></pre>
-
-      <h3>2. Build</h3>
-      <p>A <strong>build</strong> is one execution or run of a Jenkins job.</p>
-      <pre><code>Build #1
-Build #2
-Build #3</code></pre>
-
-      <h3>3. Pipeline</h3>
-      <p>A <strong>pipeline</strong> is a series of steps used to automate the software delivery process.</p>
-      <pre><code>Code → Build → Test → Deploy</code></pre>
-
-      <h3>4. Jenkinsfile</h3>
-      <p>A <strong>Jenkinsfile</strong> contains pipeline instructions.</p>
-
-      <h3>5. Stage</h3>
-      <p>A <strong>stage</strong> is one major section in a pipeline.</p>
-      <pre><code>Build stage
-Test stage
-Deploy stage</code></pre>
-
-      <h3>6. Step</h3>
-      <p>A <strong>step</strong> is a command inside a stage.</p>
-      <pre><code>echo 'Building the application'
-sh 'mvn clean package'</code></pre>
-    </section>
-
-    <section class="card">
-      <h2>Simple Jenkinsfile Example</h2>
-      <pre><code>pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building the application...'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-            }
-        }
-    }
-}</code></pre>
-    </section>
-
-    <section class="card">
-      <h2>Jenkins Pipeline Example for Java Maven Project</h2>
-      <pre><code>pipeline {
-    agent any
-
-    stages {
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/example/my-java-app.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application to server'
-            }
-        }
-    }
-}</code></pre>
-    </section>
-
-    <section class="card">
-      <h2>What is Maven in Jenkins?</h2>
-      <p><strong>Maven</strong> is a build tool for Java projects.</p>
-      <p>It helps to:</p>
-      <ul>
-        <li>Compile code</li>
-        <li>Download dependencies</li>
-        <li>Run tests</li>
-        <li>Create JAR or WAR files</li>
-      </ul>
-
-      <p>Common Maven command:</p>
-      <pre><code>mvn clean package</code></pre>
-
-      <div class="highlight">
-        <p><strong>clean</strong> → removes old build files</p>
-        <p><strong>package</strong> → creates a new JAR or WAR file</p>
+      <div class="stat-box">
+        <h1>5K+</h1>
+        <p>Open Source Contributors</p>
       </div>
-    </section>
 
-    <section class="card">
-      <h2>What are Jenkins Plugins?</h2>
-      <p>Plugins are add-ons that give Jenkins extra features.</p>
+      <div class="stat-box">
+        <h1>100%</h1>
+        <p>Automation & Scalability</p>
+      </div>
+
+    </div>
+
+    <!-- ARCHITECTURE -->
+
+    <div class="card" id="architecture">
+
+      <h2>Kubernetes Architecture</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-server"></i>
+
+          <h3>API Server</h3>
+
+          <p>
+            Main entry point for all Kubernetes cluster operations.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-database"></i>
+
+          <h3>etcd</h3>
+
+          <p>
+            Distributed key-value database storing cluster data.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-network-wired"></i>
+
+          <h3>Scheduler</h3>
+
+          <p>
+            Assigns Pods to worker nodes automatically.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-cogs"></i>
+
+          <h3>Controller Manager</h3>
+
+          <p>
+            Maintains desired cluster state continuously.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PODS -->
+
+    <div class="card" id="pods">
+
+      <h2>Kubernetes Pods</h2>
+
+      <p>
+
+        Pods are the smallest deployable units in Kubernetes.
+        Each Pod can contain one or more containers.
+
+      </p>
+
+<pre>
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: nginx-pod
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+</pre>
+
+    </div>
+
+    <!-- SERVICES -->
+
+    <div class="card" id="services">
+
+      <h2>Kubernetes Services</h2>
 
       <table>
-        <thead>
-          <tr>
-            <th>Plugin</th>
-            <th>Use</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Git Plugin</td>
-            <td>Connect Jenkins with GitHub or GitLab</td>
-          </tr>
-          <tr>
-            <td>Maven Plugin</td>
-            <td>Build Java Maven projects</td>
-          </tr>
-          <tr>
-            <td>Docker Plugin</td>
-            <td>Work with Docker</td>
-          </tr>
-          <tr>
-            <td>Kubernetes Plugin</td>
-            <td>Deploy using Kubernetes</td>
-          </tr>
-          <tr>
-            <td>Slack Plugin</td>
-            <td>Send build notifications</td>
-          </tr>
-          <tr>
-            <td>SonarQube Plugin</td>
-            <td>Code quality scanning</td>
-          </tr>
-        </tbody>
+
+        <tr>
+          <th>Service Type</th>
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td>ClusterIP</td>
+          <td>Internal communication inside cluster</td>
+        </tr>
+
+        <tr>
+          <td>NodePort</td>
+          <td>Expose service externally</td>
+        </tr>
+
+        <tr>
+          <td>LoadBalancer</td>
+          <td>Cloud provider load balancer</td>
+        </tr>
+
       </table>
-    </section>
 
-    <section class="card">
-      <h2>Jenkins Basic Workflow</h2>
-      <div class="workflow">
-        Developer writes code → Pushes code to GitHub → Jenkins detects change → Pulls latest code → Builds application → Runs tests → Deploys application → Team gets result
+    </div>
+
+    <!-- SECURITY -->
+
+    <div class="card" id="security">
+
+      <h2>Kubernetes Security</h2>
+
+      <ul>
+
+        <li>Enable RBAC</li>
+
+        <li>Use Namespaces</li>
+
+        <li>Store secrets securely</li>
+
+        <li>Use Network Policies</li>
+
+        <li>Enable Pod Security Policies</li>
+
+      </ul>
+
+<pre>
+kubectl create namespace dev
+
+kubectl get ns
+</pre>
+
+    </div>
+
+    <!-- MONITORING -->
+
+    <div class="card" id="monitoring">
+
+      <h2>Monitoring & Logging</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-chart-line"></i>
+
+          <h3>Prometheus</h3>
+
+          <p>
+            Metrics collection & alerting tool.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-chart-bar"></i>
+
+          <h3>Grafana</h3>
+
+          <p>
+            Visualization dashboards & analytics.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-file-alt"></i>
+
+          <h3>ELK Stack</h3>
+
+          <p>
+            Centralized logging solution.
+          </p>
+
+        </div>
+
       </div>
-    </section>
 
-    <section class="card">
-      <h2>Common Jenkins Commands in Pipeline</h2>
-      <pre><code>echo 'message'</code></pre>
-      <p>Prints a message.</p>
+    </div>
 
-      <pre><code>sh 'ls'</code></pre>
-      <p>Runs a Linux command.</p>
+    <!-- PROJECTS -->
 
-      <pre><code>sh 'mvn clean package'</code></pre>
-      <p>Builds a Java Maven project.</p>
+    <div class="card" id="projects">
 
-      <pre><code>git 'repo-url'</code></pre>
-      <p>Pulls code from a Git repository.</p>
-    </section>
+      <h2>Real-Time Kubernetes Projects</h2>
 
-    <section class="card">
-      <h2>In Simple Words</h2>
-      <p>Jenkins is like an <strong>automatic worker</strong>.</p>
-      <div class="highlight">
-        <p>When a developer updates code, Jenkins automatically takes the latest code, builds it, tests it, and deploys it.</p>
+      <ol>
+
+        <li>Deploy NGINX on Kubernetes</li>
+
+        <li>CI/CD Pipeline using Jenkins & Kubernetes</li>
+
+        <li>Monitoring Setup using Prometheus & Grafana</li>
+
+        <li>Deploy Microservices Application</li>
+
+        <li>Kubernetes Cluster on AWS EKS</li>
+
+      </ol>
+
+      <div class="info-box">
+
+        <strong>Pro Tip:</strong><br>
+
+        Build real projects and deploy applications
+        on Minikube, EKS, AKS, or GKE to gain practical experience.
+
       </div>
-      <p>So Jenkins saves time, reduces mistakes, and makes software delivery faster.</p>
-    </section>
-  </main>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
 
   <footer>
-    <p>Jenkins Basics HTML Page</p>
+
+    <h2>Kubernetes Learning Portal</h2>
+
+    <p>
+      Beginner to Advanced Kubernetes & DevOps Learning Platform
+    </p>
+
+    <p>
+      © 2026 Kubernetes Mastery Hub
+    </p>
+
   </footer>
+
 </body>
+
 </html>
