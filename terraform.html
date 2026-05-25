@@ -44,10 +44,10 @@
       linear-gradient(
       -45deg,
       #0f172a,
-      #1e1b4b,
-      #312e81,
-      #581c87,
-      #7c3aed,
+      #0f3b66,
+      #0c4a6e,
+      #0369a1,
+      #0284c7,
       #0f172a);
 
       background-size:400% 400%;
@@ -98,7 +98,7 @@
       height:700px;
 
       background:
-      rgba(168,85,247,0.20);
+      rgba(56,189,248,0.18);
 
       border-radius:50%;
 
@@ -120,7 +120,7 @@
       height:500px;
 
       background:
-      rgba(124,58,237,0.18);
+      rgba(14,165,233,0.18);
 
       border-radius:50%;
 
@@ -145,7 +145,7 @@
       margin-bottom:20px;
 
       text-shadow:
-      0 0 25px rgba(168,85,247,0.9);
+      0 0 25px rgba(56,189,248,0.9);
 
       animation:slideDown 2s ease;
     }
@@ -154,7 +154,7 @@
 
       font-size:25px;
 
-      color:#ddd6fe;
+      color:#dbeafe;
 
       margin-bottom:35px;
     }
@@ -170,8 +170,8 @@
       background:
       linear-gradient(
       90deg,
-      #7c3aed,
-      #a855f7);
+      #0284c7,
+      #38bdf8);
 
       color:white;
 
@@ -182,7 +182,7 @@
       transition:0.4s;
 
       box-shadow:
-      0 0 25px rgba(168,85,247,0.5);
+      0 0 25px rgba(56,189,248,0.5);
     }
 
     .hero-content button:hover{
@@ -190,7 +190,7 @@
       transform:scale(1.08);
 
       box-shadow:
-      0 0 40px rgba(168,85,247,1);
+      0 0 40px rgba(56,189,248,1);
     }
 
     /* NAVBAR */
@@ -246,7 +246,7 @@
       width:0;
       height:3px;
 
-      background:#c084fc;
+      background:#38bdf8;
 
       left:0;
       bottom:-6px;
@@ -261,7 +261,7 @@
 
     nav a:hover{
 
-      color:#c084fc;
+      color:#38bdf8;
     }
 
     /* CONTAINER */
@@ -307,14 +307,14 @@
       translateY(-10px);
 
       box-shadow:
-      0 0 30px rgba(168,85,247,0.4);
+      0 0 30px rgba(56,189,248,0.4);
     }
 
     /* HEADINGS */
 
     h2{
 
-      color:#c084fc;
+      color:#38bdf8;
 
       font-size:34px;
 
@@ -323,14 +323,14 @@
       padding-left:18px;
 
       border-left:
-      6px solid #a855f7;
+      6px solid #0ea5e9;
     }
 
     h3{
 
       margin-bottom:15px;
 
-      color:#ffffff;
+      color:white;
     }
 
     /* GRID */
@@ -371,15 +371,15 @@
       background:
       linear-gradient(
       145deg,
-      #7c3aed,
-      #a855f7);
+      #0284c7,
+      #38bdf8);
 
       transform:
       translateY(-10px)
       scale(1.03);
 
       box-shadow:
-      0 0 30px rgba(168,85,247,0.8);
+      0 0 30px rgba(56,189,248,0.8);
     }
 
     .grid-card i{
@@ -388,7 +388,7 @@
 
       margin-bottom:18px;
 
-      color:#c084fc;
+      color:#38bdf8;
     }
 
     /* TABLE */
@@ -411,8 +411,8 @@
       background:
       linear-gradient(
       90deg,
-      #7c3aed,
-      #a855f7);
+      #0284c7,
+      #38bdf8);
 
       color:white;
 
@@ -457,13 +457,13 @@
       margin-top:25px;
 
       border-left:
-      5px solid #7c3aed;
+      5px solid #38bdf8;
 
       box-shadow:
-      0 0 25px rgba(168,85,247,0.25);
+      0 0 25px rgba(56,189,248,0.25);
     }
 
-    /* INFO BOX */
+    /* NOTE */
 
     .note{
 
@@ -471,7 +471,7 @@
       rgba(255,255,255,0.06);
 
       border-left:
-      6px solid #a855f7;
+      6px solid #38bdf8;
 
       padding:22px;
 
@@ -480,38 +480,63 @@
       margin-top:25px;
     }
 
-    /* COMMAND GRID */
+    /* STATS */
 
-    .command-grid{
+    .stats{
 
       display:grid;
 
       grid-template-columns:
-      repeat(auto-fit,minmax(250px,1fr));
+      repeat(auto-fit,minmax(220px,1fr));
 
-      gap:20px;
+      gap:25px;
 
-      margin-top:25px;
+      margin-bottom:40px;
     }
 
-    .command-card{
+    .stat-box{
 
       background:
-      rgba(255,255,255,0.06);
+      rgba(255,255,255,0.08);
 
-      padding:22px;
+      backdrop-filter:blur(15px);
 
-      border-radius:18px;
+      padding:35px;
 
-      transition:0.4s;
+      border-radius:20px;
+
+      text-align:center;
+
+      border:
+      1px solid rgba(255,255,255,0.08);
+
+      transition:0.5s;
     }
 
-    .command-card:hover{
-
-      transform:translateY(-8px);
+    .stat-box:hover{
 
       background:
-      rgba(255,255,255,0.1);
+      linear-gradient(
+      135deg,
+      #0284c7,
+      #38bdf8);
+
+      transform:translateY(-10px);
+
+      box-shadow:
+      0 0 30px rgba(56,189,248,0.7);
+    }
+
+    .stat-box h1{
+
+      color:#38bdf8;
+
+      font-size:50px;
+    }
+
+    .stat-box:hover h1{
+
+      color:white;
     }
 
     /* FOOTER */
@@ -532,7 +557,7 @@
       margin-top:50px;
     }
 
-    /* ANIMATION */
+    /* ANIMATIONS */
 
     @keyframes gradientBG{
 
@@ -634,7 +659,7 @@
       </h1>
 
       <p>
-        A beginner-friendly guide to Infrastructure as Code using Terraform
+        Learn Infrastructure as Code using Terraform
       </p>
 
       <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
@@ -645,7 +670,7 @@
 
   </section>
 
-  <!-- NAVBAR -->
+  <!-- NAVIGATION -->
 
   <nav>
 
@@ -657,7 +682,7 @@
 
       <li><a href="#commands">Commands</a></li>
 
-      <li><a href="#variables">Variables</a></li>
+      <li><a href="#providers">Providers</a></li>
 
       <li><a href="#projects">Projects</a></li>
 
@@ -667,6 +692,36 @@
 
   <div class="container">
 
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat-box">
+
+        <h1>100+</h1>
+
+        <p>Terraform Providers</p>
+
+      </div>
+
+      <div class="stat-box">
+
+        <h1>IaC</h1>
+
+        <p>Infrastructure Automation</p>
+
+      </div>
+
+      <div class="stat-box">
+
+        <h1>Cloud</h1>
+
+        <p>AWS, Azure & GCP Support</p>
+
+      </div>
+
+    </div>
+
     <!-- INTRO -->
 
     <div class="card" id="intro">
@@ -675,80 +730,31 @@
 
       <p>
         Terraform is an Infrastructure as Code (IaC)
-        tool used to create and manage cloud infrastructure
-        using configuration files.
+        tool developed by HashiCorp.
       </p>
 
-<pre><code>resource "aws_instance" "web_server" {
+      <p>
+        It helps automate infrastructure creation
+        using code instead of manual cloud setup.
+      </p>
 
-  ami           = "ami-123456"
+<pre><code>resource "aws_instance" "web" {
+
+  ami = "ami-123456"
 
   instance_type = "t2.micro"
 
 }
 </code></pre>
 
-      <p>
-        Terraform creates cloud resources automatically
-        instead of manually creating them in AWS or Azure.
-      </p>
-
       <div class="note">
 
         Terraform supports AWS,
         Azure,
-        Google Cloud,
+        GCP,
         Kubernetes,
         Docker,
-        and many more platforms.
-
-      </div>
-
-    </div>
-
-    <!-- WHY TERRAFORM -->
-
-    <div class="card">
-
-      <h2>Why Terraform is Used</h2>
-
-      <div class="grid">
-
-        <div class="grid-card">
-
-          <i class="fas fa-cloud"></i>
-
-          <h3>Cloud Automation</h3>
-
-          <p>
-            Automate infrastructure creation.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-sync"></i>
-
-          <h3>Consistency</h3>
-
-          <p>
-            Same infrastructure across environments.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-code-branch"></i>
-
-          <h3>Version Control</h3>
-
-          <p>
-            Track infrastructure changes easily.
-          </p>
-
-        </div>
+        and many more technologies.
 
       </div>
 
@@ -773,51 +779,51 @@ Infrastructure Created
 
     </div>
 
-    <!-- PROVIDERS -->
+    <!-- COMMANDS -->
 
-    <div class="card">
+    <div class="card" id="commands">
 
-      <h2>Terraform Providers</h2>
+      <h2>Terraform Commands</h2>
 
       <table>
 
         <tr>
 
-          <th>Provider</th>
+          <th>Command</th>
 
-          <th>Purpose</th>
-
-        </tr>
-
-        <tr>
-
-          <td>AWS</td>
-
-          <td>Manage AWS Infrastructure</td>
+          <th>Description</th>
 
         </tr>
 
         <tr>
 
-          <td>Azure</td>
+          <td>terraform init</td>
 
-          <td>Manage Azure Resources</td>
-
-        </tr>
-
-        <tr>
-
-          <td>Google Cloud</td>
-
-          <td>Manage GCP Infrastructure</td>
+          <td>Initialize Terraform project</td>
 
         </tr>
 
         <tr>
 
-          <td>Kubernetes</td>
+          <td>terraform plan</td>
 
-          <td>Manage Kubernetes Clusters</td>
+          <td>Preview changes</td>
+
+        </tr>
+
+        <tr>
+
+          <td>terraform apply</td>
+
+          <td>Create infrastructure</td>
+
+        </tr>
+
+        <tr>
+
+          <td>terraform destroy</td>
+
+          <td>Delete infrastructure</td>
 
         </tr>
 
@@ -825,142 +831,49 @@ Infrastructure Created
 
     </div>
 
-    <!-- COMMANDS -->
+    <!-- PROVIDERS -->
 
-    <div class="card" id="commands">
+    <div class="card" id="providers">
 
-      <h2>Main Terraform Commands</h2>
+      <h2>Terraform Providers</h2>
 
-      <div class="command-grid">
+      <div class="grid">
 
-        <div class="command-card">
+        <div class="grid-card">
 
-          <h3>terraform init</h3>
+          <i class="fab fa-aws"></i>
+
+          <h3>AWS</h3>
 
           <p>
-            Initializes Terraform project.
+            Provision AWS Infrastructure.
           </p>
 
         </div>
 
-        <div class="command-card">
+        <div class="grid-card">
 
-          <h3>terraform validate</h3>
+          <i class="fab fa-microsoft"></i>
+
+          <h3>Azure</h3>
 
           <p>
-            Validates Terraform configuration.
+            Manage Azure Cloud Resources.
           </p>
 
         </div>
 
-        <div class="command-card">
+        <div class="grid-card">
 
-          <h3>terraform plan</h3>
+          <i class="fab fa-google"></i>
+
+          <h3>Google Cloud</h3>
 
           <p>
-            Shows planned changes.
+            Manage GCP Infrastructure.
           </p>
 
         </div>
-
-        <div class="command-card">
-
-          <h3>terraform apply</h3>
-
-          <p>
-            Creates infrastructure resources.
-          </p>
-
-        </div>
-
-        <div class="command-card">
-
-          <h3>terraform destroy</h3>
-
-          <p>
-            Deletes infrastructure resources.
-          </p>
-
-        </div>
-
-        <div class="command-card">
-
-          <h3>terraform fmt</h3>
-
-          <p>
-            Formats Terraform code.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- VARIABLES -->
-
-    <div class="card" id="variables">
-
-      <h2>Variables in Terraform</h2>
-
-<pre><code>variable "region" {
-
-  default = "us-east-1"
-
-}
-
-variable "instance_type" {
-
-  default = "t2.micro"
-
-}
-</code></pre>
-
-      <p>
-        Variables help avoid hardcoding values.
-      </p>
-
-    </div>
-
-    <!-- OUTPUT -->
-
-    <div class="card">
-
-      <h2>Terraform Output Example</h2>
-
-<pre><code>output "instance_id" {
-
-  value = aws_instance.web.id
-
-}
-</code></pre>
-
-      <p>
-        Outputs display useful information
-        after infrastructure is created.
-      </p>
-
-    </div>
-
-    <!-- STATE FILE -->
-
-    <div class="card">
-
-      <h2>Terraform State File</h2>
-
-<pre><code>terraform.tfstate
-</code></pre>
-
-      <p>
-        Terraform uses the state file to track
-        infrastructure resources.
-      </p>
-
-      <div class="note">
-
-        In real DevOps projects,
-        state files are stored remotely
-        using S3 or Terraform Cloud.
 
       </div>
 
@@ -976,15 +889,13 @@ variable "instance_type" {
 
         <li>Create AWS EC2 Infrastructure</li>
 
-        <li>Deploy S3 Buckets</li>
+        <li>Deploy VPC using Terraform</li>
 
-        <li>Create VPC Architecture</li>
+        <li>Create Kubernetes Cluster</li>
 
-        <li>Provision Kubernetes Cluster</li>
+        <li>Provision Azure Infrastructure</li>
 
-        <li>Automate Azure Infrastructure</li>
-
-        <li>Deploy Multi-Tier Cloud Applications</li>
+        <li>Deploy Multi-Tier Applications</li>
 
       </ol>
 
@@ -999,7 +910,7 @@ variable "instance_type" {
     <h2>Terraform Learning Portal</h2>
 
     <p>
-      Beginner to Advanced Terraform & IaC Learning Platform
+      Beginner to Advanced Terraform Learning Platform
     </p>
 
     <p>
