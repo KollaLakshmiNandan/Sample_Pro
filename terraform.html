@@ -1,1 +1,452 @@
-this is mine
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terraform Basics</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #623ce4;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 25px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: #623ce4;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: #333;
+      margin: 20px 0 10px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    ul, ol {
+      margin-left: 25px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: #eef0f6;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background: #1e1e2f;
+      color: #f8f8f2;
+      padding: 18px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    .note {
+      background: #f0ecff;
+      border-left: 5px solid #623ce4;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .command-card {
+      background: #f8f9fc;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #222;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Terraform Basics</h1>
+    <p>A beginner-friendly guide to Infrastructure as Code using Terraform</p>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>What is Terraform?</h2>
+      <p>
+        <strong>Terraform</strong> is an Infrastructure as Code tool used to create and manage infrastructure using configuration files.
+      </p>
+      <p>
+        Instead of manually creating resources in AWS, Azure, or GCP, you write code and Terraform creates them for you.
+      </p>
+
+      <pre><code>resource "aws_instance" "web_server" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}</code></pre>
+
+      <p>This tells Terraform to create an AWS EC2 instance.</p>
+    </section>
+
+    <section>
+      <h2>Why Terraform is Used</h2>
+      <ol>
+        <li>Create cloud infrastructure automatically</li>
+        <li>Manage servers, networks, databases, storage, and more</li>
+        <li>Avoid manual work in cloud consoles</li>
+        <li>Reuse infrastructure code</li>
+        <li>Track infrastructure changes</li>
+        <li>Create the same setup in dev, test, and production environments</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Important Terraform Terms</h2>
+
+      <h3>1. Provider</h3>
+      <p>A <strong>provider</strong> tells Terraform which platform to work with.</p>
+
+      <pre><code>provider "aws" {
+  region = "us-east-1"
+}</code></pre>
+
+      <p>Common providers include:</p>
+      <ul>
+        <li>AWS</li>
+        <li>Azure</li>
+        <li>GCP</li>
+        <li>Kubernetes</li>
+        <li>GitHub</li>
+        <li>Datadog</li>
+      </ul>
+
+      <div class="note">
+        Provider is like a connection between Terraform and the cloud platform.
+      </div>
+
+      <h3>2. Resource</h3>
+      <p>A <strong>resource</strong> is something Terraform creates or manages.</p>
+
+      <ul>
+        <li>EC2 instance</li>
+        <li>S3 bucket</li>
+        <li>VPC</li>
+        <li>Subnet</li>
+        <li>Security group</li>
+        <li>Database</li>
+        <li>Kubernetes cluster</li>
+      </ul>
+
+      <pre><code>resource "aws_s3_bucket" "my_bucket" {
+  bucket = "my-demo-bucket"
+}</code></pre>
+
+      <p>Here:</p>
+      <ul>
+        <li><code>aws_s3_bucket</code> = type of resource</li>
+        <li><code>my_bucket</code> = local name in Terraform</li>
+        <li><code>bucket</code> = actual bucket name</li>
+      </ul>
+
+      <h3>3. Terraform File</h3>
+      <p>Terraform files usually end with <code>.tf</code>.</p>
+
+      <p>Common files:</p>
+      <ul>
+        <li><code>main.tf</code></li>
+        <li><code>variables.tf</code></li>
+        <li><code>outputs.tf</code></li>
+        <li><code>provider.tf</code></li>
+        <li><code>terraform.tfvars</code></li>
+      </ul>
+
+      <h3>4. State File</h3>
+      <p>Terraform keeps a record of created infrastructure in a <strong>state file</strong>.</p>
+
+      <pre><code>terraform.tfstate</code></pre>
+
+      <p>Terraform uses this file to know:</p>
+      <ul>
+        <li>What resources exist</li>
+        <li>What changed</li>
+        <li>What should be created</li>
+        <li>What should be deleted</li>
+      </ul>
+
+      <div class="note">
+        The state file is very important. In real projects, it is usually stored remotely, such as in an S3 bucket or Terraform Cloud.
+      </div>
+    </section>
+
+    <section>
+      <h2>Basic Terraform Workflow</h2>
+
+      <h3>Step 1: Write Terraform Code</h3>
+      <p>Example file: <code>main.tf</code></p>
+
+      <pre><code>provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "demo" {
+  bucket = "my-demo-terraform-bucket-123"
+}</code></pre>
+
+      <h3>Step 2: Initialize Terraform</h3>
+      <pre><code>terraform init</code></pre>
+      <p>This downloads required provider plugins.</p>
+
+      <h3>Step 3: Check the Plan</h3>
+      <pre><code>terraform plan</code></pre>
+      <p>This shows what Terraform will create, update, or delete.</p>
+
+      <h3>Step 4: Apply Changes</h3>
+      <pre><code>terraform apply</code></pre>
+      <p>This creates the infrastructure. Terraform will ask for confirmation. Type <code>yes</code>.</p>
+
+      <h3>Step 5: Destroy Infrastructure</h3>
+      <pre><code>terraform destroy</code></pre>
+      <p>This deletes the resources created by Terraform.</p>
+    </section>
+
+    <section>
+      <h2>Main Terraform Commands</h2>
+
+      <div class="command-grid">
+        <div class="command-card">
+          <h3>terraform init</h3>
+          <p>Initializes project and downloads providers.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform validate</h3>
+          <p>Checks whether the Terraform code is correct.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform fmt</h3>
+          <p>Formats Terraform code properly.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform plan</h3>
+          <p>Shows what Terraform will do.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform apply</h3>
+          <p>Creates or updates infrastructure.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform destroy</h3>
+          <p>Deletes infrastructure.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform show</h3>
+          <p>Shows current state details.</p>
+        </div>
+
+        <div class="command-card">
+          <h3>terraform state list</h3>
+          <p>Lists resources tracked by Terraform.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Variables in Terraform</h2>
+      <p>Variables are used to avoid hardcoding values.</p>
+
+      <h3>Example: variables.tf</h3>
+      <pre><code>variable "region" {
+  default = "us-east-1"
+}
+
+variable "instance_type" {
+  default = "t2.micro"
+}</code></pre>
+
+      <h3>Use Variables in main.tf</h3>
+      <pre><code>provider "aws" {
+  region = var.region
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-123456"
+  instance_type = var.instance_type
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>Output in Terraform</h2>
+      <p>Outputs display useful information after Terraform creates resources.</p>
+
+      <pre><code>output "instance_id" {
+  value = aws_instance.web.id
+}</code></pre>
+
+      <p>After <code>terraform apply</code>, it may show:</p>
+
+      <pre><code>instance_id = i-1234567890abcdef</code></pre>
+    </section>
+
+    <section>
+      <h2>Terraform Block Structure</h2>
+      <p>Basic Terraform syntax looks like this:</p>
+
+      <pre><code>block_type "label1" "label2" {
+  argument = value
+}</code></pre>
+
+      <p>Example:</p>
+
+      <pre><code>resource "aws_instance" "web" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}</code></pre>
+
+      <ul>
+        <li><code>resource</code> = block type</li>
+        <li><code>aws_instance</code> = resource type</li>
+        <li><code>web</code> = local name</li>
+        <li><code>ami</code> = argument</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Terraform vs Manual Cloud Setup</h2>
+
+      <h3>Manual Setup</h3>
+      <ul>
+        <li>Login to AWS</li>
+        <li>Go to EC2</li>
+        <li>Click launch instance</li>
+        <li>Choose AMI</li>
+        <li>Choose instance type</li>
+        <li>Configure network</li>
+        <li>Create instance</li>
+      </ul>
+
+      <h3>Terraform Setup</h3>
+      <pre><code>resource "aws_instance" "web" {
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}</code></pre>
+
+      <p>Then run:</p>
+      <pre><code>terraform apply</code></pre>
+
+      <p>Terraform creates it automatically.</p>
+    </section>
+
+    <section>
+      <h2>Simple Example: Create S3 Bucket</h2>
+
+      <pre><code>provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = "navya-demo-bucket-12345"
+}</code></pre>
+
+      <p>Commands:</p>
+      <pre><code>terraform init
+terraform plan
+terraform apply</code></pre>
+
+      <p>To delete:</p>
+      <pre><code>terraform destroy</code></pre>
+    </section>
+
+    <section>
+      <h2>Simple Explanation</h2>
+      <p>Terraform is like a blueprint for infrastructure.</p>
+      <p>You write what infrastructure you want:</p>
+
+      <ul>
+        <li>I want one server</li>
+        <li>I want one database</li>
+        <li>I want one network</li>
+        <li>I want one storage bucket</li>
+      </ul>
+
+      <p>
+        Terraform reads that code and creates everything automatically in the cloud.
+      </p>
+
+      <div class="note">
+        Terraform helps DevOps engineers manage infrastructure easily, repeatedly, and safely.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Terraform Basics HTML Page</p>
+  </footer>
+</body>
+</html>
