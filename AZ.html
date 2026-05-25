@@ -1,0 +1,3474 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pasted text.txt
+Document
+run this
+
+image.png
+add more data therre
+
+
+Pasted code.html
+File
+update this to 
+
+
+Pasted code.html
+File
+update this  to ui look
+
+
+
+
+test the output
+
+I updated your Docker website into a modern animated UI with:
+
+Hero section
+
+Responsive layout
+
+Glassmorphism cards
+
+Docker icons/logos
+
+Hover animations
+
+Stats section
+
+Improved typography
+
+Modern DevOps look
+
+Better navigation and styling
+
+You can now preview and run the upgraded HTML directly.
+
+
+Modern Docker Mastery Ui Preview
+add more data
+
+
+
+
+update code
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>AWS Mastery Hub</title>
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background:
+            linear-gradient(
+            135deg,
+            #eef6ff,
+            #f8fbff,
+            #fff7ed,
+            #dbeafe);
+
+            background-size:400% 400%;
+
+            animation:bgMove 12s ease infinite;
+
+            color:#222;
+
+            line-height:1.8;
+        }
+
+        /* HERO */
+
+        .hero{
+
+            height:100vh;
+
+            background:
+            linear-gradient(
+            rgba(0,0,0,0.75),
+            rgba(0,0,0,0.75)),
+
+            url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop');
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            text-align:center;
+
+            color:white;
+
+            position:relative;
+
+            overflow:hidden;
+        }
+
+        .hero::before{
+
+            content:"";
+
+            position:absolute;
+
+            width:700px;
+            height:700px;
+
+            background:
+            rgba(255,153,0,0.15);
+
+            border-radius:50%;
+
+            top:-250px;
+            left:-200px;
+
+            filter:blur(60px);
+
+            animation:float1 8s ease-in-out infinite;
+        }
+
+        .hero::after{
+
+            content:"";
+
+            position:absolute;
+
+            width:500px;
+            height:500px;
+
+            background:
+            rgba(59,130,246,0.15);
+
+            border-radius:50%;
+
+            bottom:-150px;
+            right:-100px;
+
+            filter:blur(60px);
+
+            animation:float2 10s ease-in-out infinite;
+        }
+
+        .hero-content{
+
+            position:relative;
+            z-index:2;
+        }
+
+        .hero-content h1{
+
+            font-size:80px;
+
+            margin-bottom:20px;
+
+            text-shadow:
+            0 0 25px rgba(255,153,0,0.8);
+
+            animation:slideDown 2s ease;
+        }
+
+        .hero-content p{
+
+            font-size:26px;
+
+            color:#dbeafe;
+
+            margin-bottom:35px;
+        }
+
+        .hero-content button{
+
+            padding:16px 42px;
+
+            border:none;
+
+            border-radius:50px;
+
+            background:
+            linear-gradient(
+            90deg,
+            #ff9900,
+            #ffb84d);
+
+            color:white;
+
+            font-size:18px;
+
+            cursor:pointer;
+
+            transition:0.4s;
+
+            box-shadow:
+            0 0 25px rgba(255,153,0,0.6);
+        }
+
+        .hero-content button:hover{
+
+            transform:
+            scale(1.08);
+
+            box-shadow:
+            0 0 40px rgba(255,153,0,1);
+        }
+
+        /* NAVBAR */
+
+        nav{
+
+            background:
+            rgba(15,23,42,0.92);
+
+            backdrop-filter:blur(18px);
+
+            position:sticky;
+
+            top:0;
+
+            z-index:1000;
+
+            padding:16px;
+        }
+
+        nav ul{
+
+            display:flex;
+
+            justify-content:center;
+
+            list-style:none;
+
+            gap:30px;
+
+            flex-wrap:wrap;
+        }
+
+        nav a{
+
+            text-decoration:none;
+
+            color:white;
+
+            font-weight:600;
+
+            position:relative;
+
+            transition:0.3s;
+        }
+
+        nav a::after{
+
+            content:"";
+
+            position:absolute;
+
+            width:0;
+            height:3px;
+
+            background:#ff9900;
+
+            left:0;
+            bottom:-6px;
+
+            transition:0.4s;
+        }
+
+        nav a:hover::after{
+
+            width:100%;
+        }
+
+        nav a:hover{
+
+            color:#ff9900;
+        }
+
+        /* CONTAINER */
+
+        .container{
+
+            width:90%;
+
+            max-width:1300px;
+
+            margin:60px auto;
+        }
+
+        /* CARD */
+
+        .card{
+
+            background:
+            rgba(255,255,255,0.82);
+
+            backdrop-filter:
+            blur(15px);
+
+            border:
+            1px solid rgba(255,255,255,0.2);
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.08);
+
+            padding:45px;
+
+            margin-bottom:40px;
+
+            border-radius:24px;
+
+            transition:0.5s;
+
+            overflow:hidden;
+
+            position:relative;
+        }
+
+        .card:hover{
+
+            transform:
+            translateY(-12px)
+            scale(1.01);
+
+            box-shadow:
+            0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* HEADINGS */
+
+        h2{
+
+            color:#ff9900;
+
+            font-size:34px;
+
+            margin-bottom:25px;
+
+            position:relative;
+
+            padding-left:18px;
+        }
+
+        h2::before{
+
+            content:"";
+
+            position:absolute;
+
+            left:0;
+            top:5px;
+
+            width:6px;
+            height:42px;
+
+            background:#ff9900;
+
+            border-radius:20px;
+        }
+
+        h2::after{
+
+            content:"";
+
+            position:absolute;
+
+            bottom:-8px;
+            left:0;
+
+            width:120px;
+            height:4px;
+
+            background:
+            linear-gradient(
+            90deg,
+            #ff9900,
+            transparent);
+
+            border-radius:20px;
+        }
+
+        /* GRID */
+
+        .grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(260px,1fr));
+
+            gap:28px;
+
+            margin-top:35px;
+        }
+
+        .grid-card{
+
+            background:
+            linear-gradient(
+            145deg,
+            #1e293b,
+            #0f172a);
+
+            color:white;
+
+            padding:35px;
+
+            border-radius:22px;
+
+            text-align:center;
+
+            transition:0.5s;
+
+            position:relative;
+
+            overflow:hidden;
+        }
+
+        .grid-card:hover{
+
+            background:
+            linear-gradient(
+            145deg,
+            #ff9900,
+            #ffb84d);
+
+            transform:
+            translateY(-10px)
+            scale(1.03);
+        }
+
+        .grid-card i{
+
+            font-size:60px;
+
+            margin-bottom:18px;
+
+            color:#ff9900;
+
+            transition:0.4s;
+        }
+
+        .grid-card:hover i{
+
+            color:white;
+
+            transform:scale(1.15);
+        }
+
+        .grid-card h3{
+
+            margin-bottom:15px;
+
+            font-size:24px;
+        }
+
+        /* STATS */
+
+        .stats{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(220px,1fr));
+
+            gap:25px;
+
+            margin-bottom:40px;
+        }
+
+        .stat-box{
+
+            background:white;
+
+            padding:35px;
+
+            border-radius:20px;
+
+            text-align:center;
+
+            box-shadow:
+            0 8px 25px rgba(0,0,0,0.08);
+
+            transition:0.5s;
+        }
+
+        .stat-box:hover{
+
+            background:
+            linear-gradient(
+            135deg,
+            #ff9900,
+            #ffb84d);
+
+            color:white;
+
+            transform:translateY(-10px);
+        }
+
+        .stat-box h1{
+
+            color:#ff9900;
+
+            font-size:50px;
+        }
+
+        .stat-box:hover h1{
+
+            color:white;
+        }
+
+        /* TABLE */
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            overflow:hidden;
+
+            border-radius:18px;
+
+            margin-top:25px;
+
+            box-shadow:
+            0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        table th{
+
+            background:
+            linear-gradient(
+            90deg,
+            #ff9900,
+            #ffb84d);
+
+            color:white;
+
+            padding:18px;
+
+            font-size:18px;
+        }
+
+        table td{
+
+            padding:16px;
+
+            border-bottom:1px solid #eee;
+
+            background:white;
+        }
+
+        table tr:hover td{
+
+            background:#fff7ed;
+        }
+
+        /* IMAGE */
+
+        .hero-image{
+
+            width:100%;
+
+            border-radius:20px;
+
+            margin-top:25px;
+
+            transition:0.5s;
+
+            box-shadow:
+            0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-image:hover{
+
+            transform:scale(1.03);
+        }
+
+        /* INFO BOX */
+
+        .info-box{
+
+            background:
+            linear-gradient(
+            135deg,
+            #fff7ed,
+            #fffbeb);
+
+            border-left:
+            6px solid #ff9900;
+
+            padding:22px;
+
+            border-radius:18px;
+
+            margin-top:25px;
+
+            box-shadow:
+            0 5px 15px rgba(255,153,0,0.12);
+        }
+
+        /* CODE BLOCK */
+
+        pre{
+
+            background:
+            linear-gradient(
+            135deg,
+            #111827,
+            #1f2937);
+
+            color:#00ff99;
+
+            padding:24px;
+
+            border-radius:18px;
+
+            overflow-x:auto;
+
+            margin-top:25px;
+
+            position:relative;
+
+            border-left:
+            5px solid #ff9900;
+
+            box-shadow:
+            0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        pre::before{
+
+            content:"AWS Command";
+
+            position:absolute;
+
+            top:0;
+            right:0;
+
+            background:#ff9900;
+
+            color:white;
+
+            padding:8px 16px;
+
+            font-size:13px;
+
+            border-bottom-left-radius:14px;
+        }
+
+        /* FOOTER */
+
+        footer{
+
+            background:
+            linear-gradient(
+            135deg,
+            #0f172a,
+            #111827);
+
+            color:white;
+
+            text-align:center;
+
+            padding:45px;
+
+            margin-top:50px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes bgMove{
+
+            0%{
+                background-position:0% 50%;
+            }
+
+            50%{
+                background-position:100% 50%;
+            }
+
+            100%{
+                background-position:0% 50%;
+            }
+        }
+
+        @keyframes float1{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(25px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        @keyframes float2{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-25px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        @keyframes slideDown{
+
+            from{
+                transform:translateY(-80px);
+                opacity:0;
+            }
+
+            to{
+                transform:translateY(0);
+                opacity:1;
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px){
+
+            .hero-content h1{
+                font-size:45px;
+            }
+
+            .hero-content p{
+                font-size:18px;
+            }
+
+            .grid{
+                grid-template-columns:1fr;
+            }
+
+            nav ul{
+                flex-direction:column;
+                align-items:center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                <i class="fab fa-aws"></i>
+                AWS Mastery Hub
+            </h1>
+
+            <p>
+                Learn AWS Cloud & DevOps from Beginner to Advanced
+            </p>
+
+            <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+                Start Learning
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <ul>
+
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#networking">Networking</a></li>
+            <li><a href="#devops">DevOps</a></li>
+            <li><a href="#projects">Projects</a></li>
+
+        </ul>
+
+    </nav>
+
+    <div class="container">
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h1>200+</h1>
+                <p>AWS Cloud Services</p>
+            </div>
+
+            <div class="stat-box">
+                <h1>99.99%</h1>
+                <p>Cloud Availability</p>
+            </div>
+
+            <div class="stat-box">
+                <h1>31</h1>
+                <p>AWS Global Regions</p>
+            </div>
+
+        </div>
+
+        <!-- INTRO -->
+
+        <div class="card" id="intro">
+
+            <h2>Introduction to AWS</h2>
+
+            <p>
+                Amazon Web Services (AWS) is the world's leading
+                cloud computing platform providing scalable,
+                reliable, and secure cloud solutions.
+            </p>
+
+            <img class="hero-image"
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="info-box">
+
+                <strong>Did You Know?</strong><br>
+
+                AWS provides compute,
+                storage, networking,
+                databases, AI,
+                security,
+                and DevOps services.
+
+            </div>
+
+        </div>
+
+        <!-- SERVICES -->
+
+        <div class="card" id="services">
+
+            <h2>AWS Core Services</h2>
+
+            <div class="grid">
+
+                <div class="grid-card">
+
+                    <i class="fas fa-server"></i>
+
+                    <h3>EC2</h3>
+
+                    <p>
+                        Virtual cloud servers
+                        for scalable computing.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-database"></i>
+
+                    <h3>S3</h3>
+
+                    <p>
+                        Highly scalable object
+                        storage service.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-user-shield"></i>
+
+                    <h3>IAM</h3>
+
+                    <p>
+                        Identity & access
+                        management service.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <h3>Lambda</h3>
+
+                    <p>
+                        Serverless compute
+                        service for automation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- NETWORKING -->
+
+        <div class="card" id="networking">
+
+            <h2>AWS Networking</h2>
+
+            <table>
+
+                <tr>
+                    <th>Service</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>VPC</td>
+                    <td>Private isolated AWS network</td>
+                </tr>
+
+                <tr>
+                    <td>Route 53</td>
+                    <td>Scalable DNS web service</td>
+                </tr>
+
+                <tr>
+                    <td>Security Groups</td>
+                    <td>Firewall protection</td>
+                </tr>
+
+                <tr>
+                    <td>Load Balancer</td>
+                    <td>Traffic distribution service</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <!-- DEVOPS -->
+
+        <div class="card" id="devops">
+
+            <h2>DevOps on AWS</h2>
+
+<pre>
+aws configure
+
+aws s3 ls
+
+aws ec2 describe-instances
+</pre>
+
+            <div class="grid">
+
+                <div class="grid-card">
+
+                    <i class="fab fa-docker"></i>
+
+                    <h3>ECS</h3>
+
+                    <p>
+                        Docker container orchestration.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-dharmachakra"></i>
+
+                    <h3>EKS</h3>
+
+                    <p>
+                        Managed Kubernetes platform.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-code"></i>
+
+                    <h3>CloudFormation</h3>
+
+                    <p>
+                        Infrastructure as Code service.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="card" id="projects">
+
+            <h2>Real-Time AWS Projects</h2>
+
+            <ol>
+
+                <li>Host Static Website using S3</li>
+
+                <li>Deploy EC2 Web Server</li>
+
+                <li>Create VPC Architecture</li>
+
+                <li>Deploy Kubernetes on EKS</li>
+
+                <li>Build CI/CD Pipeline</li>
+
+                <li>Create Serverless Lambda Project</li>
+
+            </ol>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>AWS Learning Portal</h2>
+
+        <p>
+            Beginner to Advanced AWS & DevOps Platform
+        </p>
+
+        <p>
+            © 2026 AWS Mastery Hub
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+
+# Sample_Pro
+
+## Project Overview
+This project contains basic DevOps concepts created using HTML.  
+The purpose of this project is to learn and practice DevOps topics and GitHub workflow.
+
+## Topics Added
+
+- Introduction to DevOps
+- DevOps Lifecycle
+- Linux Commands
+- Git and GitHub Commands
+- CI/CD Concepts
+- Docker
+- Kubernetes
+- AWS Services
+  - EC2
+  - S3
+  - VPC
+  - RDS
+- Infrastructure as Code (IaC)
+- Monitoring Tools
+  - Prometheus
+  - Grafana
+  - Nagios
+
+## Technologies Used
+
+- HTML
+- VS Code
+- Git
+- GitHub
+
+## Learning Sources
+
+### DevOps Learning
+
+- YouTube – DevOps tutorials
+- AWS Documentation
+- Docker Documentation
+- Kubernetes Documentation
+- Git Documentation
+
+## Useful Resources
+
+- Git: https://git-scm.com/docs
+- Docker: https://docs.docker.com/
+- Kubernetes: https://kubernetes.io/docs/
+- AWS: https://aws.amazon.com/documentation/
+
+## Author
+
+K. Lakshmi Nandan
+
+
+update this bsed on the work done up to now .in this README file
+
+
+Here’s the updated professional README.md based on all the work completed so far:
+
+# 🚀 Sample_Pro
+
+## 📌 Project Overview
+
+Sample_Pro is a modern DevOps & Cloud learning project built using HTML, CSS, and UI/UX concepts.
+
+This project contains beautifully designed learning pages for:
+
+- DevOps
+- Linux
+- Git & GitHub
+- Docker
+- Kubernetes
+- AWS Cloud
+
+The project focuses on learning DevOps concepts while also practicing:
+
+- Frontend UI Design
+- Responsive Web Design
+- Animations
+- Git & GitHub Workflow
+- Documentation Writing
+
+---
+
+# 🌟 Features
+
+✅ Modern Animated UI  
+✅ Responsive Design  
+✅ Glassmorphism Effects  
+✅ Hero Sections  
+✅ Interactive Cards  
+✅ AWS / Docker / Kubernetes Themed UI  
+✅ DevOps Learning Content  
+✅ Cloud & Containerization Concepts  
+✅ Code Blocks & CLI Commands  
+✅ Interview Questions  
+✅ Learning Roadmaps  
+✅ Real-Time Project Ideas  
+
+---
+
+# 📚 Topics Covered
+
+## 🔹 DevOps
+
+- Introduction to DevOps
+- DevOps Lifecycle
+- CI/CD Pipeline
+- Infrastructure as Code (IaC)
+- Monitoring & Logging
+- DevOps Best Practices
+
+---
+
+## 🔹 Linux
+
+- Linux Basics
+- Navigation Commands
+- File Management Commands
+- Networking Commands
+- Process Management
+- Pipe & Redirection Operators
+
+### Example Commands
+
+```bash
+pwd
+ls -la
+mkdir projects
+touch file.txt
+```
+
+---
+
+## 🔹 Git & GitHub
+
+- Git Basics
+- Git Commands
+- GitHub Workflow
+- Branching Strategy
+- Merge Conflicts
+- GitHub Actions
+- CI/CD Automation
+
+### Example Commands
+
+```bash
+git init
+git add .
+git commit -m "Initial Commit"
+git push origin main
+```
+
+---
+
+## 🔹 Docker
+
+- Docker Architecture
+- Docker Images
+- Containers
+- Dockerfile
+- Docker Compose
+- Docker Networking
+- Docker Volumes
+- Multi-Stage Builds
+- Docker Security
+
+### Example Commands
+
+```bash
+docker build -t myapp .
+docker run -p 8080:80 myapp
+docker ps
+```
+
+---
+
+## 🔹 Kubernetes
+
+- Kubernetes Architecture
+- Pods
+- Deployments
+- Services
+- RBAC
+- Monitoring
+- EKS
+- Kubernetes Security
+
+### Example Commands
+
+```bash
+kubectl get pods
+kubectl get svc
+kubectl logs pod-name
+```
+
+---
+
+## 🔹 AWS Cloud
+
+### AWS Services Covered
+
+- IAM
+- EC2
+- S3
+- VPC
+- Route 53
+- Lambda
+- RDS
+- DynamoDB
+- CloudWatch
+- CloudFormation
+- ECS & EKS
+- Load Balancer
+- Auto Scaling
+
+### AWS CLI Commands
+
+```bash
+aws configure
+aws s3 ls
+aws ec2 describe-instances
+```
+
+---
+
+# 🎨 UI/UX Enhancements
+
+This project also includes modern frontend features such as:
+
+- Animated Backgrounds
+- Floating Icons
+- Glassmorphism Cards
+- Hover Effects
+- Responsive Layouts
+- Modern Navigation Bars
+- Gradient UI Design
+- Interactive Sections
+- Cloud-Themed Color Palettes
+
+---
+
+# 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Structure |
+| CSS3 | Styling |
+| Font Awesome | Icons |
+| Google Fonts | Typography |
+| VS Code | Development |
+| Git | Version Control |
+| GitHub | Repository Hosting |
+
+---
+
+# 📂 Project Structure
+
+```bash
+Sample_Pro/
+│
+├── index.html
+├── aws.html
+├── docker.html
+├── kubernetes.html
+├── git.html
+├── linux.html
+├── styles.css
+└── README.md
+```
+
+---
+
+# 💡 Real-Time Project Ideas
+
+- Dockerized Web Applications
+- Kubernetes Deployments
+- AWS Cloud Infrastructure
+- CI/CD Pipelines
+- DevOps Monitoring Dashboard
+- Static Website Hosting on AWS S3
+- Full Stack Containerized Applications
+
+---
+
+# 📖 Learning Resources
+
+## DevOps & Cloud Learning
+
+- YouTube DevOps Tutorials
+- AWS Documentation
+- Docker Documentation
+- Kubernetes Documentation
+- Git Documentation
+
+---
+
+# 🔗 Useful Resources
+
+- Git → https://git-scm.com/docs
+- Docker → https://docs.docker.com/
+- Kubernetes → https://kubernetes.io/docs/
+- AWS → https://aws.amazon.com/documentation/
+
+---
+
+# 🎯 Future Enhancements
+
+- Add JavaScript Interactivity
+- Add Dark Mode
+- Add Search Functionality
+- Add DevOps Quiz Section
+- Add Authentication Pages
+- Add Cloud Architecture Diagrams
+- Add Deployment Hosting
+
+---
+
+# 👨‍💻 Author
+
+## K. Lakshmi Nandan
+
+DevOps & Cloud Enthusiast  
+Learning Modern DevOps, AWS, Docker & Kubernetes
+
+---
+
+# ⭐ Project Goal
+
+The main goal of this project is to:
+
+- Learn DevOps & Cloud Technologies
+- Practice Git & GitHub Workflow
+- Build Modern UI/UX Skills
+- Create Real-Time Learning Projects
+- Improve Frontend Development Skills
+
+---
+
+# 🚀 Keep Learning & Building
+
+“Practice + Consistency = DevOps Mastery”
+
+
+Pasted text.txt
+Document
+do this
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
+
+  <title>Jenkins Mastery Hub</title>
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+
+      font-family:'Poppins',sans-serif;
+
+      background:
+      linear-gradient(
+      135deg,
+      #eef2ff,
+      #f8fafc,
+      #ecfeff,
+      #f0fdf4);
+
+      background-size:400% 400%;
+
+      animation:bgMove 12s ease infinite;
+
+      color:#222;
+
+      line-height:1.8;
+    }
+
+    /* HERO */
+
+    .hero{
+
+      height:100vh;
+
+      background:
+      linear-gradient(
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.75)),
+
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+
+      color:white;
+
+      position:relative;
+
+      overflow:hidden;
+    }
+
+    .hero::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+      rgba(37,99,235,0.18);
+
+      border-radius:50%;
+
+      top:-250px;
+      left:-200px;
+
+      filter:blur(60px);
+
+      animation:float1 8s ease-in-out infinite;
+    }
+
+    .hero::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      background:
+      rgba(16,185,129,0.18);
+
+      border-radius:50%;
+
+      bottom:-150px;
+      right:-100px;
+
+      filter:blur(60px);
+
+      animation:float2 10s ease-in-out infinite;
+    }
+
+    .hero-content{
+
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-content h1{
+
+      font-size:78px;
+
+      margin-bottom:20px;
+
+      text-shadow:
+      0 0 25px rgba(37,99,235,0.9);
+
+      animation:slideDown 2s ease;
+    }
+
+    .hero-content p{
+
+      font-size:24px;
+
+      color:#dbeafe;
+
+      margin-bottom:35px;
+    }
+
+    .hero-content button{
+
+      padding:16px 42px;
+
+      border:none;
+
+      border-radius:50px;
+
+      background:
+      linear-gradient(
+      90deg,
+      #2563eb,
+      #3b82f6);
+
+      color:white;
+
+      font-size:18px;
+
+      cursor:pointer;
+
+      transition:0.4s;
+
+      box-shadow:
+      0 0 25px rgba(37,99,235,0.6);
+    }
+
+    .hero-content button:hover{
+
+      transform:
+      scale(1.08);
+
+      box-shadow:
+      0 0 40px rgba(37,99,235,1);
+    }
+
+    /* NAVBAR */
+
+    nav{
+
+      background:
+      rgba(15,23,42,0.92);
+
+      backdrop-filter:blur(18px);
+
+      position:sticky;
+
+      top:0;
+
+      z-index:1000;
+
+      padding:16px;
+    }
+
+    nav ul{
+
+      display:flex;
+
+      justify-content:center;
+
+      list-style:none;
+
+      gap:30px;
+
+      flex-wrap:wrap;
+    }
+
+    nav a{
+
+      text-decoration:none;
+
+      color:white;
+
+      font-weight:600;
+
+      position:relative;
+
+      transition:0.3s;
+    }
+
+    nav a::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:0;
+      height:3px;
+
+      background:#3b82f6;
+
+      left:0;
+      bottom:-6px;
+
+      transition:0.4s;
+    }
+
+    nav a:hover::after{
+
+      width:100%;
+    }
+
+    nav a:hover{
+
+      color:#60a5fa;
+    }
+
+    /* CONTAINER */
+
+    .container{
+
+      width:90%;
+
+      max-width:1300px;
+
+      margin:60px auto;
+    }
+
+    /* CARD */
+
+    .card{
+
+      background:
+      rgba(255,255,255,0.82);
+
+      backdrop-filter:
+      blur(15px);
+
+      border:
+      1px solid rgba(255,255,255,0.2);
+
+      box-shadow:
+      0 15px 40px rgba(0,0,0,0.08);
+
+      padding:45px;
+
+      margin-bottom:40px;
+
+      border-radius:24px;
+
+      transition:0.5s;
+
+      overflow:hidden;
+
+      position:relative;
+    }
+
+    .card:hover{
+
+      transform:
+      translateY(-12px)
+      scale(1.01);
+
+      box-shadow:
+      0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    /* HEADINGS */
+
+    h2{
+
+      color:#2563eb;
+
+      font-size:34px;
+
+      margin-bottom:25px;
+
+      position:relative;
+
+      padding-left:18px;
+    }
+
+    h2::before{
+
+      content:"";
+
+      position:absolute;
+
+      left:0;
+      top:5px;
+
+      width:6px;
+      height:42px;
+
+      background:#2563eb;
+
+      border-radius:20px;
+    }
+
+    /* GRID */
+
+    .grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(260px,1fr));
+
+      gap:28px;
+
+      margin-top:35px;
+    }
+
+    .grid-card{
+
+      background:
+      linear-gradient(
+      145deg,
+      #1e293b,
+      #0f172a);
+
+      color:white;
+
+      padding:35px;
+
+      border-radius:22px;
+
+      text-align:center;
+
+      transition:0.5s;
+    }
+
+    .grid-card:hover{
+
+      background:
+      linear-gradient(
+      145deg,
+      #2563eb,
+      #3b82f6);
+
+      transform:
+      translateY(-10px)
+      scale(1.03);
+    }
+
+    .grid-card i{
+
+      font-size:60px;
+
+      margin-bottom:18px;
+
+      color:#60a5fa;
+    }
+
+    /* TABLE */
+
+    table{
+
+      width:100%;
+
+      border-collapse:collapse;
+
+      overflow:hidden;
+
+      border-radius:18px;
+
+      margin-top:25px;
+
+      box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    table th{
+
+      background:
+      linear-gradient(
+      90deg,
+      #2563eb,
+      #3b82f6);
+
+      color:white;
+
+      padding:18px;
+
+      font-size:18px;
+    }
+
+    table td{
+
+      padding:16px;
+
+      border-bottom:1px solid #eee;
+
+      background:white;
+    }
+
+    table tr:hover td{
+
+      background:#eff6ff;
+    }
+
+    /* CODE BLOCK */
+
+    pre{
+
+      background:
+      linear-gradient(
+      135deg,
+      #111827,
+      #1f2937);
+
+      color:#00ff99;
+
+      padding:24px;
+
+      border-radius:18px;
+
+      overflow-x:auto;
+
+      margin-top:25px;
+
+      border-left:
+      5px solid #2563eb;
+    }
+
+    /* INFO BOX */
+
+    .info-box{
+
+      background:
+      linear-gradient(
+      135deg,
+      #eff6ff,
+      #dbeafe);
+
+      border-left:
+      6px solid #2563eb;
+
+      padding:22px;
+
+      border-radius:18px;
+
+      margin-top:25px;
+    }
+
+    /* WORKFLOW */
+
+    .workflow{
+
+      background:
+      linear-gradient(
+      135deg,
+      #dcfce7,
+      #bbf7d0);
+
+      border-left:
+      6px solid #16a34a;
+
+      padding:24px;
+
+      border-radius:18px;
+
+      margin-top:25px;
+
+      font-weight:600;
+
+      text-align:center;
+    }
+
+    /* FOOTER */
+
+    footer{
+
+      background:
+      linear-gradient(
+      135deg,
+      #0f172a,
+      #111827);
+
+      color:white;
+
+      text-align:center;
+
+      padding:45px;
+
+      margin-top:50px;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes bgMove{
+
+      0%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+    }
+
+    @keyframes float1{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes float2{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes slideDown{
+
+      from{
+        transform:translateY(-80px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      nav ul{
+        flex-direction:column;
+        align-items:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        <i class="fas fa-tools"></i>
+        Jenkins Mastery Hub
+      </h1>
+
+      <p>
+        Learn Jenkins, CI/CD Pipelines, Maven, Plugins & Automation
+      </p>
+
+      <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+        Start Learning
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <ul>
+
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#pipeline">Pipelines</a></li>
+      <li><a href="#maven">Maven</a></li>
+      <li><a href="#plugins">Plugins</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+
+    </ul>
+
+  </nav>
+
+  <div class="container">
+
+    <!-- INTRO -->
+
+    <div class="card" id="intro">
+
+      <h2>What is Jenkins?</h2>
+
+      <p>
+        Jenkins is an open-source automation server
+        used to build, test, and deploy applications automatically.
+      </p>
+
+      <div class="info-box">
+
+        <strong>CI/CD:</strong><br>
+
+        Continuous Integration & Continuous Deployment
+        help automate software delivery.
+
+      </div>
+
+    </div>
+
+    <!-- WHY JENKINS -->
+
+    <div class="card">
+
+      <h2>Why Jenkins is Used</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fab fa-github"></i>
+
+          <h3>Git Integration</h3>
+
+          <p>
+            Automatically pulls code from GitHub.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-vial"></i>
+
+          <h3>Testing</h3>
+
+          <p>
+            Runs automated tests for applications.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-rocket"></i>
+
+          <h3>Deployment</h3>
+
+          <p>
+            Deploys applications automatically.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PIPELINE -->
+
+    <div class="card" id="pipeline">
+
+      <h2>Jenkins Pipeline</h2>
+
+<pre>
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                echo 'Building application'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+
+    }
+
+}
+</pre>
+
+    </div>
+
+    <!-- MAVEN -->
+
+    <div class="card" id="maven">
+
+      <h2>Maven in Jenkins</h2>
+
+      <p>
+        Maven is a Java build tool used to compile,
+        package, and test Java applications.
+      </p>
+
+<pre>
+mvn clean package
+</pre>
+
+      <div class="info-box">
+
+        <strong>clean</strong> → Removes old build files<br>
+        <strong>package</strong> → Creates JAR/WAR file
+
+      </div>
+
+    </div>
+
+    <!-- PLUGINS -->
+
+    <div class="card" id="plugins">
+
+      <h2>Popular Jenkins Plugins</h2>
+
+      <table>
+
+        <tr>
+          <th>Plugin</th>
+          <th>Purpose</th>
+        </tr>
+
+        <tr>
+          <td>Git Plugin</td>
+          <td>Connect Jenkins with GitHub</td>
+        </tr>
+
+        <tr>
+          <td>Maven Plugin</td>
+          <td>Build Java applications</td>
+        </tr>
+
+        <tr>
+          <td>Docker Plugin</td>
+          <td>Docker integration</td>
+        </tr>
+
+        <tr>
+          <td>Kubernetes Plugin</td>
+          <td>K8s deployment support</td>
+        </tr>
+
+        <tr>
+          <td>Slack Plugin</td>
+          <td>Notifications & alerts</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+    <!-- WORKFLOW -->
+
+    <div class="card" id="workflow">
+
+      <h2>Jenkins Workflow</h2>
+
+      <div class="workflow">
+
+        Developer Pushes Code →
+        Jenkins Detects Change →
+        Build Starts →
+        Tests Run →
+        Application Deploys →
+        Notifications Sent
+
+      </div>
+
+    </div>
+
+    <!-- COMMANDS -->
+
+    <div class="card">
+
+      <h2>Common Jenkins Commands</h2>
+
+<pre>
+echo 'Build Started'
+
+sh 'mvn clean package'
+
+git 'repo-url'
+
+docker build -t app .
+</pre>
+
+    </div>
+
+    <!-- INTERVIEW QUESTIONS -->
+
+    <div class="card">
+
+      <h2>Jenkins Interview Questions</h2>
+
+      <ol>
+
+        <li>What is Jenkins?</li>
+
+        <li>What is CI/CD?</li>
+
+        <li>Difference between freestyle job and pipeline?</li>
+
+        <li>What is Jenkinsfile?</li>
+
+        <li>How Jenkins integrates with GitHub?</li>
+
+        <li>What are Jenkins plugins?</li>
+
+        <li>Explain Maven integration.</li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Jenkins Learning Portal</h2>
+
+    <p>
+      Beginner to Advanced Jenkins & DevOps Learning Platform
+    </p>
+
+    <p>
+      © 2026 Jenkins Mastery Hub
+    </p>
+
+  </footer>
+
+</body>
+
+</html>
+Based on your uploaded Jenkins HTML file. 
+
+
+
+CAN  you make one for azure with all the data about it ,how it works and ect.
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8"/>
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
+
+  <title>Azure Cloud Mastery Hub</title>
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+
+      font-family:'Poppins',sans-serif;
+
+      background:
+      linear-gradient(
+      135deg,
+      #eff6ff,
+      #f8fafc,
+      #e0f2fe,
+      #dbeafe);
+
+      background-size:400% 400%;
+
+      animation:bgMove 12s ease infinite;
+
+      color:#222;
+
+      line-height:1.8;
+    }
+
+    /* HERO */
+
+    .hero{
+
+      height:100vh;
+
+      background:
+      linear-gradient(
+      rgba(0,0,0,0.72),
+      rgba(0,0,0,0.72)),
+
+      url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      text-align:center;
+
+      color:white;
+
+      position:relative;
+
+      overflow:hidden;
+    }
+
+    .hero::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:700px;
+      height:700px;
+
+      background:
+      rgba(0,120,212,0.18);
+
+      border-radius:50%;
+
+      top:-250px;
+      left:-200px;
+
+      filter:blur(60px);
+
+      animation:float1 8s ease-in-out infinite;
+    }
+
+    .hero::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:500px;
+      height:500px;
+
+      background:
+      rgba(59,130,246,0.18);
+
+      border-radius:50%;
+
+      bottom:-150px;
+      right:-100px;
+
+      filter:blur(60px);
+
+      animation:float2 10s ease-in-out infinite;
+    }
+
+    .hero-content{
+
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-content h1{
+
+      font-size:80px;
+
+      margin-bottom:20px;
+
+      text-shadow:
+      0 0 25px rgba(0,120,212,0.8);
+
+      animation:slideDown 2s ease;
+    }
+
+    .hero-content p{
+
+      font-size:25px;
+
+      color:#dbeafe;
+
+      margin-bottom:35px;
+    }
+
+    .hero-content button{
+
+      padding:16px 42px;
+
+      border:none;
+
+      border-radius:50px;
+
+      background:
+      linear-gradient(
+      90deg,
+      #0078d4,
+      #0ea5e9);
+
+      color:white;
+
+      font-size:18px;
+
+      cursor:pointer;
+
+      transition:0.4s;
+
+      box-shadow:
+      0 0 25px rgba(0,120,212,0.6);
+    }
+
+    .hero-content button:hover{
+
+      transform:
+      scale(1.08);
+
+      box-shadow:
+      0 0 40px rgba(0,120,212,1);
+    }
+
+    /* NAVBAR */
+
+    nav{
+
+      background:
+      rgba(15,23,42,0.92);
+
+      backdrop-filter:blur(18px);
+
+      position:sticky;
+
+      top:0;
+
+      z-index:1000;
+
+      padding:16px;
+    }
+
+    nav ul{
+
+      display:flex;
+
+      justify-content:center;
+
+      list-style:none;
+
+      gap:30px;
+
+      flex-wrap:wrap;
+    }
+
+    nav a{
+
+      text-decoration:none;
+
+      color:white;
+
+      font-weight:600;
+
+      position:relative;
+
+      transition:0.3s;
+    }
+
+    nav a::after{
+
+      content:"";
+
+      position:absolute;
+
+      width:0;
+      height:3px;
+
+      background:#0ea5e9;
+
+      left:0;
+      bottom:-6px;
+
+      transition:0.4s;
+    }
+
+    nav a:hover::after{
+
+      width:100%;
+    }
+
+    nav a:hover{
+
+      color:#38bdf8;
+    }
+
+    /* CONTAINER */
+
+    .container{
+
+      width:90%;
+
+      max-width:1300px;
+
+      margin:60px auto;
+    }
+
+    /* CARD */
+
+    .card{
+
+      background:
+      rgba(255,255,255,0.82);
+
+      backdrop-filter:
+      blur(15px);
+
+      border:
+      1px solid rgba(255,255,255,0.2);
+
+      box-shadow:
+      0 15px 40px rgba(0,0,0,0.08);
+
+      padding:45px;
+
+      margin-bottom:40px;
+
+      border-radius:24px;
+
+      transition:0.5s;
+    }
+
+    .card:hover{
+
+      transform:
+      translateY(-10px);
+
+      box-shadow:
+      0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    h2{
+
+      color:#0078d4;
+
+      font-size:34px;
+
+      margin-bottom:25px;
+
+      padding-left:18px;
+
+      border-left:
+      6px solid #0078d4;
+    }
+
+    /* GRID */
+
+    .grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(260px,1fr));
+
+      gap:28px;
+
+      margin-top:35px;
+    }
+
+    .grid-card{
+
+      background:
+      linear-gradient(
+      145deg,
+      #1e293b,
+      #0f172a);
+
+      color:white;
+
+      padding:35px;
+
+      border-radius:22px;
+
+      text-align:center;
+
+      transition:0.5s;
+    }
+
+    .grid-card:hover{
+
+      background:
+      linear-gradient(
+      145deg,
+      #0078d4,
+      #0ea5e9);
+
+      transform:
+      translateY(-10px)
+      scale(1.03);
+    }
+
+    .grid-card i{
+
+      font-size:60px;
+
+      margin-bottom:18px;
+
+      color:#38bdf8;
+    }
+
+    /* TABLE */
+
+    table{
+
+      width:100%;
+
+      border-collapse:collapse;
+
+      border-radius:18px;
+
+      overflow:hidden;
+
+      margin-top:25px;
+    }
+
+    table th{
+
+      background:
+      linear-gradient(
+      90deg,
+      #0078d4,
+      #0ea5e9);
+
+      color:white;
+
+      padding:18px;
+    }
+
+    table td{
+
+      padding:16px;
+
+      border-bottom:1px solid #eee;
+
+      background:white;
+    }
+
+    table tr:hover td{
+
+      background:#eff6ff;
+    }
+
+    /* CODE */
+
+    pre{
+
+      background:
+      linear-gradient(
+      135deg,
+      #111827,
+      #1f2937);
+
+      color:#00ff99;
+
+      padding:24px;
+
+      border-radius:18px;
+
+      overflow-x:auto;
+
+      margin-top:25px;
+
+      border-left:
+      5px solid #0078d4;
+    }
+
+    /* INFO BOX */
+
+    .info-box{
+
+      background:
+      linear-gradient(
+      135deg,
+      #e0f2fe,
+      #f0f9ff);
+
+      border-left:
+      6px solid #0078d4;
+
+      padding:22px;
+
+      border-radius:18px;
+
+      margin-top:25px;
+    }
+
+    /* STATS */
+
+    .stats{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(220px,1fr));
+
+      gap:25px;
+
+      margin-bottom:40px;
+    }
+
+    .stat-box{
+
+      background:white;
+
+      padding:35px;
+
+      border-radius:20px;
+
+      text-align:center;
+
+      box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+
+      transition:0.5s;
+    }
+
+    .stat-box:hover{
+
+      background:
+      linear-gradient(
+      135deg,
+      #0078d4,
+      #0ea5e9);
+
+      color:white;
+
+      transform:translateY(-10px);
+    }
+
+    .stat-box h1{
+
+      color:#0078d4;
+
+      font-size:50px;
+    }
+
+    .stat-box:hover h1{
+
+      color:white;
+    }
+
+    /* FOOTER */
+
+    footer{
+
+      background:
+      linear-gradient(
+      135deg,
+      #0f172a,
+      #111827);
+
+      color:white;
+
+      text-align:center;
+
+      padding:45px;
+
+      margin-top:50px;
+    }
+
+    /* ANIMATION */
+
+    @keyframes bgMove{
+
+      0%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+    }
+
+    @keyframes float1{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes float2{
+
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-25px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes slideDown{
+
+      from{
+        transform:translateY(-80px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      nav ul{
+        flex-direction:column;
+        align-items:center;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        <i class="fab fa-microsoft"></i>
+        Azure Cloud Mastery Hub
+      </h1>
+
+      <p>
+        Learn Microsoft Azure from Beginner to Advanced
+      </p>
+
+      <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+        Start Learning
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <ul>
+
+      <li><a href="#intro">Introduction</a></li>
+      <li><a href="#services">Azure Services</a></li>
+      <li><a href="#networking">Networking</a></li>
+      <li><a href="#devops">Azure DevOps</a></li>
+      <li><a href="#security">Security</a></li>
+
+    </ul>
+
+  </nav>
+
+  <div class="container">
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <h1>200+</h1>
+        <p>Azure Services</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>60+</h1>
+        <p>Azure Regions</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>99.95%</h1>
+        <p>High Availability</p>
+      </div>
+
+    </div>
+
+    <!-- INTRO -->
+
+    <div class="card" id="intro">
+
+      <h2>What is Microsoft Azure?</h2>
+
+      <p>
+        Microsoft Azure is a cloud computing platform
+        used to build, deploy, and manage applications
+        through Microsoft-managed data centers.
+      </p>
+
+      <div class="info-box">
+
+        <strong>Azure Supports:</strong><br>
+
+        Virtual Machines,
+        Storage,
+        Databases,
+        Networking,
+        AI,
+        DevOps,
+        Containers,
+        Kubernetes,
+        and Security Services.
+
+      </div>
+
+    </div>
+
+    <!-- HOW AZURE WORKS -->
+
+    <div class="card">
+
+      <h2>How Azure Works</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-user"></i>
+
+          <h3>User Request</h3>
+
+          <p>
+            User sends requests to Azure services.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-server"></i>
+
+          <h3>Azure Data Centers</h3>
+
+          <p>
+            Azure processes requests using cloud servers.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-cloud"></i>
+
+          <h3>Cloud Services</h3>
+
+          <p>
+            Applications, storage, databases run in cloud.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- AZURE SERVICES -->
+
+    <div class="card" id="services">
+
+      <h2>Azure Core Services</h2>
+
+      <table>
+
+        <tr>
+          <th>Service</th>
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td>Azure VM</td>
+          <td>Virtual Machines in Azure</td>
+        </tr>
+
+        <tr>
+          <td>Azure Storage</td>
+          <td>Cloud storage solution</td>
+        </tr>
+
+        <tr>
+          <td>Azure SQL</td>
+          <td>Managed SQL database</td>
+        </tr>
+
+        <tr>
+          <td>Azure Functions</td>
+          <td>Serverless computing</td>
+        </tr>
+
+        <tr>
+          <td>AKS</td>
+          <td>Azure Kubernetes Service</td>
+        </tr>
+
+        <tr>
+          <td>Azure AD</td>
+          <td>Identity & access management</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+    <!-- NETWORKING -->
+
+    <div class="card" id="networking">
+
+      <h2>Azure Networking</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-network-wired"></i>
+
+          <h3>Virtual Network</h3>
+
+          <p>
+            Private network inside Azure cloud.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-globe"></i>
+
+          <h3>Load Balancer</h3>
+
+          <p>
+            Distributes incoming traffic.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-shield-alt"></i>
+
+          <h3>NSG</h3>
+
+          <p>
+            Network Security Groups for protection.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- DEVOPS -->
+
+    <div class="card" id="devops">
+
+      <h2>Azure DevOps</h2>
+
+      <p>
+        Azure DevOps provides tools for
+        CI/CD, Git repositories,
+        testing, pipelines, and deployments.
+      </p>
+
+<pre>
+az login
+
+az vm list
+
+az group create --name mygroup --location eastus
+</pre>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fab fa-git-alt"></i>
+
+          <h3>Azure Repos</h3>
+
+          <p>
+            Git repositories for source code.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-sync"></i>
+
+          <h3>Azure Pipelines</h3>
+
+          <p>
+            CI/CD automation pipelines.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-tasks"></i>
+
+          <h3>Azure Boards</h3>
+
+          <p>
+            Agile project management.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SECURITY -->
+
+    <div class="card" id="security">
+
+      <h2>Azure Security</h2>
+
+      <ul>
+
+        <li>Azure Active Directory</li>
+
+        <li>Role-Based Access Control (RBAC)</li>
+
+        <li>Network Security Groups</li>
+
+        <li>Azure Key Vault</li>
+
+        <li>Microsoft Defender for Cloud</li>
+
+        <li>Multi-Factor Authentication</li>
+
+      </ul>
+
+    </div>
+
+    <!-- AZURE ARCHITECTURE -->
+
+    <div class="card">
+
+      <h2>Azure Architecture Flow</h2>
+
+<pre>
+User → Azure Portal → Azure Services →
+Virtual Machines / Databases / Storage →
+Application Deployment → Monitoring & Security
+</pre>
+
+    </div>
+
+    <!-- MONITORING -->
+
+    <div class="card">
+
+      <h2>Monitoring in Azure</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-chart-line"></i>
+
+          <h3>Azure Monitor</h3>
+
+          <p>
+            Monitors resources and applications.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-file-alt"></i>
+
+          <h3>Log Analytics</h3>
+
+          <p>
+            Collects and analyzes logs.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-bell"></i>
+
+          <h3>Alerts</h3>
+
+          <p>
+            Sends notifications for issues.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- INTERVIEW -->
+
+    <div class="card">
+
+      <h2>Azure Interview Questions</h2>
+
+      <ol>
+
+        <li>What is Microsoft Azure?</li>
+
+        <li>Difference between Azure VM and AWS EC2?</li>
+
+        <li>What is Azure DevOps?</li>
+
+        <li>What is AKS?</li>
+
+        <li>What is Azure Active Directory?</li>
+
+        <li>Explain NSG.</li>
+
+        <li>What is Azure Functions?</li>
+
+      </ol>
+
+    </div>
+
+    <!-- ROADMAP -->
+
+    <div class="card">
+
+      <h2>Azure Learning Roadmap</h2>
+
+      <ol>
+
+        <li>Learn Cloud Fundamentals</li>
+
+        <li>Understand Azure Architecture</li>
+
+        <li>Practice Azure VM & Storage</li>
+
+        <li>Learn Networking & Security</li>
+
+        <li>Study Azure DevOps</li>
+
+        <li>Learn AKS & Containers</li>
+
+        <li>Build Real-Time Projects</li>
+
+        <li>Prepare for Azure Certifications</li>
+
+      </ol>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Azure Cloud Learning Portal</h2>
+
+    <p>
+      Beginner to Advanced Microsoft Azure Learning Platform
+    </p>
+
+    <p>
+      © 2026 Azure Mastery Hub
+    </p>
+
+  </footer>
+
+</body>
+
+</html>
+
