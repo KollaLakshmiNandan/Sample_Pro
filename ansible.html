@@ -1,759 +1,612 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-  <meta charset="UTF-8" />
-
-  <meta name="viewport"
-  content="width=device-width, initial-scale=1.0"/>
-
-  <title>Ansible Mastery Hub</title>
-
-  <!-- FONT AWESOME -->
-
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-  <!-- GOOGLE FONT -->
-
-  <link rel="preconnect"
-  href="https://fonts.googleapis.com">
-
-  <link rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-  rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
-
-    body{
-
-      font-family:'Poppins',sans-serif;
-
-      background:
-      linear-gradient(
-      -45deg,
-      #071426,
-      #0f172a,
-      #0c4a6e,
-      #0f172a,
-      #082f49);
-
-      background-size:400% 400%;
-
-      animation:gradientBG 14s ease infinite;
-
-      color:white;
-
-      line-height:1.8;
-    }
-
-    /* HERO */
-
-    .hero{
-
-      height:100vh;
-
-      background:
-      linear-gradient(
-      rgba(0,0,0,0.80),
-      rgba(0,0,0,0.80)),
-
-      url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop');
-
-      background-size:cover;
-      background-position:center;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      text-align:center;
-
-      position:relative;
-
-      overflow:hidden;
-    }
-
-    .hero::before{
-
-      content:"";
-
-      position:absolute;
-
-      width:650px;
-      height:650px;
-
-      background:
-      rgba(56,189,248,0.18);
-
-      border-radius:50%;
-
-      top:-200px;
-      left:-200px;
-
-      filter:blur(70px);
-
-      animation:float1 8s ease infinite;
-    }
-
-    .hero::after{
-
-      content:"";
-
-      position:absolute;
-
-      width:500px;
-      height:500px;
-
-      background:
-      rgba(34,197,94,0.16);
-
-      border-radius:50%;
-
-      bottom:-180px;
-      right:-120px;
-
-      filter:blur(70px);
-
-      animation:float2 10s ease infinite;
-    }
-
-    .hero-content{
-
-      position:relative;
-
-      z-index:2;
-    }
-
-    .hero-content h1{
-
-      font-size:85px;
-
-      margin-bottom:20px;
-
-      text-shadow:
-      0 0 25px rgba(56,189,248,0.8);
-
-      animation:slideDown 2s ease;
-    }
-
-    .hero-content p{
-
-      font-size:24px;
-
-      color:#dbeafe;
-
-      margin-bottom:35px;
-    }
-
-    .hero-content button{
-
-      padding:16px 40px;
-
-      border:none;
-
-      border-radius:50px;
-
-      background:
-      linear-gradient(
-      90deg,
-      #0284c7,
-      #38bdf8);
-
-      color:white;
-
-      font-size:18px;
-
-      cursor:pointer;
-
-      transition:0.4s;
-
-      box-shadow:
-      0 0 25px rgba(56,189,248,0.5);
-    }
-
-    .hero-content button:hover{
-
-      transform:scale(1.08);
-
-      box-shadow:
-      0 0 40px rgba(56,189,248,1);
-    }
-
-    /* NAVBAR */
-
-    nav{
-
-      position:sticky;
-
-      top:0;
-
-      z-index:1000;
-
-      background:
-      rgba(15,23,42,0.80);
-
-      backdrop-filter:blur(16px);
-
-      padding:18px;
-    }
-
-    nav ul{
-
-      display:flex;
-
-      justify-content:center;
-
-      flex-wrap:wrap;
-
-      gap:25px;
-
-      list-style:none;
-    }
-
-    nav a{
-
-      text-decoration:none;
-
-      color:white;
-
-      font-weight:600;
-
-      transition:0.3s;
-
-      position:relative;
-    }
-
-    nav a::after{
-
-      content:"";
-
-      position:absolute;
-
-      width:0;
-      height:3px;
-
-      background:#38bdf8;
-
-      left:0;
-      bottom:-5px;
-
-      transition:0.4s;
-    }
-
-    nav a:hover::after{
-
-      width:100%;
-    }
-
-    nav a:hover{
-
-      color:#38bdf8;
-    }
-
-    /* CONTAINER */
-
-    .container{
-
-      width:90%;
-
-      max-width:1300px;
-
-      margin:60px auto;
-    }
-
-    /* CARD */
-
-    .card{
-
-      background:
-      rgba(255,255,255,0.08);
-
-      backdrop-filter:blur(16px);
-
-      border:
-      1px solid rgba(255,255,255,0.12);
-
-      border-radius:25px;
-
-      padding:45px;
-
-      margin-bottom:40px;
-
-      transition:0.5s;
-
-      box-shadow:
-      0 8px 30px rgba(0,0,0,0.35);
-    }
-
-    .card:hover{
-
-      transform:
-      translateY(-10px);
-
-      box-shadow:
-      0 0 35px rgba(56,189,248,0.35);
-    }
-
-    /* HEADINGS */
-
-    h2{
-
-      color:#38bdf8;
-
-      font-size:36px;
-
-      margin-bottom:25px;
-
-      border-left:
-      6px solid #38bdf8;
-
-      padding-left:18px;
-    }
-
-    h3{
-
-      color:#22c55e;
-
-      margin-top:20px;
-
-      margin-bottom:12px;
-    }
-
-    /* GRID */
-
-    .grid{
-
-      display:grid;
-
-      grid-template-columns:
-      repeat(auto-fit,minmax(260px,1fr));
-
-      gap:25px;
-
-      margin-top:30px;
-    }
-
-    .grid-card{
-
-      background:
-      linear-gradient(
-      145deg,
-      #1e293b,
-      #0f172a);
-
-      padding:35px;
-
-      border-radius:22px;
-
-      text-align:center;
-
-      transition:0.5s;
-    }
-
-    .grid-card:hover{
-
-      transform:
-      translateY(-10px)
-      scale(1.03);
-
-      background:
-      linear-gradient(
-      145deg,
-      #0284c7,
-      #38bdf8);
-
-      box-shadow:
-      0 0 30px rgba(56,189,248,0.7);
-    }
-
-    .grid-card i{
-
-      font-size:60px;
-
-      margin-bottom:18px;
-
-      color:#38bdf8;
-    }
-
-    /* TABLE */
-
-    table{
-
-      width:100%;
-
-      border-collapse:collapse;
-
-      margin-top:25px;
-
-      overflow:hidden;
-
-      border-radius:18px;
-    }
-
-    table th{
-
-      background:
-      linear-gradient(
-      90deg,
-      #0284c7,
-      #38bdf8);
-
-      padding:18px;
-
-      color:white;
-    }
-
-    table td{
-
-      padding:16px;
-
-      border-bottom:
-      1px solid rgba(255,255,255,0.08);
-
-      background:
-      rgba(255,255,255,0.05);
-    }
-
-    table tr:hover td{
-
-      background:
-      rgba(255,255,255,0.08);
-    }
-
-    /* CODE */
-
-    pre{
-
-      background:
-      linear-gradient(
-      135deg,
-      #111827,
-      #1f2937);
-
-      color:#22c55e;
-
-      padding:24px;
-
-      border-radius:18px;
-
-      overflow-x:auto;
-
-      margin-top:20px;
-
-      border-left:
-      5px solid #38bdf8;
-
-      box-shadow:
-      0 0 20px rgba(56,189,248,0.25);
-    }
-
-    /* NOTE */
-
-    .note{
-
-      background:
-      rgba(255,255,255,0.06);
-
-      border-left:
-      6px solid #22c55e;
-
-      padding:22px;
-
-      border-radius:18px;
-
-      margin-top:25px;
-    }
-
-    /* FOOTER */
-
-    footer{
-
-      text-align:center;
-
-      padding:40px;
-
-      background:
-      rgba(15,23,42,0.85);
-
-      backdrop-filter:blur(12px);
-
-      margin-top:50px;
-    }
-
-    footer h2{
-
-      border:none;
-
-      padding:0;
-
-      color:#38bdf8;
-    }
-
-    /* ANIMATION */
-
-    @keyframes gradientBG{
-
-      0%{
-        background-position:0% 50%;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nandy's Ansible Mastery Hub</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
       }
 
-      50%{
-        background-position:100% 50%;
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #020617;
+        color: white;
+        overflow-x: hidden;
       }
 
-      100%{
-        background-position:0% 50%;
-      }
-    }
-
-    @keyframes float1{
-
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(25px);
+      body::before {
+        content: "";
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        background: #0ea5e955;
+        filter: blur(120px);
+        top: -100px;
+        left: -100px;
+        z-index: -1;
       }
 
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    @keyframes float2{
-
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(-25px);
+      body::after {
+        content: "";
+        position: fixed;
+        width: 500px;
+        height: 500px;
+        background: #22c55e33;
+        filter: blur(120px);
+        bottom: -150px;
+        right: -100px;
+        z-index: -1;
       }
 
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    @keyframes slideDown{
-
-      from{
-        transform:translateY(-80px);
-        opacity:0;
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(14px);
+        padding: 20px;
       }
 
-      to{
-        transform:translateY(0);
-        opacity:1;
-      }
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:768px){
-
-      .hero-content h1{
-        font-size:48px;
+      nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        list-style: none;
+        flex-wrap: wrap;
       }
 
-      .hero-content p{
-        font-size:18px;
+      nav a {
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        transition: 0.4s;
       }
 
-      nav ul{
-        flex-direction:column;
-        align-items:center;
+      nav a:hover {
+        color: #38bdf8;
       }
 
-    }
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+      }
 
-  </style>
+      .hero h1 {
+        font-size: 80px;
+        margin-bottom: 20px;
+        color: #38bdf8;
+        text-shadow: 0 0 25px #38bdf8;
+      }
 
-</head>
+      .hero p {
+        font-size: 24px;
+        max-width: 900px;
+        margin: auto;
+        line-height: 1.8;
+        color: #dbeafe;
+      }
 
-<body>
+      .hero button {
+        margin-top: 35px;
+        padding: 16px 40px;
+        border: none;
+        border-radius: 50px;
+        background: linear-gradient(90deg, #0284c7, #38bdf8);
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 0 20px #38bdf8;
+        transition: 0.4s;
+      }
 
-  <!-- HERO -->
+      .hero button:hover {
+        transform: scale(1.08);
+      }
 
-  <section class="hero">
+      .container {
+        width: 90%;
+        max-width: 1400px;
+        margin: 80px auto;
+      }
 
-    <div class="hero-content">
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 45px;
+        border-radius: 28px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
 
-      <h1>
-        <i class="fas fa-terminal"></i>
-        Ansible Mastery Hub
-      </h1>
+      .card:hover {
+        transform: translateY(-6px);
+        transition: 0.4s;
+      }
 
-      <p>
-        Learn Automation, Configuration Management,
-        Playbooks, YAML, and Infrastructure Provisioning
-      </p>
+      h2 {
+        font-size: 38px;
+        margin-bottom: 25px;
+        color: #38bdf8;
+        border-left: 6px solid #38bdf8;
+        padding-left: 15px;
+      }
 
-      <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
-        Start Learning
-      </button>
+      h3 {
+        margin-top: 25px;
+        margin-bottom: 12px;
+        color: #22c55e;
+      }
 
-    </div>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+      }
 
-  </section>
+      .grid-card {
+        background: linear-gradient(145deg, #0f172a, #1e293b);
+        padding: 35px;
+        border-radius: 22px;
+        text-align: center;
+        transition: 0.4s;
+      }
 
-  <!-- NAVIGATION -->
+      .grid-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        background: linear-gradient(145deg, #0284c7, #38bdf8);
+      }
 
-  <nav>
+      .grid-card i {
+        font-size: 60px;
+        margin-bottom: 20px;
+        color: #38bdf8;
+      }
 
-    <ul>
+      pre {
+        background: #020617;
+        padding: 25px;
+        border-radius: 18px;
+        overflow-x: auto;
+        margin-top: 20px;
+        color: #22c55e;
+        border-left: 5px solid #38bdf8;
+        line-height: 1.7;
+      }
 
-      <li><a href="#intro">Introduction</a></li>
+      .note {
+        background: #0f172a;
+        padding: 25px;
+        border-left: 5px solid #22c55e;
+        border-radius: 16px;
+        margin-top: 25px;
+      }
 
-      <li><a href="#architecture">Architecture</a></li>
+      .timeline {
+        border-left: 4px solid #38bdf8;
+        padding-left: 30px;
+        margin-top: 30px;
+      }
 
-      <li><a href="#workflow">Workflow</a></li>
+      .timeline div {
+        margin-bottom: 35px;
+      }
 
-      <li><a href="#playbook">Playbooks</a></li>
+      footer {
+        padding: 50px;
+        text-align: center;
+        background: #0f172a;
+        margin-top: 80px;
+      }
 
-      <li><a href="#modules">Modules</a></li>
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 45px;
+        }
 
-      <li><a href="#projects">Projects</a></li>
+        .hero p {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
 
-    </ul>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#inventory">Inventory</a></li>
+        <li><a href="#playbooks">Playbooks</a></li>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#loops">Loops</a></li>
+        <li><a href="#vault">Vault</a></li>
+        <li><a href="#dynamic">Dynamic Inventory</a></li>
+      </ul>
+    </nav>
 
-  </nav>
+    <section class="hero">
+      <div>
+        <h1><i class="fas fa-terminal"></i> Ansible Mastery Hub</h1>
+        <p>
+          Complete Beginner to Intermediate Ansible Learning Journey with
+          Hands-on Labs, YAML Playbooks, Automation Workflow, Multi-host
+          Management, Vault Security, Dynamic Inventory and Real-world AWS
+          DevOps Architecture.
+        </p>
+        <button
+          onclick="
+            document
+              .getElementById('intro')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          Explore Journey
+        </button>
+      </div>
+    </section>
 
-  <!-- MAIN CONTAINER -->
+    <div class="container">
+      <div class="card" id="intro">
+        <h2>What is Ansible?</h2>
+        <p>
+          Ansible is an open-source automation and configuration management tool
+          used to automate repetitive tasks like package installation,
+          application deployment, infrastructure provisioning and server
+          configuration.
+        </p>
 
-  <div class="container">
+        <div class="grid">
+          <div class="grid-card">
+            <i class="fas fa-server"></i>
+            <h3>Automation</h3>
+            <p>Automates repetitive infrastructure tasks.</p>
+          </div>
 
-    <!-- INTRO -->
+          <div class="grid-card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Configuration</h3>
+            <p>Manage multiple servers together.</p>
+          </div>
 
-    <div class="card" id="intro">
-
-      <h2>What is Ansible?</h2>
-
-      <p>
-        Ansible is an open-source automation tool
-        used for configuration management,
-        application deployment,
-        infrastructure automation,
-        and server provisioning.
-      </p>
-
-      <div class="note">
-
-        <strong>Key Benefit:</strong><br>
-
-        Ansible is agentless,
-        simple to learn,
-        and uses SSH for communication.
-
+          <div class="grid-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Deployment</h3>
+            <p>Deploy applications automatically.</p>
+          </div>
+        </div>
       </div>
 
-    </div>
-
-    <!-- FEATURES -->
-
-    <div class="card">
-
-      <h2>Why Ansible?</h2>
-
-      <div class="grid">
-
-        <div class="grid-card">
-
-          <i class="fas fa-server"></i>
-
-          <h3>Automation</h3>
-
-          <p>
-            Automate repetitive server tasks.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-network-wired"></i>
-
-          <h3>Configuration</h3>
-
-          <p>
-            Configure multiple servers together.
-          </p>
-
-        </div>
-
-        <div class="grid-card">
-
-          <i class="fas fa-rocket"></i>
-
-          <h3>Deployment</h3>
-
-          <p>
-            Deploy applications automatically.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- ARCHITECTURE -->
-
-    <div class="card" id="architecture">
-
-      <h2>Ansible Architecture</h2>
-
-<pre>
+      <div class="card">
+        <h2>Ansible Architecture</h2>
+        <pre>
 Control Node
-(Ansible Server)
+     ↓
+Inventory
+     ↓
+Playbook
+     ↓
+Modules
+     ↓
+Managed Nodes
+</pre
+        >
 
-       |
+        <div class="note">
+          <b>Control Node:</b> Machine where Ansible is installed. <br /><br />
+          <b>Managed Nodes:</b> Target servers controlled using SSH.
+        </div>
+      </div>
 
--------------------
+      <div class="card" id="inventory">
+        <h2>Inventory Hands-on</h2>
 
-|                 |
+        <h3>Commands Used</h3>
+        <pre>
+mkdir ansible-demo
+cd ansible-demo
 
-Node1          Node2
+touch inventory
+</pre
+        >
 
-Managed        Managed
+        <h3>Inventory File</h3>
+        <pre>
+[webservers]
 
-Node           Node
-</pre>
+server1 ansible_connection=local
+server2 ansible_connection=local
+server3 ansible_connection=local
+server4 ansible_connection=local
+server5 ansible_connection=local
+</pre
+        >
 
-      <h3>Control Node</h3>
+        <div class="note">
+          <b>What You Learned:</b>
+          <br />
+          • Host grouping
+          <br />
+          • Simulated 5 servers on one Mac machine
+          <br />
+          • Multi-host execution
+        </div>
+      </div>
 
-      <p>
-        Machine where Ansible is installed.
-      </p>
+      <div class="card" id="playbooks">
+        <h2>Playbooks</h2>
 
-      <h3>Managed Nodes</h3>
+        <h3>Playbook YAML</h3>
+        <pre>
+---
+- name: Deploy HTML file
+  hosts: webservers
 
-      <p>
-        Target systems controlled by Ansible.
-      </p>
+  tasks:
 
-    </div>
+    - name: Create HTML file
+      copy:
 
-    <!-- WORKFLOW -->
+        content: |
+          &lt;html&gt;
+          &lt;body&gt;
+          &lt;h1&gt;Hello Nandy&lt;/h1&gt;
+          &lt;/body&gt;
+          &lt;/html&gt;
 
-    <div class="card" id="workflow">
+        dest: /tmp/index.html
+</pre
+        >
 
-      <h2>Ansible Workflow</h2>
+        <h3>Command</h3>
+        <pre>
+ansible-playbook -i inventory deploy.yml
+</pre
+        >
 
-<pre>
+        <h3>Output</h3>
+        <pre>
+PLAY RECAP
+
+server1 : ok=2 changed=1
+server2 : ok=2 changed=1
+server3 : ok=2 changed=1
+</pre
+        >
+      </div>
+
+      <div class="card" id="variables">
+        <h2>Variables Demo</h2>
+
+        <pre>
+---
+- name: Variables Demo
+  hosts: webservers
+
+  vars:
+    username: Nandy
+    course: Ansible
+
+  tasks:
+
+    - name: Print variables
+      debug:
+        msg: "User is {{ username }} and course is {{ course }}"
+</pre
+        >
+
+        <div class="note">
+          Variables avoid hardcoding values and make automation reusable.
+        </div>
+      </div>
+
+      <div class="card" id="loops">
+        <h2>Loops Demo</h2>
+
+        <pre>
+---
+- name: Loop Demo
+  hosts: webservers
+
+  tasks:
+
+    - name: Create multiple files
+      file:
+        path: "/tmp/{{ item }}"
+        state: touch
+
+      loop:
+        - file1.txt
+        - file2.txt
+        - file3.txt
+</pre
+        >
+
+        <h3>Output</h3>
+        <pre>
+changed: [server1] => (item=file1.txt)
+changed: [server1] => (item=file2.txt)
+changed: [server1] => (item=file3.txt)
+</pre
+        >
+      </div>
+
+      <div class="card">
+        <h2>Conditions & Handlers</h2>
+
+        <h3>Conditions</h3>
+        <pre>
+when: inventory_hostname == "server1"
+</pre
+        >
+
+        <h3>Handlers</h3>
+        <pre>
+notify: Restart Service
+
+handlers:
+ - name: Restart Service
+   command: echo "Service Restarted"
+</pre
+        >
+
+        <h3>Handler Flow</h3>
+        <pre>
+Task Changed
+      ↓
+Notify Triggered
+      ↓
+Handler Executed
+      ↓
+Service Restarted
+</pre
+        >
+      </div>
+
+      <div class="card">
+        <h2>Templates</h2>
+
+        <pre>
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;{{ inventory_hostname }}&lt;/h1&gt;
+
+&lt;p&gt;{{ username }}&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre
+        >
+
+        <div class="note">
+          Templates dynamically generate files for each server.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Roles Structure</h2>
+        <pre>
+roles/
+└── webserver/
+    ├── files/
+    ├── handlers/
+    ├── tasks/
+    ├── templates/
+    └── vars/
+</pre
+        >
+      </div>
+
+      <div class="card" id="vault">
+        <h2>Vault Security</h2>
+
+        <h3>Command</h3>
+        <pre>
+ansible-vault create secrets.yml
+</pre
+        >
+
+        <h3>Vault File</h3>
+        <pre>
+db_user: admin
+db_password: secret120
+</pre
+        >
+
+        <h3>Playbook</h3>
+        <pre>
+---
+- name: Vault Demo
+  hosts: webservers
+
+  vars_files:
+    - secrets.yml
+
+  tasks:
+
+    - name: Display username
+      debug:
+        msg: "User is {{ db_user }}"
+</pre
+        >
+      </div>
+
+      <div class="card" id="dynamic">
+        <h2>Dynamic Inventory</h2>
+
+        <div class="note">
+          <b>Problem:</b>
+          <br /><br />
+          Imagine a company has 200 EC2 instances.
+          <br />
+          Will you manually edit inventory every day?
+          <br /><br />
+          ❌ Not practical.
+        </div>
+
+        <h3>Dynamic Inventory Flow</h3>
+        <pre>
+Terraform
+     ↓
+Creates EC2
+     ↓
+Dynamic Inventory
+     ↓
+Ansible discovers servers
+     ↓
+Deploy Application
+</pre
+        >
+
+        <h3>AWS Inventory Plugin</h3>
+        <pre>
+plugin: amazon.aws.aws_ec2
+
+regions:
+ - ap-south-1
+
+filters:
+ instance-state-name: running
+</pre
+        >
+
+        <h3>Commands</h3>
+        <pre>
+ansible-galaxy collection install amazon.aws
+
+ansible-inventory -i aws_ec2.yml --graph
+</pre
+        >
+      </div>
+
+      <div class="card">
+        <h2>Real-world DevOps Workflow</h2>
+
+        <pre>
 Developer
     ↓
 GitHub
@@ -762,179 +615,65 @@ Jenkins
     ↓
 Ansible
     ↓
-Servers
+Docker/Kubernetes
     ↓
-Deployment
-</pre>
-
-    </div>
-
-    <!-- PLAYBOOK -->
-
-    <div class="card" id="playbook">
-
-      <h2>Ansible Playbook</h2>
-
-<pre>
----
-
-- name: Install Nginx
-
-  hosts: all
-
-  become: yes
-
-  tasks:
-
-   - name: Install package
-
-     apt:
-
-      name: nginx
-
-      state: present
-</pre>
-
-      <div class="note">
-
-        Playbooks are written using YAML syntax.
-
+Production Servers
+</pre
+        >
       </div>
 
+      <div class="card">
+        <h2>Project Structure</h2>
+
+        <pre>
+ansible-demo/
+
+├── inventory
+├── README.md
+├── playbooks/
+├── templates/
+├── roles/
+└── secrets.yml
+</pre
+        >
+      </div>
+
+      <div class="card">
+        <h2>What I Practically Achieved</h2>
+
+        <div class="timeline">
+          <div>
+            <h3>Installed Ansible</h3>
+            <p>Verified installation and Python environment on Mac.</p>
+          </div>
+
+          <div>
+            <h3>Created Inventory</h3>
+            <p>Configured simulated multi-host environment.</p>
+          </div>
+
+          <div>
+            <h3>Built Playbooks</h3>
+            <p>Automated HTML deployment using YAML playbooks.</p>
+          </div>
+
+          <div>
+            <h3>Used Variables & Loops</h3>
+            <p>Created reusable and scalable automation workflows.</p>
+          </div>
+
+          <div>
+            <h3>Implemented Vault Security</h3>
+            <p>Protected sensitive credentials using Ansible Vault.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- MODULES -->
-
-    <div class="card" id="modules">
-
-      <h2>Ansible Modules</h2>
-
-      <table>
-
-        <tr>
-
-          <th>Module</th>
-
-          <th>Purpose</th>
-
-        </tr>
-
-        <tr>
-
-          <td>apt</td>
-
-          <td>Install packages</td>
-
-        </tr>
-
-        <tr>
-
-          <td>copy</td>
-
-          <td>Copy files</td>
-
-        </tr>
-
-        <tr>
-
-          <td>service</td>
-
-          <td>Manage services</td>
-
-        </tr>
-
-        <tr>
-
-          <td>ping</td>
-
-          <td>Check connectivity</td>
-
-        </tr>
-
-      </table>
-
-    </div>
-
-    <!-- COMMANDS -->
-
-    <div class="card">
-
-      <h2>Important Commands</h2>
-
-<pre>
-ansible all -m ping
-
-ansible-playbook deploy.yml
-
-ansible-inventory --list
-
-ansible-galaxy init role_name
-</pre>
-
-    </div>
-
-    <!-- PROJECTS -->
-
-    <div class="card" id="projects">
-
-      <h2>Real-Time Projects</h2>
-
-      <ol>
-
-        <li>Deploy Nginx on Multiple Servers</li>
-
-        <li>Automate Docker Installation</li>
-
-        <li>Configure Kubernetes Nodes</li>
-
-        <li>Deploy Applications Using Jenkins + Ansible</li>
-
-        <li>Provision Cloud Infrastructure</li>
-
-      </ol>
-
-    </div>
-
-    <!-- INTERVIEW -->
-
-    <div class="card">
-
-      <h2>Ansible Interview Questions</h2>
-
-      <ul>
-
-        <li>What is Ansible?</li>
-
-        <li>What is a Playbook?</li>
-
-        <li>What protocol does Ansible use?</li>
-
-        <li>What is Inventory File?</li>
-
-        <li>What is Idempotency?</li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h2>Ansible Learning Portal</h2>
-
-    <p>
-      Beginner to Advanced Automation Learning Platform
-    </p>
-
-    <p>
-      © 2026 DevOps Mastery Hub
-    </p>
-
-  </footer>
-
-</body>
-
+    <footer>
+      <h2>Ansible Learning Portal</h2>
+      <p>Beginner to Intermediate DevOps Automation Journey</p>
+      <p>Built by Nandy 🚀</p>
+    </footer>
+  </body>
 </html>
