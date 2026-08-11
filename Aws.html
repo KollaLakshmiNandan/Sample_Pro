@@ -1,43 +1,1039 @@
-<!doctype html>
-<html>
-  <head>
-    <title>AWS Topics</title>
-  </head>
-  <body>
-    <h1>AWS Topics</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-    <h2>changing to main</h2>
+<head>
 
-    <ul>
-      <li>Introduction to Cloud Computing</li>
-      <li>AWS Global Infrastructure</li>
-      <li>IAM (Identity and Access Management)</li>
-      <li>EC2 (Elastic Compute Cloud)</li>
-      <li>S3 (Simple Storage Service)</li>
-      <li>VPC (Virtual Private Cloud)</li>
-      <li>Route Tables</li>
-      <li>Internet Gateway (IGW)</li>
-      <li>NAT Gateway</li>
-      <li>Public and Private Subnets</li>
-      <li>Security Groups</li>
-      <li>Network ACL</li>
-      <li>Load Balancer</li>
-      <li>Auto Scaling</li>
-      <li>RDS (Relational Database Service)</li>
-      <li>DynamoDB</li>
-      <li>Lambda</li>
-      <li>CloudWatch</li>
-      <li>CloudFormation</li>
-      <li>Elastic Beanstalk</li>
-      <li>ECS and EKS</li>
-      <li>Kubernetes on AWS</li>
-      <li>CloudFront</li>
-      <li>Route 53</li>
-      <li>DevOps in AWS</li>
-      <li>AWS CLI</li>
-      <li>Monitoring and Logging</li>
-      <li>AWS Billing and Pricing</li>
-      <li>AWS Best Practices</li>
-    </ul>
-  </body>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>AWS Mastery Hub</title>
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            scroll-behavior:smooth;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background:
+            linear-gradient(
+            135deg,
+            #eef6ff,
+            #f8fbff,
+            #fff7ed,
+            #dbeafe);
+
+            background-size:400% 400%;
+
+            animation:bgMove 12s ease infinite;
+
+            color:#222;
+
+            line-height:1.8;
+        }
+
+        /* HERO */
+
+        .hero{
+
+            height:100vh;
+
+            background:
+            linear-gradient(
+            rgba(0,0,0,0.75),
+            rgba(0,0,0,0.75)),
+
+            url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop');
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            text-align:center;
+
+            color:white;
+
+            position:relative;
+
+            overflow:hidden;
+        }
+
+        .hero::before{
+
+            content:"";
+
+            position:absolute;
+
+            width:700px;
+            height:700px;
+
+            background:
+            rgba(255,153,0,0.15);
+
+            border-radius:50%;
+
+            top:-250px;
+            left:-200px;
+
+            filter:blur(60px);
+
+            animation:float1 8s ease-in-out infinite;
+        }
+
+        .hero::after{
+
+            content:"";
+
+            position:absolute;
+
+            width:500px;
+            height:500px;
+
+            background:
+            rgba(59,130,246,0.15);
+
+            border-radius:50%;
+
+            bottom:-150px;
+            right:-100px;
+
+            filter:blur(60px);
+
+            animation:float2 10s ease-in-out infinite;
+        }
+
+        .hero-content{
+
+            position:relative;
+            z-index:2;
+        }
+
+        .hero-content h1{
+
+            font-size:80px;
+
+            margin-bottom:20px;
+
+            text-shadow:
+            0 0 25px rgba(255,153,0,0.8);
+
+            animation:slideDown 2s ease;
+        }
+
+        .hero-content p{
+
+            font-size:26px;
+
+            color:#dbeafe;
+
+            margin-bottom:35px;
+        }
+
+        .hero-content button{
+
+            padding:16px 42px;
+
+            border:none;
+
+            border-radius:50px;
+
+            background:
+            linear-gradient(
+            90deg,
+            #ff9900,
+            #ffb84d);
+
+            color:white;
+
+            font-size:18px;
+
+            cursor:pointer;
+
+            transition:0.4s;
+
+            box-shadow:
+            0 0 25px rgba(255,153,0,0.6);
+        }
+
+        .hero-content button:hover{
+
+            transform:
+            scale(1.08);
+
+            box-shadow:
+            0 0 40px rgba(255,153,0,1);
+        }
+
+        /* NAVBAR */
+
+        nav{
+
+            background:
+            rgba(15,23,42,0.92);
+
+            backdrop-filter:blur(18px);
+
+            position:sticky;
+
+            top:0;
+
+            z-index:1000;
+
+            padding:16px;
+        }
+
+        nav ul{
+
+            display:flex;
+
+            justify-content:center;
+
+            list-style:none;
+
+            gap:30px;
+
+            flex-wrap:wrap;
+        }
+
+        nav a{
+
+            text-decoration:none;
+
+            color:white;
+
+            font-weight:600;
+
+            position:relative;
+
+            transition:0.3s;
+        }
+
+        nav a::after{
+
+            content:"";
+
+            position:absolute;
+
+            width:0;
+            height:3px;
+
+            background:#ff9900;
+
+            left:0;
+            bottom:-6px;
+
+            transition:0.4s;
+        }
+
+        nav a:hover::after{
+
+            width:100%;
+        }
+
+        nav a:hover{
+
+            color:#ff9900;
+        }
+
+        /* CONTAINER */
+
+        .container{
+
+            width:90%;
+
+            max-width:1300px;
+
+            margin:60px auto;
+        }
+
+        /* CARD */
+
+        .card{
+
+            background:
+            rgba(255,255,255,0.82);
+
+            backdrop-filter:
+            blur(15px);
+
+            border:
+            1px solid rgba(255,255,255,0.2);
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.08);
+
+            padding:45px;
+
+            margin-bottom:40px;
+
+            border-radius:24px;
+
+            transition:0.5s;
+
+            overflow:hidden;
+
+            position:relative;
+        }
+
+        .card:hover{
+
+            transform:
+            translateY(-12px)
+            scale(1.01);
+
+            box-shadow:
+            0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* HEADINGS */
+
+        h2{
+
+            color:#ff9900;
+
+            font-size:34px;
+
+            margin-bottom:25px;
+
+            position:relative;
+
+            padding-left:18px;
+        }
+
+        h2::before{
+
+            content:"";
+
+            position:absolute;
+
+            left:0;
+            top:5px;
+
+            width:6px;
+            height:42px;
+
+            background:#ff9900;
+
+            border-radius:20px;
+        }
+
+        h2::after{
+
+            content:"";
+
+            position:absolute;
+
+            bottom:-8px;
+            left:0;
+
+            width:120px;
+            height:4px;
+
+            background:
+            linear-gradient(
+            90deg,
+            #ff9900,
+            transparent);
+
+            border-radius:20px;
+        }
+
+        /* GRID */
+
+        .grid{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(260px,1fr));
+
+            gap:28px;
+
+            margin-top:35px;
+        }
+
+        .grid-card{
+
+            background:
+            linear-gradient(
+            145deg,
+            #1e293b,
+            #0f172a);
+
+            color:white;
+
+            padding:35px;
+
+            border-radius:22px;
+
+            text-align:center;
+
+            transition:0.5s;
+
+            position:relative;
+
+            overflow:hidden;
+        }
+
+        .grid-card:hover{
+
+            background:
+            linear-gradient(
+            145deg,
+            #ff9900,
+            #ffb84d);
+
+            transform:
+            translateY(-10px)
+            scale(1.03);
+        }
+
+        .grid-card i{
+
+            font-size:60px;
+
+            margin-bottom:18px;
+
+            color:#ff9900;
+
+            transition:0.4s;
+        }
+
+        .grid-card:hover i{
+
+            color:white;
+
+            transform:scale(1.15);
+        }
+
+        .grid-card h3{
+
+            margin-bottom:15px;
+
+            font-size:24px;
+        }
+
+        /* STATS */
+
+        .stats{
+
+            display:grid;
+
+            grid-template-columns:
+            repeat(auto-fit,minmax(220px,1fr));
+
+            gap:25px;
+
+            margin-bottom:40px;
+        }
+
+        .stat-box{
+
+            background:white;
+
+            padding:35px;
+
+            border-radius:20px;
+
+            text-align:center;
+
+            box-shadow:
+            0 8px 25px rgba(0,0,0,0.08);
+
+            transition:0.5s;
+        }
+
+        .stat-box:hover{
+
+            background:
+            linear-gradient(
+            135deg,
+            #ff9900,
+            #ffb84d);
+
+            color:white;
+
+            transform:translateY(-10px);
+        }
+
+        .stat-box h1{
+
+            color:#ff9900;
+
+            font-size:50px;
+        }
+
+        .stat-box:hover h1{
+
+            color:white;
+        }
+
+        /* TABLE */
+
+        table{
+
+            width:100%;
+
+            border-collapse:collapse;
+
+            overflow:hidden;
+
+            border-radius:18px;
+
+            margin-top:25px;
+
+            box-shadow:
+            0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        table th{
+
+            background:
+            linear-gradient(
+            90deg,
+            #ff9900,
+            #ffb84d);
+
+            color:white;
+
+            padding:18px;
+
+            font-size:18px;
+        }
+
+        table td{
+
+            padding:16px;
+
+            border-bottom:1px solid #eee;
+
+            background:white;
+        }
+
+        table tr:hover td{
+
+            background:#fff7ed;
+        }
+
+        /* IMAGE */
+
+        .hero-image{
+
+            width:100%;
+
+            border-radius:20px;
+
+            margin-top:25px;
+
+            transition:0.5s;
+
+            box-shadow:
+            0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-image:hover{
+
+            transform:scale(1.03);
+        }
+
+        /* INFO BOX */
+
+        .info-box{
+
+            background:
+            linear-gradient(
+            135deg,
+            #fff7ed,
+            #fffbeb);
+
+            border-left:
+            6px solid #ff9900;
+
+            padding:22px;
+
+            border-radius:18px;
+
+            margin-top:25px;
+
+            box-shadow:
+            0 5px 15px rgba(255,153,0,0.12);
+        }
+
+        /* CODE BLOCK */
+
+        pre{
+
+            background:
+            linear-gradient(
+            135deg,
+            #111827,
+            #1f2937);
+
+            color:#00ff99;
+
+            padding:24px;
+
+            border-radius:18px;
+
+            overflow-x:auto;
+
+            margin-top:25px;
+
+            position:relative;
+
+            border-left:
+            5px solid #ff9900;
+
+            box-shadow:
+            0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        pre::before{
+
+            content:"AWS Command";
+
+            position:absolute;
+
+            top:0;
+            right:0;
+
+            background:#ff9900;
+
+            color:white;
+
+            padding:8px 16px;
+
+            font-size:13px;
+
+            border-bottom-left-radius:14px;
+        }
+
+        /* FOOTER */
+
+        footer{
+
+            background:
+            linear-gradient(
+            135deg,
+            #0f172a,
+            #111827);
+
+            color:white;
+
+            text-align:center;
+
+            padding:45px;
+
+            margin-top:50px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes bgMove{
+
+            0%{
+                background-position:0% 50%;
+            }
+
+            50%{
+                background-position:100% 50%;
+            }
+
+            100%{
+                background-position:0% 50%;
+            }
+        }
+
+        @keyframes float1{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(25px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        @keyframes float2{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-25px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        @keyframes slideDown{
+
+            from{
+                transform:translateY(-80px);
+                opacity:0;
+            }
+
+            to{
+                transform:translateY(0);
+                opacity:1;
+            }
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px){
+
+            .hero-content h1{
+                font-size:45px;
+            }
+
+            .hero-content p{
+                font-size:18px;
+            }
+
+            .grid{
+                grid-template-columns:1fr;
+            }
+
+            nav ul{
+                flex-direction:column;
+                align-items:center;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                <i class="fab fa-aws"></i>
+                AWS Mastery Hub
+            </h1>
+
+            <p>
+                Learn AWS Cloud & DevOps from Beginner to Advanced
+            </p>
+
+            <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+                Start Learning
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <ul>
+
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#networking">Networking</a></li>
+            <li><a href="#devops">DevOps</a></li>
+            <li><a href="#projects">Projects</a></li>
+
+        </ul>
+
+    </nav>
+
+    <div class="container">
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-box">
+                <h1>200+</h1>
+                <p>AWS Cloud Services</p>
+            </div>
+
+            <div class="stat-box">
+                <h1>99.99%</h1>
+                <p>Cloud Availability</p>
+            </div>
+
+            <div class="stat-box">
+                <h1>31</h1>
+                <p>AWS Global Regions</p>
+            </div>
+
+        </div>
+
+        <!-- INTRO -->
+
+        <div class="card" id="intro">
+
+            <h2>Introduction to AWS</h2>
+
+            <p>
+                Amazon Web Services (AWS) is the world's leading
+                cloud computing platform providing scalable,
+                reliable, and secure cloud solutions.
+            </p>
+
+            <img class="hero-image"
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="info-box">
+
+                <strong>Did You Know?</strong><br>
+
+                AWS provides compute,
+                storage, networking,
+                databases, AI,
+                security,
+                and DevOps services.
+
+            </div>
+
+        </div>
+
+        <!-- SERVICES -->
+
+        <div class="card" id="services">
+
+            <h2>AWS Core Services</h2>
+
+            <div class="grid">
+
+                <div class="grid-card">
+
+                    <i class="fas fa-server"></i>
+
+                    <h3>EC2</h3>
+
+                    <p>
+                        Virtual cloud servers
+                        for scalable computing.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-database"></i>
+
+                    <h3>S3</h3>
+
+                    <p>
+                        Highly scalable object
+                        storage service.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-user-shield"></i>
+
+                    <h3>IAM</h3>
+
+                    <p>
+                        Identity & access
+                        management service.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <h3>Lambda</h3>
+
+                    <p>
+                        Serverless compute
+                        service for automation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- NETWORKING -->
+
+        <div class="card" id="networking">
+
+            <h2>AWS Networking</h2>
+
+            <table>
+
+                <tr>
+                    <th>Service</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>VPC</td>
+                    <td>Private isolated AWS network</td>
+                </tr>
+
+                <tr>
+                    <td>Route 53</td>
+                    <td>Scalable DNS web service</td>
+                </tr>
+
+                <tr>
+                    <td>Security Groups</td>
+                    <td>Firewall protection</td>
+                </tr>
+
+                <tr>
+                    <td>Load Balancer</td>
+                    <td>Traffic distribution service</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <!-- DEVOPS -->
+
+        <div class="card" id="devops">
+
+            <h2>DevOps on AWS</h2>
+
+<pre>
+aws configure
+
+aws s3 ls
+
+aws ec2 describe-instances
+</pre>
+
+            <div class="grid">
+
+                <div class="grid-card">
+
+                    <i class="fab fa-docker"></i>
+
+                    <h3>ECS</h3>
+
+                    <p>
+                        Docker container orchestration.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-dharmachakra"></i>
+
+                    <h3>EKS</h3>
+
+                    <p>
+                        Managed Kubernetes platform.
+                    </p>
+
+                </div>
+
+                <div class="grid-card">
+
+                    <i class="fas fa-code"></i>
+
+                    <h3>CloudFormation</h3>
+
+                    <p>
+                        Infrastructure as Code service.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+
+        <div class="card" id="projects">
+
+            <h2>Real-Time AWS Projects</h2>
+
+            <ol>
+
+                <li>Host Static Website using S3</li>
+
+                <li>Deploy EC2 Web Server</li>
+
+                <li>Create VPC Architecture</li>
+
+                <li>Deploy Kubernetes on EKS</li>
+
+                <li>Build CI/CD Pipeline</li>
+
+                <li>Create Serverless Lambda Project</li>
+
+            </ol>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>AWS Learning Portal</h2>
+
+        <p>
+            Beginner to Advanced AWS & DevOps Platform
+        </p>
+
+        <p>
+            © 2026 AWS Mastery Hub
+        </p>
+
+    </footer>
+
+</body>
+
 </html>

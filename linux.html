@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Linux Learning Guide</title>
+
+    <!-- FONT AWESOME ICONS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #222;
+            line-height: 1.8;
+        }
+
+        /* HEADER */
+
+        .hero {
+            height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.7),
+                    rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1400&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 2s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+            animation: slideDown 2s ease;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .hero-content button {
+            padding: 15px 35px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            font-size: 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hero-content button:hover {
+            background: #1e40af;
+            transform: scale(1.05);
+        }
+
+        /* NAVBAR */
+
+        nav {
+            background: #111827;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #60a5fa;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: white;
+            margin-bottom: 35px;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: 0.4s;
+            animation: fadeUp 1s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 20px;
+            border-left: 6px solid #2563eb;
+            padding-left: 15px;
+        }
+
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #111827;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th {
+            background: #2563eb;
+            color: white;
+            padding: 14px;
+        }
+
+        table td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9fafb;
+        }
+
+        /* CODE */
+
+        pre {
+            background: #111827;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        code {
+            color: #60a5fa;
+        }
+
+        /* INFO BOX */
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 6px solid #2563eb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .grid-card {
+            background: #1e293b;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .grid-card:hover {
+            transform: scale(1.05);
+            background: #2563eb;
+        }
+
+        .grid-card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        /* IMAGE */
+
+        .linux-image {
+            width: 100%;
+            border-radius: 15px;
+            margin-top: 20px;
+            transition: 0.4s;
+        }
+
+        .linux-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            margin-top: 50px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-80px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1><i class="fab fa-linux"></i> Linux Mastery Guide</h1>
+
+            <p>
+                Complete Linux Learning Website for DevOps, Cloud & Cybersecurity
+            </p>
+
+            <button onclick="window.location.href='#intro'">
+                Start Learning
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- NAVBAR -->
+
+    <nav>
+
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#commands">Commands</a></li>
+            <li><a href="#network">Networking</a></li>
+            <li><a href="#permissions">Permissions</a></li>
+            <li><a href="#devops">DevOps</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="container">
+
+        <!-- INTRO -->
+
+        <div class="card" id="intro">
+
+            <h2>Introduction to Linux</h2>
+
+            <p>
+                Linux is one of the most powerful and secure operating systems
+                used in modern IT infrastructure. It powers:
+            </p>
+
+            <ul>
+                <li>Cloud Platforms</li>
+                <li>Servers</li>
+                <li>Android Devices</li>
+                <li>Supercomputers</li>
+                <li>DevOps Infrastructure</li>
+                <li>Cybersecurity Tools</li>
+            </ul>
+
+            <img class="linux-image"
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+                alt="Linux">
+
+            <div class="info-box">
+
+                <strong>Fact:</strong>
+                Around 90% of cloud infrastructure runs on Linux.
+
+            </div>
+
+        </div>
+
+        <!-- DISTRIBUTIONS -->
+
+        <div class="card">
+
+            <h2>Popular Linux Distributions</h2>
+
+            <div class="grid">
+
+                <div class="grid-card">
+                    <i class="fab fa-ubuntu"></i>
+                    <h3>Ubuntu</h3>
+                    <p>Best for beginners & servers</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-server"></i>
+                    <h3>CentOS</h3>
+                    <p>Enterprise Linux distribution</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Kali Linux</h3>
+                    <p>Cybersecurity & Ethical Hacking</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Debian</h3>
+                    <p>Stable and secure distribution</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- COMMANDS -->
+
+        <div class="card" id="commands">
+
+            <h2>Linux Navigation Commands</h2>
+
+            <table>
+
+                <tr>
+                    <th>Command</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td><code>pwd</code></td>
+                    <td>Print current working directory</td>
+                </tr>
+
+                <tr>
+                    <td><code>ls -la</code></td>
+                    <td>Show hidden files with details</td>
+                </tr>
+
+                <tr>
+                    <td><code>cd folder</code></td>
+                    <td>Move into a directory</td>
+                </tr>
+
+                <tr>
+                    <td><code>tree</code></td>
+                    <td>Display folder structure</td>
+                </tr>
+
+            </table>
+
+<pre>
+pwd
+ls -la
+cd /etc
+tree
+</pre>
+
+        </div>
+
+        <!-- NETWORK -->
+
+        <div class="card" id="network">
+
+            <h2>Networking Commands</h2>
+
+            <table>
+
+                <tr>
+                    <th>Command</th>
+                    <th>Function</th>
+                </tr>
+
+                <tr>
+                    <td><code>ping</code></td>
+                    <td>Check network connectivity</td>
+                </tr>
+
+                <tr>
+                    <td><code>ip a</code></td>
+                    <td>Show IP address</td>
+                </tr>
+
+                <tr>
+                    <td><code>ssh</code></td>
+                    <td>Remote server login</td>
+                </tr>
+
+                <tr>
+                    <td><code>wget</code></td>
+                    <td>Download files</td>
+                </tr>
+
+            </table>
+
+<pre>
+ping google.com
+ip a
+ssh user@server
+</pre>
+
+        </div>
+
+        <!-- PERMISSIONS -->
+
+        <div class="card" id="permissions">
+
+            <h2>Linux File Permissions</h2>
+
+            <p>
+                Linux permissions control who can read, write, and execute files.
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>Permission</th>
+                    <th>Meaning</th>
+                </tr>
+
+                <tr>
+                    <td>r</td>
+                    <td>Read</td>
+                </tr>
+
+                <tr>
+                    <td>w</td>
+                    <td>Write</td>
+                </tr>
+
+                <tr>
+                    <td>x</td>
+                    <td>Execute</td>
+                </tr>
+
+            </table>
+
+<pre>
+chmod 777 file.txt
+chmod +x script.sh
+</pre>
+
+        </div>
+
+        <!-- DEVOPS -->
+
+        <div class="card" id="devops">
+
+            <h2>Linux in DevOps</h2>
+
+            <p>
+                Linux is the backbone of modern DevOps infrastructure.
+                Most CI/CD pipelines, Docker containers, Kubernetes clusters,
+                and cloud servers run on Linux.
+            </p>
+
+            <div class="grid">
+
+                <div class="grid-card">
+                    <i class="fab fa-docker"></i>
+                    <h3>Docker</h3>
+                    <p>Containerization platform</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Kubernetes</h3>
+                    <p>Container orchestration</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fab fa-git-alt"></i>
+                    <h3>Git</h3>
+                    <p>Version control system</p>
+                </div>
+
+                <div class="grid-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>AWS</h3>
+                    <p>Cloud computing platform</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ADVANCED COMMANDS -->
+
+        <div class="card">
+
+            <h2>Advanced Linux Commands</h2>
+
+            <table>
+
+                <tr>
+                    <th>Command</th>
+                    <th>Purpose</th>
+                </tr>
+
+                <tr>
+                    <td><code>grep</code></td>
+                    <td>Search text patterns</td>
+                </tr>
+
+                <tr>
+                    <td><code>awk</code></td>
+                    <td>Text processing</td>
+                </tr>
+
+                <tr>
+                    <td><code>sed</code></td>
+                    <td>Edit text streams</td>
+                </tr>
+
+                <tr>
+                    <td><code>tar</code></td>
+                    <td>Compress files</td>
+                </tr>
+
+            </table>
+
+<pre>
+grep "error" logfile.txt
+tar -cvf backup.tar folder/
+</pre>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>Linux Learning Portal</h2>
+
+        <p>
+            Designed for Beginners, DevOps Engineers & Cloud Engineers
+        </p>
+
+        <p>
+            © 2026 Linux Learning Website
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

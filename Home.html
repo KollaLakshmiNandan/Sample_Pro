@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
+
+  <title>DevOps Learning Portal</title>
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect"
+  href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+
+      font-family:'Poppins',sans-serif;
+
+      background:
+      linear-gradient(
+      -45deg,
+      #0f172a,
+      #0c4a6e,
+      #1e3a8a,
+      #0369a1,
+      #0f172a);
+
+      background-size:400% 400%;
+
+      animation:gradientBG 15s ease infinite;
+
+      color:white;
+
+      min-height:100vh;
+    }
+
+    /* HERO */
+
+    .hero{
+
+      height:55vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+
+      padding:20px;
+    }
+
+    .hero-content h1{
+
+      font-size:70px;
+
+      margin-bottom:20px;
+
+      text-shadow:
+      0 0 25px rgba(56,189,248,0.8);
+
+      animation:slideDown 2s ease;
+    }
+
+    .hero-content p{
+
+      font-size:22px;
+
+      color:#dbeafe;
+
+      max-width:900px;
+
+      margin:auto;
+    }
+
+    /* CONTAINER */
+
+    .container{
+
+      width:90%;
+
+      max-width:1400px;
+
+      margin:auto;
+
+      padding-bottom:60px;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+
+      text-align:center;
+
+      margin-bottom:40px;
+    }
+
+    .section-title h2{
+
+      font-size:40px;
+
+      color:#38bdf8;
+    }
+
+    /* GRID */
+
+    .grid{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(280px,1fr));
+
+      gap:30px;
+    }
+
+    /* CARD */
+
+    .card{
+
+      background:
+      rgba(255,255,255,0.08);
+
+      backdrop-filter:blur(15px);
+
+      border:
+      1px solid rgba(255,255,255,0.12);
+
+      border-radius:25px;
+
+      padding:35px;
+
+      text-align:center;
+
+      transition:0.5s;
+
+      box-shadow:
+      0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .card:hover{
+
+      transform:
+      translateY(-12px)
+      scale(1.03);
+
+      background:
+      linear-gradient(
+      145deg,
+      #0284c7,
+      #38bdf8);
+
+      box-shadow:
+      0 0 30px rgba(56,189,248,0.7);
+    }
+
+    /* ICON */
+
+    .card i{
+
+      font-size:70px;
+
+      margin-bottom:20px;
+
+      color:#38bdf8;
+
+      transition:0.4s;
+    }
+
+    .card:hover i{
+
+      color:white;
+
+      transform:scale(1.1);
+    }
+
+    /* TITLE */
+
+    .card h3{
+
+      font-size:28px;
+
+      margin-bottom:15px;
+    }
+
+    /* TEXT */
+
+    .card p{
+
+      color:#dbeafe;
+
+      margin-bottom:25px;
+
+      font-size:15px;
+    }
+
+    /* BUTTON */
+
+    .card a{
+
+      display:inline-block;
+
+      padding:14px 30px;
+
+      border-radius:40px;
+
+      text-decoration:none;
+
+      background:
+      linear-gradient(
+      90deg,
+      #0284c7,
+      #38bdf8);
+
+      color:white;
+
+      font-weight:600;
+
+      transition:0.4s;
+    }
+
+    .card a:hover{
+
+      background:white;
+
+      color:#0284c7;
+
+      transform:scale(1.05);
+    }
+
+    /* FOOTER */
+
+    footer{
+
+      text-align:center;
+
+      padding:30px;
+
+      margin-top:50px;
+
+      background:
+      rgba(15,23,42,0.85);
+
+      backdrop-filter:blur(12px);
+    }
+
+    footer h2{
+
+      margin-bottom:10px;
+
+      color:#38bdf8;
+    }
+
+    /* ANIMATION */
+
+    @keyframes gradientBG{
+
+      0%{
+        background-position:0% 50%;
+      }
+
+      50%{
+        background-position:100% 50%;
+      }
+
+      100%{
+        background-position:0% 50%;
+      }
+    }
+
+    @keyframes slideDown{
+
+      from{
+        transform:translateY(-80px);
+        opacity:0;
+      }
+
+      to{
+        transform:translateY(0);
+        opacity:1;
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:42px;
+      }
+
+      .hero-content p{
+        font-size:18px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        <i class="fas fa-cloud"></i>
+        DevOps Learning Portal
+      </h1>
+
+      <p>
+        Explore DevOps, Cloud, Containers, Automation,
+        CI/CD, Infrastructure as Code, and Monitoring Tools
+        through beautifully designed learning pages.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- MAIN CONTENT -->
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>Learning Modules</h2>
+
+    </div>
+
+    <div class="grid">
+
+      <!-- LINUX -->
+
+      <div class="card">
+
+        <i class="fab fa-linux"></i>
+
+        <h3>Linux</h3>
+
+        <p>
+          Learn Linux commands, file management,
+          networking, permissions, and administration.
+        </p>
+
+        <a href="linux.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- GIT -->
+
+      <div class="card">
+
+        <i class="fab fa-git-alt"></i>
+
+        <h3>Git & GitHub</h3>
+
+        <p>
+          Learn version control, branching,
+          merging, GitHub workflows, and collaboration.
+        </p>
+
+        <a href="git.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- DOCKER -->
+
+      <div class="card">
+
+        <i class="fab fa-docker"></i>
+
+        <h3>Docker</h3>
+
+        <p>
+          Learn containers, Docker images,
+          Docker Compose, networking, and deployment.
+        </p>
+
+        <a href="docker.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- KUBERNETES -->
+
+      <div class="card">
+
+        <i class="fas fa-dharmachakra"></i>
+
+        <h3>Kubernetes</h3>
+
+        <p>
+          Learn Pods, Deployments,
+          Services, Ingress, Scaling, and AKS/EKS.
+        </p>
+
+        <a href="k8.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- AWS -->
+
+      <div class="card">
+
+        <i class="fab fa-aws"></i>
+
+        <h3>AWS</h3>
+
+        <p>
+          Learn EC2, S3, IAM,
+          VPC, RDS, Lambda, and Cloud Architecture.
+        </p>
+
+        <a href="Aws.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- AZURE -->
+
+      <div class="card">
+
+        <i class="fab fa-microsoft"></i>
+
+        <h3>Azure</h3>
+
+        <p>
+          Learn Azure services,
+          networking, Azure DevOps,
+          and cloud deployments.
+        </p>
+
+        <a href="AZ.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- TERRAFORM -->
+
+      <div class="card">
+
+        <i class="fas fa-code"></i>
+
+        <h3>Terraform</h3>
+
+        <p>
+          Learn Infrastructure as Code,
+          providers, modules,
+          workflows, and automation.
+        </p>
+
+        <a href="terraform.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- JENKINS -->
+
+      <div class="card">
+
+        <i class="fas fa-tools"></i>
+
+        <h3>Jenkins</h3>
+
+        <p>
+          Learn Jenkins pipelines,
+          CI/CD automation,
+          builds, deployments, and plugins.
+        </p>
+
+        <a href="jenkins.html">
+          Open Page
+        </a>
+
+      </div>
+
+      <!-- ANSIBLE -->
+
+      <div class="card">
+
+        <i class="fas fa-terminal"></i>
+
+        <h3>Ansible</h3>
+
+        <p>
+          Learn automation, playbooks,
+          configuration management,
+          and server provisioning.
+        </p>
+
+        <a href="ansible.html">
+          Open Page
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>DevOps Mastery Portal</h2>
+
+    <p>
+      Beginner to Advanced DevOps Learning Platform
+    </p>
+
+    <p>
+      © 2026 DevOps Learning Hub
+    </p>
+
+  </footer>
+
+</body>
+
+</html>

@@ -1,14 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
 
   <meta name="viewport"
   content="width=device-width, initial-scale=1.0"/>
 
-  <title>Jenkins Mastery Hub</title>
+  <title>Azure Cloud Mastery Hub</title>
 
   <!-- FONT AWESOME -->
 
@@ -43,10 +44,10 @@
       background:
       linear-gradient(
       135deg,
-      #eef2ff,
+      #eff6ff,
       #f8fafc,
-      #ecfeff,
-      #f0fdf4);
+      #e0f2fe,
+      #dbeafe);
 
       background-size:400% 400%;
 
@@ -65,10 +66,10 @@
 
       background:
       linear-gradient(
-      rgba(0,0,0,0.75),
-      rgba(0,0,0,0.75)),
+      rgba(0,0,0,0.72),
+      rgba(0,0,0,0.72)),
 
-      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
+      url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop');
 
       background-size:cover;
       background-position:center;
@@ -96,7 +97,7 @@
       height:700px;
 
       background:
-      rgba(37,99,235,0.18);
+      rgba(0,120,212,0.18);
 
       border-radius:50%;
 
@@ -118,7 +119,7 @@
       height:500px;
 
       background:
-      rgba(16,185,129,0.18);
+      rgba(59,130,246,0.18);
 
       border-radius:50%;
 
@@ -138,19 +139,19 @@
 
     .hero-content h1{
 
-      font-size:78px;
+      font-size:80px;
 
       margin-bottom:20px;
 
       text-shadow:
-      0 0 25px rgba(37,99,235,0.9);
+      0 0 25px rgba(0,120,212,0.8);
 
       animation:slideDown 2s ease;
     }
 
     .hero-content p{
 
-      font-size:24px;
+      font-size:25px;
 
       color:#dbeafe;
 
@@ -168,8 +169,8 @@
       background:
       linear-gradient(
       90deg,
-      #2563eb,
-      #3b82f6);
+      #0078d4,
+      #0ea5e9);
 
       color:white;
 
@@ -180,7 +181,7 @@
       transition:0.4s;
 
       box-shadow:
-      0 0 25px rgba(37,99,235,0.6);
+      0 0 25px rgba(0,120,212,0.6);
     }
 
     .hero-content button:hover{
@@ -189,7 +190,7 @@
       scale(1.08);
 
       box-shadow:
-      0 0 40px rgba(37,99,235,1);
+      0 0 40px rgba(0,120,212,1);
     }
 
     /* NAVBAR */
@@ -245,7 +246,7 @@
       width:0;
       height:3px;
 
-      background:#3b82f6;
+      background:#0ea5e9;
 
       left:0;
       bottom:-6px;
@@ -260,7 +261,7 @@
 
     nav a:hover{
 
-      color:#60a5fa;
+      color:#38bdf8;
     }
 
     /* CONTAINER */
@@ -297,52 +298,29 @@
       border-radius:24px;
 
       transition:0.5s;
-
-      overflow:hidden;
-
-      position:relative;
     }
 
     .card:hover{
 
       transform:
-      translateY(-12px)
-      scale(1.01);
+      translateY(-10px);
 
       box-shadow:
       0 20px 50px rgba(0,0,0,0.15);
     }
 
-    /* HEADINGS */
-
     h2{
 
-      color:#2563eb;
+      color:#0078d4;
 
       font-size:34px;
 
       margin-bottom:25px;
 
-      position:relative;
-
       padding-left:18px;
-    }
 
-    h2::before{
-
-      content:"";
-
-      position:absolute;
-
-      left:0;
-      top:5px;
-
-      width:6px;
-      height:42px;
-
-      background:#2563eb;
-
-      border-radius:20px;
+      border-left:
+      6px solid #0078d4;
     }
 
     /* GRID */
@@ -383,8 +361,8 @@
       background:
       linear-gradient(
       145deg,
-      #2563eb,
-      #3b82f6);
+      #0078d4,
+      #0ea5e9);
 
       transform:
       translateY(-10px)
@@ -397,7 +375,7 @@
 
       margin-bottom:18px;
 
-      color:#60a5fa;
+      color:#38bdf8;
     }
 
     /* TABLE */
@@ -408,14 +386,11 @@
 
       border-collapse:collapse;
 
-      overflow:hidden;
-
       border-radius:18px;
 
-      margin-top:25px;
+      overflow:hidden;
 
-      box-shadow:
-      0 8px 25px rgba(0,0,0,0.08);
+      margin-top:25px;
     }
 
     table th{
@@ -423,14 +398,12 @@
       background:
       linear-gradient(
       90deg,
-      #2563eb,
-      #3b82f6);
+      #0078d4,
+      #0ea5e9);
 
       color:white;
 
       padding:18px;
-
-      font-size:18px;
     }
 
     table td{
@@ -447,7 +420,7 @@
       background:#eff6ff;
     }
 
-    /* CODE BLOCK */
+    /* CODE */
 
     pre{
 
@@ -468,7 +441,7 @@
       margin-top:25px;
 
       border-left:
-      5px solid #2563eb;
+      5px solid #0078d4;
     }
 
     /* INFO BOX */
@@ -478,11 +451,11 @@
       background:
       linear-gradient(
       135deg,
-      #eff6ff,
-      #dbeafe);
+      #e0f2fe,
+      #f0f9ff);
 
       border-left:
-      6px solid #2563eb;
+      6px solid #0078d4;
 
       padding:22px;
 
@@ -491,28 +464,59 @@
       margin-top:25px;
     }
 
-    /* WORKFLOW */
+    /* STATS */
 
-    .workflow{
+    .stats{
+
+      display:grid;
+
+      grid-template-columns:
+      repeat(auto-fit,minmax(220px,1fr));
+
+      gap:25px;
+
+      margin-bottom:40px;
+    }
+
+    .stat-box{
+
+      background:white;
+
+      padding:35px;
+
+      border-radius:20px;
+
+      text-align:center;
+
+      box-shadow:
+      0 8px 25px rgba(0,0,0,0.08);
+
+      transition:0.5s;
+    }
+
+    .stat-box:hover{
 
       background:
       linear-gradient(
       135deg,
-      #dcfce7,
-      #bbf7d0);
+      #0078d4,
+      #0ea5e9);
 
-      border-left:
-      6px solid #16a34a;
+      color:white;
 
-      padding:24px;
+      transform:translateY(-10px);
+    }
 
-      border-radius:18px;
+    .stat-box h1{
 
-      margin-top:25px;
+      color:#0078d4;
 
-      font-weight:600;
+      font-size:50px;
+    }
 
-      text-align:center;
+    .stat-box:hover h1{
+
+      color:white;
     }
 
     /* FOOTER */
@@ -534,7 +538,7 @@
       margin-top:50px;
     }
 
-    /* ANIMATIONS */
+    /* ANIMATION */
 
     @keyframes bgMove{
 
@@ -630,12 +634,12 @@
     <div class="hero-content">
 
       <h1>
-        <i class="fas fa-tools"></i>
-        Jenkins Mastery Hub
+        <i class="fab fa-microsoft"></i>
+        Azure Cloud Mastery Hub
       </h1>
 
       <p>
-        Learn Jenkins, CI/CD Pipelines, Maven, Plugins & Automation
+        Learn Microsoft Azure from Beginner to Advanced
       </p>
 
       <button onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
@@ -653,10 +657,10 @@
     <ul>
 
       <li><a href="#intro">Introduction</a></li>
-      <li><a href="#pipeline">Pipelines</a></li>
-      <li><a href="#maven">Maven</a></li>
-      <li><a href="#plugins">Plugins</a></li>
-      <li><a href="#workflow">Workflow</a></li>
+      <li><a href="#services">Azure Services</a></li>
+      <li><a href="#networking">Networking</a></li>
+      <li><a href="#devops">Azure DevOps</a></li>
+      <li><a href="#security">Security</a></li>
 
     </ul>
 
@@ -664,68 +668,97 @@
 
   <div class="container">
 
+    <!-- STATS -->
+
+    <div class="stats">
+
+      <div class="stat-box">
+        <h1>200+</h1>
+        <p>Azure Services</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>60+</h1>
+        <p>Azure Regions</p>
+      </div>
+
+      <div class="stat-box">
+        <h1>99.95%</h1>
+        <p>High Availability</p>
+      </div>
+
+    </div>
+
     <!-- INTRO -->
 
     <div class="card" id="intro">
 
-      <h2>What is Jenkins?</h2>
+      <h2>What is Microsoft Azure?</h2>
 
       <p>
-        Jenkins is an open-source automation server
-        used to build, test, and deploy applications automatically.
+        Microsoft Azure is a cloud computing platform
+        used to build, deploy, and manage applications
+        through Microsoft-managed data centers.
       </p>
 
       <div class="info-box">
 
-        <strong>CI/CD:</strong><br>
+        <strong>Azure Supports:</strong><br>
 
-        Continuous Integration & Continuous Deployment
-        help automate software delivery.
+        Virtual Machines,
+        Storage,
+        Databases,
+        Networking,
+        AI,
+        DevOps,
+        Containers,
+        Kubernetes,
+        and Security Services.
 
       </div>
 
     </div>
 
-    <!-- WHY JENKINS -->
+    <!-- HOW AZURE WORKS -->
 
     <div class="card">
 
-      <h2>Why Jenkins is Used</h2>
+      <h2>How Azure Works</h2>
 
       <div class="grid">
 
         <div class="grid-card">
 
-          <i class="fab fa-github"></i>
+          <i class="fas fa-user"></i>
 
-          <h3>Git Integration</h3>
+          <h3>User Request</h3>
 
           <p>
-            Automatically pulls code from GitHub.
+            User sends requests to Azure services.
           </p>
 
         </div>
 
         <div class="grid-card">
 
-          <i class="fas fa-vial"></i>
+          <i class="fas fa-server"></i>
 
-          <h3>Testing</h3>
+          <h3>Azure Data Centers</h3>
 
           <p>
-            Runs automated tests for applications.
+            Azure processes requests using cloud servers.
           </p>
 
         </div>
 
         <div class="grid-card">
 
-          <i class="fas fa-rocket"></i>
+          <i class="fas fa-cloud"></i>
 
-          <h3>Deployment</h3>
+          <h3>Cloud Services</h3>
 
           <p>
-            Deploys applications automatically.
+            Applications, storage, databases run in cloud.
           </p>
 
         </div>
@@ -734,168 +767,298 @@
 
     </div>
 
-    <!-- PIPELINE -->
+    <!-- AZURE SERVICES -->
 
-    <div class="card" id="pipeline">
+    <div class="card" id="services">
 
-      <h2>Jenkins Pipeline</h2>
-
-<pre>
-pipeline {
-
-    agent any
-
-    stages {
-
-        stage('Build') {
-            steps {
-                echo 'Building application'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application'
-            }
-        }
-
-    }
-
-}
-</pre>
-
-    </div>
-
-    <!-- MAVEN -->
-
-    <div class="card" id="maven">
-
-      <h2>Maven in Jenkins</h2>
-
-      <p>
-        Maven is a Java build tool used to compile,
-        package, and test Java applications.
-      </p>
-
-<pre>
-mvn clean package
-</pre>
-
-      <div class="info-box">
-
-        <strong>clean</strong> → Removes old build files<br>
-        <strong>package</strong> → Creates JAR/WAR file
-
-      </div>
-
-    </div>
-
-    <!-- PLUGINS -->
-
-    <div class="card" id="plugins">
-
-      <h2>Popular Jenkins Plugins</h2>
+      <h2>Azure Core Services</h2>
 
       <table>
 
         <tr>
-          <th>Plugin</th>
-          <th>Purpose</th>
+          <th>Service</th>
+          <th>Description</th>
         </tr>
 
         <tr>
-          <td>Git Plugin</td>
-          <td>Connect Jenkins with GitHub</td>
+          <td>Azure VM</td>
+          <td>Virtual Machines in Azure</td>
         </tr>
 
         <tr>
-          <td>Maven Plugin</td>
-          <td>Build Java applications</td>
+          <td>Azure Storage</td>
+          <td>Cloud storage solution</td>
         </tr>
 
         <tr>
-          <td>Docker Plugin</td>
-          <td>Docker integration</td>
+          <td>Azure SQL</td>
+          <td>Managed SQL database</td>
         </tr>
 
         <tr>
-          <td>Kubernetes Plugin</td>
-          <td>K8s deployment support</td>
+          <td>Azure Functions</td>
+          <td>Serverless computing</td>
         </tr>
 
         <tr>
-          <td>Slack Plugin</td>
-          <td>Notifications & alerts</td>
+          <td>AKS</td>
+          <td>Azure Kubernetes Service</td>
+        </tr>
+
+        <tr>
+          <td>Azure AD</td>
+          <td>Identity & access management</td>
         </tr>
 
       </table>
 
     </div>
 
-    <!-- WORKFLOW -->
+    <!-- NETWORKING -->
 
-    <div class="card" id="workflow">
+    <div class="card" id="networking">
 
-      <h2>Jenkins Workflow</h2>
+      <h2>Azure Networking</h2>
 
-      <div class="workflow">
+      <div class="grid">
 
-        Developer Pushes Code →
-        Jenkins Detects Change →
-        Build Starts →
-        Tests Run →
-        Application Deploys →
-        Notifications Sent
+        <div class="grid-card">
+
+          <i class="fas fa-network-wired"></i>
+
+          <h3>Virtual Network</h3>
+
+          <p>
+            Private network inside Azure cloud.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-globe"></i>
+
+          <h3>Load Balancer</h3>
+
+          <p>
+            Distributes incoming traffic.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-shield-alt"></i>
+
+          <h3>NSG</h3>
+
+          <p>
+            Network Security Groups for protection.
+          </p>
+
+        </div>
 
       </div>
 
     </div>
 
-    <!-- COMMANDS -->
+    <!-- DEVOPS -->
+
+    <div class="card" id="devops">
+
+      <h2>Azure DevOps</h2>
+
+      <p>
+        Azure DevOps provides tools for
+        CI/CD, Git repositories,
+        testing, pipelines, and deployments.
+      </p>
+
+<pre>
+az login
+
+az vm list
+
+az group create --name mygroup --location eastus
+</pre>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fab fa-git-alt"></i>
+
+          <h3>Azure Repos</h3>
+
+          <p>
+            Git repositories for source code.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-sync"></i>
+
+          <h3>Azure Pipelines</h3>
+
+          <p>
+            CI/CD automation pipelines.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-tasks"></i>
+
+          <h3>Azure Boards</h3>
+
+          <p>
+            Agile project management.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- SECURITY -->
+
+    <div class="card" id="security">
+
+      <h2>Azure Security</h2>
+
+      <ul>
+
+        <li>Azure Active Directory</li>
+
+        <li>Role-Based Access Control (RBAC)</li>
+
+        <li>Network Security Groups</li>
+
+        <li>Azure Key Vault</li>
+
+        <li>Microsoft Defender for Cloud</li>
+
+        <li>Multi-Factor Authentication</li>
+
+      </ul>
+
+    </div>
+
+    <!-- AZURE ARCHITECTURE -->
 
     <div class="card">
 
-      <h2>Common Jenkins Commands</h2>
+      <h2>Azure Architecture Flow</h2>
 
 <pre>
-echo 'Build Started'
-
-sh 'mvn clean package'
-
-git 'repo-url'
-
-docker build -t app .
+User → Azure Portal → Azure Services →
+Virtual Machines / Databases / Storage →
+Application Deployment → Monitoring & Security
 </pre>
 
     </div>
 
-    <!-- INTERVIEW QUESTIONS -->
+    <!-- MONITORING -->
 
     <div class="card">
 
-      <h2>Jenkins Interview Questions</h2>
+      <h2>Monitoring in Azure</h2>
+
+      <div class="grid">
+
+        <div class="grid-card">
+
+          <i class="fas fa-chart-line"></i>
+
+          <h3>Azure Monitor</h3>
+
+          <p>
+            Monitors resources and applications.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-file-alt"></i>
+
+          <h3>Log Analytics</h3>
+
+          <p>
+            Collects and analyzes logs.
+          </p>
+
+        </div>
+
+        <div class="grid-card">
+
+          <i class="fas fa-bell"></i>
+
+          <h3>Alerts</h3>
+
+          <p>
+            Sends notifications for issues.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- INTERVIEW -->
+
+    <div class="card">
+
+      <h2>Azure Interview Questions</h2>
 
       <ol>
 
-        <li>What is Jenkins?</li>
+        <li>What is Microsoft Azure?</li>
 
-        <li>What is CI/CD?</li>
+        <li>Difference between Azure VM and AWS EC2?</li>
 
-        <li>Difference between freestyle job and pipeline?</li>
+        <li>What is Azure DevOps?</li>
 
-        <li>What is Jenkinsfile?</li>
+        <li>What is AKS?</li>
 
-        <li>How Jenkins integrates with GitHub?</li>
+        <li>What is Azure Active Directory?</li>
 
-        <li>What are Jenkins plugins?</li>
+        <li>Explain NSG.</li>
 
-        <li>Explain Maven integration.</li>
+        <li>What is Azure Functions?</li>
+
+      </ol>
+
+    </div>
+
+    <!-- ROADMAP -->
+
+    <div class="card">
+
+      <h2>Azure Learning Roadmap</h2>
+
+      <ol>
+
+        <li>Learn Cloud Fundamentals</li>
+
+        <li>Understand Azure Architecture</li>
+
+        <li>Practice Azure VM & Storage</li>
+
+        <li>Learn Networking & Security</li>
+
+        <li>Study Azure DevOps</li>
+
+        <li>Learn AKS & Containers</li>
+
+        <li>Build Real-Time Projects</li>
+
+        <li>Prepare for Azure Certifications</li>
 
       </ol>
 
@@ -907,14 +1070,14 @@ docker build -t app .
 
   <footer>
 
-    <h2>Jenkins Learning Portal</h2>
+    <h2>Azure Cloud Learning Portal</h2>
 
     <p>
-      Beginner to Advanced Jenkins & DevOps Learning Platform
+      Beginner to Advanced Microsoft Azure Learning Platform
     </p>
 
     <p>
-      © 2026 Jenkins Mastery Hub
+      © 2026 Azure Mastery Hub
     </p>
 
   </footer>
@@ -922,3 +1085,4 @@ docker build -t app .
 </body>
 
 </html>
+
